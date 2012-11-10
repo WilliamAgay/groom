@@ -12,39 +12,48 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.opendata.groom.R;
 import com.opendata.groom.components.SortieListAdapter;
 
-public class MainContentListActivity extends Activity
-		 {
+public class MainContentListActivity extends Activity {
 
 	private static final int SORT = 0;
-	ListView lvEv =null;
-	
-	
+	ListView lvEv = null;
+
+	/** Affiche le détail d'un POI lorsqu'on clique dessus dans la liste */
+	class DetailClickListener implements OnItemClickListener {
+
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
+			Intent tnt = new Intent(getApplicationContext(),
+					PoiDetailsActivity.class);
+			tnt.putExtra("id", position);
+			startActivity(tnt);
+		}
+	}
+
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		
-		
+
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.map_list_layout);
-		
-		 lvEv = (ListView) findViewById(R.id.ListViewmapListlayout);
-		lvEv.setAdapter(new SortieListAdapter(MainContentListActivity.this));
 
+		lvEv = (ListView) findViewById(R.id.ListViewmapListlayout);
+		lvEv.setAdapter(new SortieListAdapter(MainContentListActivity.this));
+		lvEv.setOnItemClickListener(new DetailClickListener());
 
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
 	}
 
-	
-
-	
-
-	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
@@ -68,7 +77,8 @@ public class MainContentListActivity extends Activity
 			showDialog(SORT);
 			return true;
 		case R.id.idMenuTheme:
-			startActivity(new Intent(MainContentListActivity.this, InitActivity.class));
+			startActivity(new Intent(MainContentListActivity.this,
+					InitActivity.class));
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -76,12 +86,14 @@ public class MainContentListActivity extends Activity
 	}
 
 	private void startMapView(int idToShow) {
-		if (idToShow ==R.id.idMenuListe) {
-			Intent intent = new Intent(MainContentListActivity.this,MainContentActivity.class);
+		if (idToShow == R.id.idMenuListe) {
+			Intent intent = new Intent(MainContentListActivity.this,
+					MainContentActivity.class);
 			startActivity(intent);
 			finish();
-			MainContentListActivity.this.overridePendingTransition(R.anim.translate_map, R.anim.translate_map);
-			
+			MainContentListActivity.this.overridePendingTransition(
+					R.anim.translate_map, R.anim.translate_map);
+
 		}
 	}
 
@@ -93,7 +105,7 @@ public class MainContentListActivity extends Activity
 		mSelectedItems = new ArrayList(); // Where we track the selected items
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		// Set the dialog title
-		builder.setTitle("Th�mes des donn�es")
+		builder.setTitle("Thèmes des données")
 				// Specify the list array, the items to be selected by default
 				// (null for none),
 				// and the listener through which to receive callbacks when
