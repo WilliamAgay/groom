@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.opendata.groom.R;
@@ -20,6 +21,7 @@ import com.opendata.groom.R;
 public class InitActivity extends Activity implements View.OnClickListener
 {
 
+	int posQuestion=-1;
 	List<String> questions = Arrays.asList("Votre prénom?", "Situation : ", "Votre budget?");
 
 	Handler mHandler = new Handler();
@@ -46,8 +48,9 @@ public class InitActivity extends Activity implements View.OnClickListener
 				
 				@Override
 				public void run() {
+					posQuestion=0;
 					findViewById(R.id.FrameLayoutQuestionLayout).setVisibility(View.VISIBLE);
-					((TextView)findViewById(R.id.TextViewQuestionLayoutQ)).setText(questions.get(0));
+					((TextView)findViewById(R.id.TextViewQuestionLayoutQ)).setText(questions.get(posQuestion));
 					findViewById(R.id.ButtonQuestionLayoutGo).setOnClickListener(InitActivity.this);
 					
 					Animation scaleDimAnimation = AnimationUtils.loadAnimation(InitActivity.this, R.anim.translate_in);
@@ -64,8 +67,26 @@ public class InitActivity extends Activity implements View.OnClickListener
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.ButtonQuestionLayoutGo:
-			if()
+			if(posQuestion==0)
 			{
+				String val = ((EditText)findViewById(R.id.EditTextQuestionLayoutR)).getText().toString();
+				if(val==null || val.equals(""))
+				{
+					mHandler.postDelayed(new Runnable() {
+						
+						@Override
+						public void run() {
+							posQuestion=1;
+							findViewById(R.id.FrameLayoutQuestionLayout).setVisibility(View.VISIBLE);
+							((TextView)findViewById(R.id.TextViewQuestionLayoutQ)).setText(questions.get(posQuestion));
+							findViewById(R.id.ButtonQuestionLayoutGo).setOnClickListener(InitActivity.this);
+							
+							Animation scaleDimAnimation = AnimationUtils.loadAnimation(InitActivity.this, R.anim.translate_in);
+							findViewById(R.id.FrameLayoutQuestionLayout).startAnimation(scaleDimAnimation);
+							hasDone=true;
+						}
+					}, 1000);
+				}
 				
 			}
 			break;
