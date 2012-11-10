@@ -37,30 +37,30 @@ public class ChatActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_chat);
 
-		 msgView = (ListView) findViewById(R.id.listView);
-
-		msgList = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1);
-		msgView.setAdapter(msgList);
-
-//		msgView.smoothScrollToPosition(msgList.getCount() - 1);
-
-		Button btnSend = (Button) findViewById(R.id.btn_Send);
-		
-		receiveMsg();
-		btnSend.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-				final EditText txtEdit = (EditText) findViewById(R.id.txt_inputText);
-				//msgList.add(txtEdit.getText().toString());
-				sendMessageToServer(txtEdit.getText().toString());
-				msgView.smoothScrollToPosition(msgList.getCount() - 1);
-			
-			}			
-		});
+//		 msgView = (ListView) findViewById(R.id.listView);
+//
+//		msgList = new ArrayAdapter<String>(this,
+//				android.R.layout.simple_list_item_1);
+//		msgView.setAdapter(msgList);
+//
+////		msgView.smoothScrollToPosition(msgList.getCount() - 1);
+//
+//		Button btnSend = (Button) findViewById(R.id.btn_Send);
+//		
+//		receiveMsg();
+//		btnSend.setOnClickListener(new View.OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//
+//				final EditText txtEdit = (EditText) findViewById(R.id.txt_inputText);
+//				//msgList.add(txtEdit.getText().toString());
+//				sendMessageToServer(txtEdit.getText().toString());
+//				msgView.smoothScrollToPosition(msgList.getCount() - 1);
+//			
+//			}			
+//		});
 		
 //		receiveMsg();
 		//----------------------------
@@ -71,42 +71,42 @@ public class ChatActivity extends Activity {
 		
 		//End Receive msg from server//
 	}
-	public void sendMessageToServer(String str) {
-		
-		final String str1=str;
-		new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				//String host = "opuntia.cs.utep.edu";
-				String host="10.0.2.2";
-				String host2 = "127.0.0.1";
-				PrintWriter out;
-				try {
-					Socket socket = new Socket(host, 8008);
-					out = new PrintWriter(socket.getOutputStream());
+//	public void sendMessageToServer(String str) {
+//		
+//		final String str1=str;
+//		new Thread(new Runnable() {
+//			
+//			@Override
+//			public void run() {
+//				// TODO Auto-generated method stub
+//				//String host = "opuntia.cs.utep.edu";
+//				String host="10.0.2.2";
+//				String host2 = "127.0.0.1";
+//				PrintWriter out;
+//				try {
+//					Socket socket = new Socket(host, 8008);
+//					out = new PrintWriter(socket.getOutputStream());
+//
+//					// out.println("hello");
+//					out.println(str1);
+//					Log.d("", "hello");
+//					out.flush();
+//				} catch (UnknownHostException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//					Log.d("", "hello222");
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//					Log.d("", "hello4333");
+//				}
+//	
+//			}
+//		}).start();
+//			}
 
-					// out.println("hello");
-					out.println(str1);
-					Log.d("", "hello");
-					out.flush();
-				} catch (UnknownHostException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					Log.d("", "hello222");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					Log.d("", "hello4333");
-				}
 	
-			}
-		}).start();
-			}
-
-	
-	
+	/*
 	public void receiveMsg()
 	{
 		new Thread(new Runnable()
@@ -181,5 +181,6 @@ public class ChatActivity extends Activity {
 		});
 		
 	}
+	*/
 
 }
