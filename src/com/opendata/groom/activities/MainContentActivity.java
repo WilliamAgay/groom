@@ -1,6 +1,7 @@
 package com.opendata.groom.activities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
@@ -12,10 +13,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
+import bma.groomservice.data.Poi;
+import bma.groomservice.data.PoiListener;
+import bma.groomservice.data.dataprovence.DataprovenceManager;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -28,19 +31,22 @@ import com.opendata.groom.polaris.PolarisMapView.OnAnnotationSelectionChangedLis
 import com.opendata.groom.polaris.PolarisMapView.OnMapViewLongClickListener;
 
 public class MainContentActivity extends MapActivity implements
-		OnMapViewLongClickListener, OnAnnotationSelectionChangedListener {
+		OnMapViewLongClickListener, OnAnnotationSelectionChangedListener,
+		PoiListener {
 
 	private static final int SORT = 0;
 	private PolarisMapView mapView;
-	private ArrayList mSelectedItems = new ArrayList(); // Where we track the selected
-	private String currentTheme = "";
+	private final ArrayList mSelectedItems = new ArrayList(); // Where we track
+																// the selected
+	private final String currentTheme = "";
+
 	// items
 
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
 		Log.e("TAG", "onCreate");
 		super.onCreate(savedInstanceState);
-		
 
 		setContentView(R.layout.polarismaplayout);
 
@@ -55,6 +61,35 @@ public class MainContentActivity extends MapActivity implements
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
+		new DataprovenceManager(this, false)
+				.findAll(new String[] { "PLEIN AIR" });
+	}
+
+	@Override
+	public void onPoiReceived(List<Poi> pois) {
+		if (pois != null && pois.size() > 0) {
+			addAnnotationList(createAnnotationsOverlay(pois));
+			GroomApplication app = (GroomApplication) getApplication();
+			app.pois.addAll(pois);
+		}
+	}
+
+	private void addAnnotationList(List<Annotation> aAnnotationsList) {
+		mapView.setAnnotations(aAnnotationsList, R.drawable.pleinair);
+	}
+
+	public List<Annotation> createAnnotationsOverlay(List<Poi> aPoiSet) {
+		List<Annotation> poiAnnotationList = new ArrayList<Annotation>();
+		if (aPoiSet != null) {
+			for (Poi poi : aPoiSet) {
+				poiAnnotationList.add(new Annotation(
+						new GeoPoint((int) (poi.latitude * 1e6),
+								(int) (poi.longitude * 1e6)),
+						poi.raisonsociale,
+						poi.adresseWeb != null ? poi.adresseWeb : ""));
+			}
+		}
+		return poiAnnotationList;
 	}
 
 	@Override
@@ -148,8 +183,6 @@ public class MainContentActivity extends MapActivity implements
 		}
 	}
 
-
-
 	@Override
 	protected Dialog onCreateDialog(int arg) {
 		mSelectedItems.add(3);
@@ -178,16 +211,19 @@ public class MainContentActivity extends MapActivity implements
 							}
 						})
 				// Set the action buttons
-				.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int id) {
-						// User clicked OK, so save the mSelectedItems results
-						// somewhere
-						// or return them to the component that opened the
-						// dialog
-						dismissDialog(0);
-					}
-				})
+				.setPositiveButton(getString(R.string.ok),
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int id) {
+								// User clicked OK, so save the mSelectedItems
+								// results
+								// somewhere
+								// or return them to the component that opened
+								// the
+								// dialog
+								dismissDialog(0);
+							}
+						})
 				.setNegativeButton(getString(R.string.cancel),
 						new DialogInterface.OnClickListener() {
 							@Override
