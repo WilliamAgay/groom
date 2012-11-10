@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="labelTheme">
+        <item>Culture</item>
+        <item>Plein air</item>
+        <item>Sport</item>
+        <item>Restauration</item>
+    </string-array>
+    <string-array name="valuesTheme">
+        <item>culture</item>
+        <item>pleinAir</item>
+        <item>sport</item>
+        <item>restauration</item>
+    </string-array>
+
+</resources>

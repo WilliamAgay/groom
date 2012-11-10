@@ -41,13 +41,14 @@ public class MainActivity extends Activity {
 	}
 
 	public void OnClickButton(View v) {
+		
 		switch (v.getId()) {
 		case R.id.button1:
 			startActivity(new Intent(getApplicationContext(),
 					InitActivity.class));
 			break;
 		case R.id.button2:
-			startActivity(new Intent(getApplicationContext(), TabActivity.class));
+			startActivity(new Intent(getApplicationContext(), MainContentActivity.class));
 			break;
 
 		default:
