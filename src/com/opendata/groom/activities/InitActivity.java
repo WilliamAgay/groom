@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,9 @@ import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.view.animation.Animation;
@@ -63,7 +67,9 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 
 		
 		
-		
+		ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setDisplayShowTitleEnabled(false);
 		
 		
 		((TextView)findViewById(R.id.FrameLayoutInitActivityTile1).findViewById(R.id.TextViewInitActivityChoix1)).setText(R.string.plein_air);
@@ -510,5 +516,23 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 	                "Please speak slowly and enunciate clearly.");
 	        startActivityForResult(intent, VOICE_RECOGNITION_REQUEST);
 	    }
+	  
+	  @Override
+		public boolean onCreateOptionsMenu(Menu menu) {
+			MenuInflater inflater = getMenuInflater();
+			inflater.inflate(R.menu.menu_init, menu);
+			return true;
+		}
+
+		@Override
+		public boolean onOptionsItemSelected(MenuItem item) {
+			switch (item.getItemId()) {
+			case R.id.idMenuTts:
+				listenToMe(getResources().getString(R.string.question_tts));
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+			}
+		}
 
 }

@@ -39,35 +39,37 @@ public final class R {
         public static final int culture=0x7f020000;
         public static final int da_ic_menu_layers=0x7f020001;
         public static final int gastro=0x7f020002;
-        public static final int ic_action_search=0x7f020003;
-        public static final int ic_arrow_black=0x7f020004;
-        public static final int ic_arrow_white=0x7f020005;
-        public static final int ic_btn_speak_now=0x7f020006;
-        public static final int ic_launcher=0x7f020007;
-        public static final int ico_culture=0x7f020008;
-        public static final int ico_gastro=0x7f020009;
-        public static final int ico_plein_air=0x7f02000a;
-        public static final int ico_sport=0x7f02000b;
-        public static final int pleinair=0x7f02000c;
-        public static final int polaris__arrow_to_right=0x7f02000d;
-        public static final int polaris__btn_map_overlay=0x7f02000e;
-        public static final int polaris__btn_map_overlay_focused=0x7f02000f;
-        public static final int polaris__btn_map_overlay_normal=0x7f020010;
-        public static final int polaris__btn_map_overlay_pressed=0x7f020011;
-        public static final int polaris__ic_map_locate=0x7f020012;
-        public static final int polaris__map_callout_bottom_anchor=0x7f020013;
-        public static final int polaris__map_callout_bottom_anchor_focused=0x7f020014;
-        public static final int polaris__map_callout_bottom_anchor_normal=0x7f020015;
-        public static final int polaris__map_callout_bottom_anchor_pressed=0x7f020016;
-        public static final int polaris__map_callout_left_cap=0x7f020017;
-        public static final int polaris__map_callout_left_cap_focused=0x7f020018;
-        public static final int polaris__map_callout_left_cap_normal=0x7f020019;
-        public static final int polaris__map_callout_left_cap_pressed=0x7f02001a;
-        public static final int polaris__map_callout_right_cap=0x7f02001b;
-        public static final int polaris__map_callout_right_cap_focused=0x7f02001c;
-        public static final int polaris__map_callout_right_cap_normal=0x7f02001d;
-        public static final int polaris__map_callout_right_cap_pressed=0x7f02001e;
-        public static final int sport=0x7f02001f;
+        public static final int header=0x7f020003;
+        public static final int ic_action_search=0x7f020004;
+        public static final int ic_arrow_black=0x7f020005;
+        public static final int ic_arrow_white=0x7f020006;
+        public static final int ic_btn_speak_now=0x7f020007;
+        public static final int ic_launcher=0x7f020008;
+        public static final int ico_culture=0x7f020009;
+        public static final int ico_gastro=0x7f02000a;
+        public static final int ico_plein_air=0x7f02000b;
+        public static final int ico_sport=0x7f02000c;
+        public static final int logomini=0x7f02000d;
+        public static final int pleinair=0x7f02000e;
+        public static final int polaris__arrow_to_right=0x7f02000f;
+        public static final int polaris__btn_map_overlay=0x7f020010;
+        public static final int polaris__btn_map_overlay_focused=0x7f020011;
+        public static final int polaris__btn_map_overlay_normal=0x7f020012;
+        public static final int polaris__btn_map_overlay_pressed=0x7f020013;
+        public static final int polaris__ic_map_locate=0x7f020014;
+        public static final int polaris__map_callout_bottom_anchor=0x7f020015;
+        public static final int polaris__map_callout_bottom_anchor_focused=0x7f020016;
+        public static final int polaris__map_callout_bottom_anchor_normal=0x7f020017;
+        public static final int polaris__map_callout_bottom_anchor_pressed=0x7f020018;
+        public static final int polaris__map_callout_left_cap=0x7f020019;
+        public static final int polaris__map_callout_left_cap_focused=0x7f02001a;
+        public static final int polaris__map_callout_left_cap_normal=0x7f02001b;
+        public static final int polaris__map_callout_left_cap_pressed=0x7f02001c;
+        public static final int polaris__map_callout_right_cap=0x7f02001d;
+        public static final int polaris__map_callout_right_cap_focused=0x7f02001e;
+        public static final int polaris__map_callout_right_cap_normal=0x7f02001f;
+        public static final int polaris__map_callout_right_cap_pressed=0x7f020020;
+        public static final int sport=0x7f020021;
     }
     public static final class id {
         public static final int ButtonInitActivitySpeek=0x7f0c000f;
@@ -138,9 +140,10 @@ public final class R {
         public static final int btn_Send=0x7f0c0005;
         public static final int button1=0x7f0c0008;
         public static final int button2=0x7f0c0009;
-        public static final int idMenuListe=0x7f0c0051;
-        public static final int idMenuSort=0x7f0c0050;
-        public static final int idMenuTheme=0x7f0c0052;
+        public static final int idMenuListe=0x7f0c0052;
+        public static final int idMenuSort=0x7f0c0051;
+        public static final int idMenuTheme=0x7f0c0053;
+        public static final int idMenuTts=0x7f0c0050;
         public static final int listView=0x7f0c0002;
         public static final int llout=0x7f0c0003;
         public static final int menu_settings=0x7f0c004f;
@@ -175,7 +178,8 @@ public final class R {
     public static final class menu {
         public static final int activity_chat=0x7f0b0000;
         public static final int activity_main=0x7f0b0001;
-        public static final int menu_map=0x7f0b0002;
+        public static final int menu_init=0x7f0b0002;
+        public static final int menu_map=0x7f0b0003;
     }
     public static final class string {
         public static final int a_venir=0x7f060009;
@@ -228,6 +232,13 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f070001;
+        /**  other activity and action bar styles here 
+         */
+        public static final int GroomActivityTheme=0x7f07000b;
+        /**  the theme applied to the application or activity 
+         <item name="android:selectableItemBackground">@drawable/item_background_groom_selector</item> 
+         */
+        public static final int MyActionBar=0x7f07000a;
         public static final int TextAppearance_Polaris=0x7f070002;
         public static final int TextAppearance_Polaris_MapCallout=0x7f070003;
         public static final int TextAppearance_Polaris_MapCallout_Subtitle=0x7f070005;
