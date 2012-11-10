@@ -39,6 +39,7 @@ public class MainContentActivity extends MapActivity implements
 	private final ArrayList mSelectedItems = new ArrayList(); // Where we track
 																// the selected
 	private final String currentTheme = "";
+	private List<Poi> currentPoiList = new ArrayList<Poi>();
 
 	// items
 
@@ -91,15 +92,14 @@ public class MainContentActivity extends MapActivity implements
 	@Override
 	public void onPoiReceived(List<Poi> pois) {
 		if (pois != null && pois.size() > 0) {
+			currentPoiList = pois;
 			addAnnotationList(createAnnotationsOverlay(pois));
 			GroomApplication app = (GroomApplication) getApplication();
 			app.pois.addAll(pois);
 		}
 	}
 
-	private List<Annotation> currentAnnotationsList;
 	private void addAnnotationList(List<Annotation> aAnnotationsList) {
-		currentAnnotationsList = aAnnotationsList;
 		mapView.setAnnotations(aAnnotationsList, R.drawable.pleinair);
 	}
 	
@@ -159,8 +159,8 @@ public class MainContentActivity extends MapActivity implements
 	public void onAnnotationClicked(PolarisMapView mapView,
 			MapCalloutView calloutView, int position, Annotation annotation) {
 		Intent intent = new Intent(MainContentActivity.this,PoiDetailsActivity.class);
-		if(currentAnnotationsList != null && currentAnnotationsList.get(position) != null)
-			intent.putExtra("poi",((Parcelable) currentAnnotationsList.get(position)));
+		if(currentPoiList != null && currentPoiList.get(position) != null)
+			intent.putExtra("poi",((Parcelable) currentPoiList.get(position)));
 		startActivity(intent);
 	}
 
