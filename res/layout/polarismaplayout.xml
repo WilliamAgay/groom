@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="right" >
+
+    <com.opendata.groom.polaris.PolarisMapView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mapview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:apiKey="05BiH1uRq25AnV6KHAZ8ZR9TLQABe7ZqQ_nIR9A" />
+
+    <ListView android:visibility="gone"
+        android:id="@+id/idListView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    </ListView>
+    <!-- TODO: use viewStub -->
+
+
+    <!-- <LinearLayout -->
+    <!-- android:id="@+id/id_layout_fictive_position" -->
+    <!-- android:layout_width="fill_parent" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_alignParentBottom="true" -->
+    <!-- android:layout_marginLeft="5dp" -->
+    <!-- android:layout_marginRight="5dp" -->
+    <!-- android:background="@drawable/da_generic_exit_unknown" -->
+    <!-- android:orientation="horizontal" > -->
+
+
+    <!-- <TextView -->
+    <!-- android:id="@+id/id_layout_fictive_position_text" -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="match_parent" -->
+    <!-- android:layout_marginBottom="2dp" -->
+    <!-- android:layout_weight="100" -->
+    <!-- android:drawableLeft="@android:drawable/stat_sys_warning" -->
+    <!-- android:gravity="center_vertical|center_horizontal" -->
+    <!-- android:paddingLeft="5dp" -->
+    <!-- android:text="@string/fakelocationlabel" -->
+    <!-- android:textAppearance="?android:attr/textAppearance" -->
+    <!-- android:textColor="@android:color/white" /> -->
+
+
+    <!-- <include layout="@layout/fictivepoicheckbox" /> -->
+
+
+    <!-- </LinearLayout> -->
+
+
+    <!-- <ImageButton xmlns:android="http://schemas.android.com/apk/res/android" -->
+    <!-- android:id="@+id/id_my_position" -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_alignParentRight="true" -->
+    <!-- android:layout_gravity="top|right|center" -->
+    <!-- android:layout_margin="8dip" -->
+    <!-- android:background="@drawable/btn_map_overlay" -->
+    <!-- android:padding="4dip" -->
+    <!-- android:src="@android:drawable/ic_menu_mylocation" /> -->
+
+</RelativeLayout>
