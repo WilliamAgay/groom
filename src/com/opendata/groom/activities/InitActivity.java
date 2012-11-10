@@ -19,13 +19,13 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 
 public class InitActivity extends Activity implements View.OnClickListener , OnSeekBarChangeListener
 {
-	int progressBudget = -1;
+	
 	SeekBar seekBar=null;
-	String situation=null;
 	Spinner spinnerSituation=null;
 	int posQuestion=-1;
 	List<String> questions = Arrays.asList("Votre prénom?", "Situation : ", "Votre budget?");
@@ -39,10 +39,18 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.init_activity);
 		setTheme(android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
-//		getWindow().setBackgroundDrawable(getResources().getDrawable(android.R.color.transparent));
-		//TODO:APP FIRST LAUNCH PREF APP
+
+		
 		findViewById(R.id.RelativeLayoutInitActivityContainer).setVisibility(View.GONE);
 		findViewById(R.id.FrameLayoutQuestionLayout).setVisibility(View.GONE);
+		if(((GroomApplication)getApplicationContext()).accountName!=null)
+		{
+			findViewById(R.id.RelativeLayoutInitActivityContainer).setVisibility(View.VISIBLE);
+			findViewById(R.id.FrameLayoutQuestionLayout).setVisibility(View.GONE);
+			
+			((TextView)findViewById(R.id.TextViewInitActivityHeader)).setText(getString(R.string.bienvenue_header_account,((GroomApplication)getApplicationContext()).accountName));
+		}
+		
 		
 		
 	}
@@ -50,8 +58,9 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 	@Override
 	protected void onResume() {
 		super.onResume();
-		if(posQuestion==-1) //TODO:APP FIRST LAUNCH PREF APP
+		if(((GroomApplication)getApplicationContext()).accountName==null)
 		{
+			 posQuestion=-1;
 			mHandler.postDelayed(new Runnable() {
 				
 				@Override
@@ -71,6 +80,12 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 				}
 			}, 1000);
 		}
+		else
+		{
+			findViewById(R.id.RelativeLayoutInitActivityContainer).setVisibility(View.VISIBLE);
+			findViewById(R.id.FrameLayoutQuestionLayout).setVisibility(View.GONE);
+			
+		}
 	}
 
 	
@@ -84,6 +99,7 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 				String val = ((EditText)findViewById(R.id.EditTextQuestionLayoutR)).getText().toString();
 				if(val!=null && !val.equals(""))
 				{
+					((GroomApplication)getApplicationContext()).accountName=val;
 					posQuestion=1;
 					doAnimationtranslateIn();
 				}
@@ -91,7 +107,7 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 			}
 			if(posQuestion==1)
 			{
-				if(situation!=null && !situation.equals(""))
+				if(((GroomApplication)getApplicationContext()).accountStatus!=null && !((GroomApplication)getApplicationContext()).accountStatus.equals(""))
 				{
 					posQuestion=2;
 					doAnimationtranslateIn();
@@ -100,9 +116,11 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 			}
 			if(posQuestion==2)
 			{
-				if(progressBudget!=-1)
+				if(((GroomApplication)getApplicationContext()).accountBudget!=-1)
 				{
-					
+					((GroomApplication)getApplicationContext()).saveAccountDataInPref();
+					((TextView)findViewById(R.id.TextViewInitActivityHeader)).setText(getString(R.string.bienvenue_header_account,((GroomApplication)getApplicationContext()).accountName));
+
 					Animation growAnimation = AnimationUtils.loadAnimation(InitActivity.this, R.anim.grow_from_middle);
 					
 					findViewById(R.id.RelativeLayoutInitActivityContainer).setVisibility(View.VISIBLE);
@@ -183,7 +201,7 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 //			Toast.makeText(parent.getContext(), 
 //				"OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString(),
 //				Toast.LENGTH_SHORT).show();
-			situation=parent.getItemAtPosition(pos).toString();
+			  ((GroomApplication)getApplicationContext()).accountStatus=parent.getItemAtPosition(pos).toString();
 		  }
 		 
 		  @Override
@@ -197,7 +215,7 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 	public void onProgressChanged(SeekBar seekBar, int progress,
 			boolean fromUser) {
 
-    	progressBudget = progress;
+		((GroomApplication)getApplicationContext()).accountBudget = progress;
 
 	}
 

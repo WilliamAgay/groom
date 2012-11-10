@@ -44,14 +44,14 @@ public class GroomApplication extends Application{
 	 
 	}
 	
-	public void saveAccountDataInPref(String name , String status,int budget) 
+	public void saveAccountDataInPref() 
 	{
 		
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 	    SharedPreferences.Editor editor = prefs.edit();
-	    editor.putString(PREF_ACCOUNT_NAME, name);
-	    editor.putString(PREF_ACCOUNT_STATUS, status);
-	    editor.putInt(PREF_ACCOUNT_BUDGET, budget);
+	    editor.putString(PREF_ACCOUNT_NAME, accountName);
+	    editor.putString(PREF_ACCOUNT_STATUS, accountStatus);
+	    editor.putInt(PREF_ACCOUNT_BUDGET, accountBudget);
 	
 	    editor.commit();
 	}

@@ -5,6 +5,7 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">Main</string>
     <string name="title_activity_chat">ChatActivity</string>
+    <string name="bienvenue_header_account">Bienvenue %1s!</string>
 
     <string-array name="situation_array">
         <item>Célibataire</item>
