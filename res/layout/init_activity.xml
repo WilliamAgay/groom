@@ -51,15 +51,21 @@
                     android:background="@drawable/ic_arrow_white" />
             </RelativeLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/LinearLayoutInitActivityContainerTiles"
+ <ScrollView
+            android:id="@+id/ScrollViewInitActivityContainerTiles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/LinearLayoutInitActivityContainerFooter"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/LinearLayoutInitActivityContainerHeader"
+            android:layout_margin="0dip"
+            android:orientation="vertical"
+            android:padding="0dip" >
+        <LinearLayout
+            android:id="@+id/LinearLayoutInitActivityContainerTiles"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:layout_margin="0dip"
             android:background="#000000"
             android:orientation="vertical"
@@ -212,7 +218,8 @@
                 android:layout_height="1dip"
                 android:background="#000000" />
         </LinearLayout>
-
+	</ScrollView>
+	
         <LinearLayout
             android:id="@+id/LinearLayoutInitActivityContainerFooter"
             android:layout_width="fill_parent"

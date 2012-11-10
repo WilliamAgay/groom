@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
@@ -22,7 +23,7 @@ import android.widget.TextView;
 import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 
-public class InitActivity extends Activity implements View.OnClickListener , OnSeekBarChangeListener
+public class InitActivity extends Activity implements View.OnClickListener , OnSeekBarChangeListener, OnLongClickListener
 {
 	
 	SeekBar seekBar=null;
@@ -227,5 +228,11 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 	@Override
 	public void onStopTrackingTouch(SeekBar seekBar) {
 		
+	}
+
+	@Override
+	public boolean onLongClick(View v) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
