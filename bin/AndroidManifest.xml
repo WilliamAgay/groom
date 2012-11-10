@@ -43,6 +43,7 @@
              />
         <activity    android:name="com.opendata.groom.activities.MainContentActivity" />
         <activity    android:name="com.opendata.groom.activities.MainContentListActivity" />
+        <activity   android:theme="@style/AppTheme"  android:name="com.opendata.groom.activities.PoiDetailsActivity" />
         
     </application>
 
