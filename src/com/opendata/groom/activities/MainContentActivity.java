@@ -1,6 +1,7 @@
 package com.opendata.groom.activities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import android.app.ActionBar;
@@ -9,33 +10,17 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-<<<<<<< HEAD
-import android.view.View;
-import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-=======
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
 import bma.groomservice.data.Poi;
 import bma.groomservice.data.PoiListener;
 import bma.groomservice.data.dataprovence.DataprovenceManager;
->>>>>>> 5966fb296cb0a7c5d413dcfcaf4182b26c35d3be
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
-import com.opendata.groom.components.Flip3dAnimation;
 import com.opendata.groom.polaris.Annotation;
 import com.opendata.groom.polaris.MapCalloutView;
 import com.opendata.groom.polaris.PolarisMapView;
@@ -48,11 +33,7 @@ public class MainContentActivity extends MapActivity implements
 
 	private static final int SORT = 0;
 	private PolarisMapView mapView;
-<<<<<<< HEAD
-	
-	
-	RelativeLayout rlContainer=null;
-=======
+
 	private final ArrayList mSelectedItems = new ArrayList(); // Where we track
 																// the selected
 	private final String currentTheme = "";
@@ -60,7 +41,6 @@ public class MainContentActivity extends MapActivity implements
 	// items
 
 	@Override
->>>>>>> 5966fb296cb0a7c5d413dcfcaf4182b26c35d3be
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
@@ -68,7 +48,6 @@ public class MainContentActivity extends MapActivity implements
 		setContentView(R.layout.polarismaplayout);
 		mapView = (PolarisMapView) findViewById(R.id.PolarisMapViewLayoutMap);
 		
-		rlContainer = (RelativeLayout) findViewById(R.id.RelativeLayoutPolarisMapLayoutContainer);
 //		 lvEv = new ListView(MainContentActivity.this);
 //		 RelativeLayout.LayoutParams lp =new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 //		 
@@ -93,8 +72,13 @@ public class MainContentActivity extends MapActivity implements
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
+		
+//		public static final String THEME_PLEINAIR = "PLEIN AIR";
+//		public static final String THEME_RESTAURATION = "RESTAURATION";
+//		public static final String THEME_SPORT = "SPORT";
+//		public static final String THEME_CULTURE = "CULTURE";
 		new DataprovenceManager(this, false)
-				.findAll(new String[] { "PLEIN AIR" });
+				.findAll( ((GroomApplication)getApplicationContext()).themes) ;
 	}
 
 	@Override
@@ -169,7 +153,7 @@ public class MainContentActivity extends MapActivity implements
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			// app icon in action bar clicked; go home
-			Intent intent = new Intent(this, MainActivity.class);
+			Intent intent = new Intent(this, InitActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			return true;
@@ -253,11 +237,10 @@ public class MainContentActivity extends MapActivity implements
 		mSelectedItems.add(3);
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		// Set the dialog title
-<<<<<<< HEAD
-		builder.setTitle("Th�mes des donn�es")
-=======
+
+
 		builder.setTitle(getString(R.string.title_popup))
->>>>>>> 5966fb296cb0a7c5d413dcfcaf4182b26c35d3be
+
 				// Specify the list array, the items to be selected by default
 				// (null for none),
 				// and the listener through which to receive callbacks when

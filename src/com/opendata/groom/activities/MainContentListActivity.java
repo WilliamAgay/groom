@@ -12,10 +12,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.Window;
 import android.widget.ListView;
 
 import com.opendata.groom.R;
+import com.opendata.groom.components.SortieListAdapter;
 
 public class MainContentListActivity extends Activity
 		 {
@@ -32,7 +32,7 @@ public class MainContentListActivity extends Activity
 		setContentView(R.layout.map_list_layout);
 		
 		 lvEv = (ListView) findViewById(R.id.ListViewmapListlayout);
-		
+		lvEv.setAdapter(new SortieListAdapter(MainContentListActivity.this));
 
 
 		ActionBar actionBar = getActionBar();
@@ -57,7 +57,7 @@ public class MainContentListActivity extends Activity
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			// app icon in action bar clicked; go home
-			Intent intent = new Intent(this, MainActivity.class);
+			Intent intent = new Intent(this, InitActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			return true;

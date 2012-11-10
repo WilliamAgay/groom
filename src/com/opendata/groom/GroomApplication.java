@@ -1,6 +1,7 @@
 package com.opendata.groom;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -9,10 +10,8 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-<<<<<<< HEAD
-=======
 import bma.groomservice.data.Poi;
->>>>>>> 5966fb296cb0a7c5d413dcfcaf4182b26c35d3be
+
 
 public class GroomApplication extends Application {
 
@@ -28,6 +27,7 @@ public class GroomApplication extends Application {
 	public static final String CSTE_CURRENT_THEME = "keyTheme";
 
 	public List<Poi> pois = new ArrayList<Poi>();
+	public List<String> themes = new ArrayList<String>();
 
 	public String accountName = null;
 	public String accountStatus = null;

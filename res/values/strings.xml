@@ -1,6 +1,8 @@
 <resources>
 
     <string name="app_name">Groom</string>
+    <string name="question_tts">Quel type de sortie recherchez-vous?</string>
+    <string name="theme_donnees">Thèmes des données</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">Main</string>
