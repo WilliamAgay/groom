@@ -8,7 +8,6 @@
     <string name="musique">MUSIQUE</string>
     <string name="autre">INCLASSABLE</string>
     <string name="a_venir">À venir!</string>
-    
     <string name="desole_je_nai_pas_compris">Désolé. Je n\'ai pas compris.</string>
     <string name="vous_voulez_quest">%1s! Que de sorties!</string>
     <string name="question_tts">Quel type de sortie recherchez-vous?</string>
@@ -21,12 +20,17 @@
     <string name="title_popup">Thèmes des données</string>
     <string name="ok">OK</string>
     <string name="cancel">Annuler</string>
-
+    <string name="bonjour_text">Bonjour, je suis James, votre groom pour vous aider dans votre visite à Marseille</string>
+    <string name="bonjour_question1">Et vous quel est votre prénom ?</string>
+    <string name="bonjour_question2">Quelle est la durée de votre séjour parmi nous ?</string>
+    <string name="bonjour_footer">Définissez vos centres d\'intérêts &gt;&gt;</string>
+    
     <string-array name="situation_array">
         <item>Célibataire</item>
         <item>En famille</item>
         <item>En déplacement</item>
     </string-array>
-    
+
+    <string name="title_activity_bonjour">BonjourActivity</string>
 
 </resources>
