@@ -36,10 +36,7 @@
             android:name="com.opendata.groom.activities.InitActivity"
             android:theme="@style/AppTheme" >
             
-<<<<<<< HEAD
-=======
-           
->>>>>>> refs/remotes/origin/master
+
             </activity>
         <activity
             android:name="com.opendata.groom.activities.TabActivity"
