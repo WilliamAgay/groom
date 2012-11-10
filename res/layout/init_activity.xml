@@ -1,256 +1,264 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/RelativeLayoutInitActivityContainer"
+    android:id="@+id/RelativeLayoutInitActivityContainer0"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_margin="0dip"
     android:background="@android:color/transparent"
-    android:orientation="vertical"
     android:padding="0dip" >
 
-    <LinearLayout
-        android:id="@+id/LinearLayoutInitActivityContainerHeader"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <RelativeLayout
-            android:id="@+id/RelativeLayoutInitActivityHeaderContainer"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="0dip"
-            android:background="#000000"
-            android:padding="5dip" >
-
-            <TextView
-                android:id="@+id/TextViewInitActivityHeader"
-                style="@style/styleSettingsTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:paddingLeft="8dip"
-                android:text="Bienvenue !" />
-
-            <Button
-                android:id="@+id/ButtonInitActivityGo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10dip"
-                android:background="@drawable/ic_arrow_white" />
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayoutInitActivityContainerTiles"
+    <RelativeLayout
+        android:id="@+id/RelativeLayoutInitActivityContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/LinearLayoutInitActivityContainerHeader"
-        android:layout_above="@+id/LinearLayoutInitActivityContainerFooter"
-        android:layout_margin="0dip"
-        android:background="#000000"
-        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
         android:padding="0dip" >
 
-        <RelativeLayout
-            android:id="@+id/RelativeLayoutInitActivityLine1Tiles"
+        <LinearLayout
+            android:id="@+id/LinearLayoutInitActivityContainerHeader"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutInitActivityHeaderContainer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dip"
+                android:background="#000000"
+                android:padding="5dip" >
+
+                <TextView
+                    android:id="@+id/TextViewInitActivityHeader"
+                    style="@style/styleSettingsTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="8dip"
+                    android:text="Bienvenue !" />
+
+                <Button
+                    android:id="@+id/ButtonInitActivityGo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dip"
+                    android:background="@drawable/ic_arrow_white" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutInitActivityContainerTiles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/LinearLayoutInitActivityContainerFooter"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/LinearLayoutInitActivityContainerHeader"
             android:layout_margin="0dip"
-            android:background="#FFFFFF"
+            android:background="#000000"
+            android:orientation="vertical"
             android:padding="0dip" >
-                 <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_toLeftOf="@+id/ViewInitActivityLine1TilesSeparator"
-                        android:layout_alignParentTop="true"
-                         >
-                                <include
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutInitActivityLine1Tiles"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="0dip"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:padding="0dip" >
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/ViewInitActivityLine1TilesSeparator" >
+
+                    <include
                         android:id="@+id/IncludeInitActivityTile1"
                         layout="@layout/init_layout_tile" />
-                          </FrameLayout>
-                   <View
+                </FrameLayout>
+
+                <View
                     android:id="@+id/ViewInitActivityLine1TilesSeparator"
                     android:layout_width="1dp"
                     android:layout_height="fill_parent"
                     android:layout_centerHorizontal="true"
                     android:background="#000000" />
-            
-                   <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                         android:layout_toRightOf="@+id/ViewInitActivityLine1TilesSeparator"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true"
-                         >
-                      <include
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/ViewInitActivityLine1TilesSeparator" >
+
+                    <include
                         android:id="@+id/IncludeInitActivityTile2"
                         layout="@layout/init_layout_tile" />
-                  </FrameLayout>
-                      
-       </RelativeLayout>
-       
-        <View
-              android:id="@+id/ViewInitActivityLine1Separator"
-             android:layout_width="fill_parent"
+                </FrameLayout>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/ViewInitActivityLine1Separator"
+                android:layout_width="fill_parent"
                 android:layout_height="1dip"
                 android:background="#000000" />
-        
-         <RelativeLayout
-            android:id="@+id/RelativeLayoutInitActivityLine2Tiles"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:layout_margin="0dip"
-            android:background="#FFFFFF"
-            android:padding="0dip" >
-            
-                               <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_toLeftOf="@+id/ViewInitActivityLine2TilesSeparator"
-                        android:layout_alignParentTop="true"
-                         >
-                                <include
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutInitActivityLine2Tiles"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="0dip"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:padding="0dip" >
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/ViewInitActivityLine2TilesSeparator" >
+
+                    <include
                         android:id="@+id/IncludeInitActivityTile3"
                         layout="@layout/init_layout_tile" />
-                          </FrameLayout>
-                   <View
+                </FrameLayout>
+
+                <View
                     android:id="@+id/ViewInitActivityLine2TilesSeparator"
                     android:layout_width="1dp"
                     android:layout_height="fill_parent"
                     android:layout_centerHorizontal="true"
                     android:background="#000000" />
-            
-                   <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                         android:layout_toRightOf="@+id/ViewInitActivityLine2TilesSeparator"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true"
-                         >
-                      <include
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/ViewInitActivityLine2TilesSeparator" >
+
+                    <include
                         android:id="@+id/IncludeInitActivityTile4"
                         layout="@layout/init_layout_tile" />
-                  </FrameLayout>
-                                
-       </RelativeLayout>
-       
-        <View
-              android:id="@+id/ViewInitActivityLine2Separator"
-             android:layout_width="fill_parent"
+                </FrameLayout>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/ViewInitActivityLine2Separator"
+                android:layout_width="fill_parent"
                 android:layout_height="1dip"
                 android:background="#000000" />
-        
-         <RelativeLayout
-            android:id="@+id/RelativeLayoutInitActivityLine3Tiles"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:layout_margin="0dip"
-            android:background="#FFFFFF"
-            android:padding="0dip" >
-                                
-                                 <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_toLeftOf="@+id/ViewInitActivityLine3TilesSeparator"
-                        android:layout_alignParentTop="true"
-                         >
-                                <include
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutInitActivityLine3Tiles"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="0dip"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:padding="0dip" >
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/ViewInitActivityLine3TilesSeparator" >
+
+                    <include
                         android:id="@+id/IncludeInitActivityTile5"
                         layout="@layout/init_layout_tile" />
-                          </FrameLayout>
-                   <View
+                </FrameLayout>
+
+                <View
                     android:id="@+id/ViewInitActivityLine3TilesSeparator"
                     android:layout_width="1dp"
                     android:layout_height="fill_parent"
                     android:layout_centerHorizontal="true"
                     android:background="#000000" />
-            
-                   <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                         android:layout_toRightOf="@+id/ViewInitActivityLine3TilesSeparator"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true"
-                         >
-                      <include
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/ViewInitActivityLine3TilesSeparator" >
+
+                    <include
                         android:id="@+id/IncludeInitActivityTile6"
                         layout="@layout/init_layout_tile" />
-                  </FrameLayout>
-                                
-            
-       </RelativeLayout>
-       
-        <View
-              android:id="@+id/ViewInitActivityLine3Separator"
-             android:layout_width="fill_parent"
+                </FrameLayout>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/ViewInitActivityLine3Separator"
+                android:layout_width="fill_parent"
                 android:layout_height="1dip"
                 android:background="#000000" />
-
         </LinearLayout>
 
-
-    <LinearLayout
-        android:id="@+id/LinearLayoutInitActivityContainerFooter"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@android:color/transparent"
-        android:orientation="horizontal"
-        android:paddingTop="0dip" >
-
-        <RelativeLayout
-            android:id="@+id/RelativeLayoutInitActivityFooterContainer"
+        <LinearLayout
+            android:id="@+id/LinearLayoutInitActivityContainerFooter"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#000000" >
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal"
+            android:paddingTop="0dip" >
 
-            <ImageView
-                android:id="@+id/ImageViewInitActivitySettings"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutInitActivityFooterContainer"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:paddingRight="2dip"
-                android:src="@drawable/ic_launcher" />
+                android:background="#000000" >
 
-            <TextView
-                android:id="@+id/TextViewInitActivityChat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/ImageViewInitActivitySettings"
-                android:paddingRight="5dip"
-                android:text="discutez directement avec votre conseiller! 24/24h" />
-        </RelativeLayout>
-    </LinearLayout>
-    
-     <FrameLayout 
-         android:id="@+id/FrameLayoutQuestionLayout"
-         android:layout_margin="10dip"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-	
-                         >
-      <include
+                <ImageView
+                    android:id="@+id/ImageViewInitActivitySettings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="2dip"
+                    android:src="@drawable/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/TextViewInitActivityChat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/ImageViewInitActivitySettings"
+                    android:paddingRight="5dip"
+                    android:text="discutez directement avec votre conseiller! 24/24h" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/FrameLayoutQuestionLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dip" >
+
+        <include
             android:id="@+id/IncludeInitActivityTile1"
             layout="@layout/question_layout" />
-</FrameLayout>
+    </FrameLayout>
 
 </RelativeLayout>

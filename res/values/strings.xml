@@ -6,4 +6,11 @@
     <string name="title_activity_main">Main</string>
     <string name="title_activity_chat">ChatActivity</string>
 
+    <string-array name="situation_array">
+        <item>Célibataire</item>
+        <item>En famille</item>
+        <item>En déplacement</item>
+    </string-array>
+    
+
 </resources>
