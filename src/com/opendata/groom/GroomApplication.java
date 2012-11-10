@@ -21,6 +21,15 @@ public class GroomApplication extends Application{
 	public static final String PREF_FAVORITES = "favorites";
 	
 	
+	public static final int CSTE_CULTURE = 0;
+	public static final int CSTE_PLEINAIR = 1;
+	public static final int CSTE_SPORT = 2;
+	public static final int CSTE_RESTO = 3;
+	public static final String CSTE_CURRENT_THEME = "keyTheme";
+	
+	
+	
+	
 	public String accountName=  null;
 	public String accountStatus=  null;
 	public int accountBudget=  -1;
@@ -110,5 +119,6 @@ public class GroomApplication extends Application{
 	    }
 	    editor.commit();
 	}
+
 
 }

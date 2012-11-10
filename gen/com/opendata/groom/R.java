@@ -150,12 +150,15 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f060000;
         public static final int bienvenue_header_account=0x7f060007;
+        public static final int cancel=0x7f06000a;
         public static final int hello_world=0x7f060003;
         public static final int menu_settings=0x7f060004;
+        public static final int ok=0x7f060009;
         public static final int polaris__locate_myself=0x7f060001;
         public static final int polaris__unable_to_locate_you=0x7f060002;
         public static final int title_activity_chat=0x7f060006;
         public static final int title_activity_main=0x7f060005;
+        public static final int title_popup=0x7f060008;
     }
     public static final class style {
         /** 

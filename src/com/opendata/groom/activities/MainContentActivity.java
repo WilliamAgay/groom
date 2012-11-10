@@ -19,6 +19,7 @@ import android.view.animation.AnimationUtils;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
+import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 import com.opendata.groom.polaris.Annotation;
 import com.opendata.groom.polaris.MapCalloutView;
@@ -31,12 +32,15 @@ public class MainContentActivity extends MapActivity implements
 
 	private static final int SORT = 0;
 	private PolarisMapView mapView;
+	private ArrayList mSelectedItems = new ArrayList(); // Where we track the selected
+	private String currentTheme = "";
+	// items
 
 	public void onCreate(Bundle savedInstanceState) {
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 
 		Log.e("TAG", "onCreate");
 		super.onCreate(savedInstanceState);
+		
 
 		setContentView(R.layout.polarismaplayout);
 
@@ -144,15 +148,14 @@ public class MainContentActivity extends MapActivity implements
 		}
 	}
 
-	ArrayList mSelectedItems = new ArrayList(); // Where we track the selected
-												// items
+
 
 	@Override
 	protected Dialog onCreateDialog(int arg) {
-		mSelectedItems = new ArrayList(); // Where we track the selected items
+		mSelectedItems.add(3);
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		// Set the dialog title
-		builder.setTitle("Thèmes des données")
+		builder.setTitle(getString(R.string.title_popup))
 				// Specify the list array, the items to be selected by default
 				// (null for none),
 				// and the listener through which to receive callbacks when
@@ -175,7 +178,7 @@ public class MainContentActivity extends MapActivity implements
 							}
 						})
 				// Set the action buttons
-				.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+				.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int id) {
 						// User clicked OK, so save the mSelectedItems results
@@ -185,7 +188,7 @@ public class MainContentActivity extends MapActivity implements
 						dismissDialog(0);
 					}
 				})
-				.setNegativeButton("Annuler",
+				.setNegativeButton(getString(R.string.cancel),
 						new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog, int id) {

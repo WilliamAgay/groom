@@ -15,6 +15,7 @@
         android:fillBefore="true"
         android:fromAlpha="1"
         android:startOffset="150"
+        android:duration="0"
         android:toAlpha="0" />
 
 </set>

@@ -48,7 +48,9 @@ public class MainActivity extends Activity {
 					InitActivity.class));
 			break;
 		case R.id.button2:
-			startActivity(new Intent(getApplicationContext(), MainContentActivity.class));
+			Intent intent = new Intent(getApplicationContext(), MainContentActivity.class);
+			intent.putExtra(GroomApplication.CSTE_CURRENT_THEME, GroomApplication.CSTE_PLEINAIR);
+			startActivity(intent);
 			break;
 
 		default:
