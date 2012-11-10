@@ -12,6 +12,7 @@ public final class R {
         public static final int polaris__grow_fade_in_from_bottom=0x7f040000;
         public static final int polaris__shrink_fade_out_to_bottom=0x7f040001;
         public static final int translate_in=0x7f040002;
+        public static final int translate_in_after=0x7f040003;
     }
     public static final class attr {
     }

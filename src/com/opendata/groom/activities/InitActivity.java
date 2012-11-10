@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -72,20 +73,8 @@ public class InitActivity extends Activity implements View.OnClickListener
 				String val = ((EditText)findViewById(R.id.EditTextQuestionLayoutR)).getText().toString();
 				if(val==null || val.equals(""))
 				{
-					mHandler.postDelayed(new Runnable() {
-						
-						@Override
-						public void run() {
-							posQuestion=1;
-							findViewById(R.id.FrameLayoutQuestionLayout).setVisibility(View.VISIBLE);
-							((TextView)findViewById(R.id.TextViewQuestionLayoutQ)).setText(questions.get(posQuestion));
-							findViewById(R.id.ButtonQuestionLayoutGo).setOnClickListener(InitActivity.this);
-							
-							Animation scaleDimAnimation = AnimationUtils.loadAnimation(InitActivity.this, R.anim.translate_in);
-							findViewById(R.id.FrameLayoutQuestionLayout).startAnimation(scaleDimAnimation);
-							hasDone=true;
-						}
-					}, 1000);
+					posQuestion=1;
+					doAnimationtranslateIn();
 				}
 				
 			}
@@ -97,5 +86,50 @@ public class InitActivity extends Activity implements View.OnClickListener
 	}
 	
 	
+	
+	public void doAnimationtranslateIn()
+	{
+		if(posQuestion==0)
+		{
+			
+		}
+		else if(posQuestion==1)
+		{
+			
+		}
+		else if(posQuestion==2)
+		{
+			
+		}
+		Animation translateInAfterAnimation = AnimationUtils.loadAnimation(InitActivity.this, R.anim.translate_in_after);
+		translateInAfterAnimation.setAnimationListener(new AnimationListener() {
+			
+			@Override
+			public void onAnimationStart(Animation animation) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				
+				findViewById(R.id.FrameLayoutQuestionLayout).setVisibility(View.VISIBLE);
+				((TextView)findViewById(R.id.TextViewQuestionLayoutQ)).setText(questions.get(posQuestion));
+				findViewById(R.id.ButtonQuestionLayoutGo).setOnClickListener(InitActivity.this);
+				
+				Animation scaleDimAnimation = AnimationUtils.loadAnimation(InitActivity.this, R.anim.translate_in);
+				findViewById(R.id.FrameLayoutQuestionLayout).startAnimation(scaleDimAnimation);
+				hasDone=true;
+			}
+		});
+		findViewById(R.id.FrameLayoutQuestionLayout).startAnimation(translateInAfterAnimation);
+		
+	}
 
 }
