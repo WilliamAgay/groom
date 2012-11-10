@@ -6,8 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-import javax.swing.text.AbstractDocument.BranchElement;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -142,10 +140,7 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 //			startActivity(intent);
 //			finish();
 			listenToMe(getResources().getString(R.string.question_tts));
-			if(true)
-			{
-				//TODO
-			}
+			
 //			return;
 //			 intent = new Intent(InitActivity.this,MainContentActivity.class);
 //			startActivity(intent);
@@ -349,9 +344,68 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 	        if (requestCode == VOICE_RECOGNITION_REQUEST && resultCode == RESULT_OK) 
 	        {
 	            ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+	            if(matches.size()==0)
+	            {
+	            	listenToMe(getResources().getString(R.string.desole_je_nai_pas_compris));
+	            }
+	            else
+	            {
+	    			((GroomApplication)getApplicationContext()).themes=new ArrayList<String>();
+
+	            	for(String m : matches)
+	            	{
+	            		if(((GroomApplication)getApplicationContext()).theme_pleinAirTTS.indexOf(m)!=-1)
+	            		{
+	            			((GroomApplication)getApplicationContext()).themes.add(DataprovenceManager.THEME_PLEINAIR);
+	            		}
+	            		if(((GroomApplication)getApplicationContext()).theme_cultureTTS.indexOf(m)!=-1)
+	            		{
+	            			((GroomApplication)getApplicationContext()).themes.add(DataprovenceManager.THEME_CULTURE);
+
+	            		}
+	            		if(((GroomApplication)getApplicationContext()).theme_restaurationTTS.indexOf(m)!=-1)
+	            		{
+	            			((GroomApplication)getApplicationContext()).themes.add(DataprovenceManager.THEME_RESTAURATION);
+
+	            		}
+	            		if(((GroomApplication)getApplicationContext()).theme_sportTTS.indexOf(m)!=-1)
+	            		{
+	            			((GroomApplication)getApplicationContext()).themes.add(DataprovenceManager.THEME_SPORT);
+
+	            		}
+	            	}
+	            	
+	            	if(((GroomApplication)getApplicationContext()).themes.size()==0)
+	            	{
+	            		listenToMe(getResources().getString(R.string.desole_je_nai_pas_compris));
+	            	}
+	            	else
+	            	{
+	            		String value= "";
+	            		for(String m : ((GroomApplication)getApplicationContext()).themes)
+		            	{
+	            			value += m+", ";
+		            	}
+	            		listenToMe(getResources().getString(R.string.vous_voulez_quest, value));
+		            	mHandler.postDelayed(new Runnable() {
+							
+							@Override
+							public void run() {
+								 Intent intent = new Intent(InitActivity.this,MainContentActivity.class);
+									startActivity(intent);
+									finish();
+							}
+						}, 4000);
+	            	}
+	            	
+	            	
+	            	
+	            }
 //	            TextView textView = (TextView) findViewById(R.id.speech_io_text);
 //	            String firstMatch = matches.get(0);
 //	            textView.setText(firstMatch);
+	            
+	            
 	            
 	        }
 	    }

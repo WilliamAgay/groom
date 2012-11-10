@@ -1,6 +1,8 @@
 <resources>
 
     <string name="app_name">Groom</string>
+    <string name="desole_je_nai_pas_compris">Désolé. Je n\'ai pas compris.</string>
+    <string name="vous_voulez_quest">%1s! Que de sorties!</string>
     <string name="question_tts">Quel type de sortie recherchez-vous?</string>
     <string name="theme_donnees">Thèmes des données</string>
     <string name="hello_world">Hello world!</string>

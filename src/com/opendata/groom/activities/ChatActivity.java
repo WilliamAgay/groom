@@ -1,28 +1,20 @@
 package com.opendata.groom.activities;
 
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.net.UnknownHostException;
-
-import com.opendata.groom.R;
-import com.opendata.groom.R.id;
-import com.opendata.groom.R.layout;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
-public class ChatActivity extends Activity {
+import com.opendata.groom.R;
+
+public class ChatActivity extends Activity 
+{
+	
+	
+	
+	
 
 	private Handler handler = new Handler();
 	public ListView msgView;

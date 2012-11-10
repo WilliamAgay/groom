@@ -1,6 +1,7 @@
 package com.opendata.groom;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -25,6 +26,15 @@ public class GroomApplication extends Application {
 	public static final int CSTE_SPORT = 2;
 	public static final int CSTE_RESTO = 3;
 	public static final String CSTE_CURRENT_THEME = "keyTheme";
+	
+	public List<String> theme_pleinAirTTS = Arrays.asList("respirer","air","plein air", "espace", "détente", "environnement", "vert", "espace");
+	public List<String> theme_restaurationTTS = Arrays.asList("restaurant", "restauration", "manger", "déguster", "fast food", "appétit");
+	public List<String> theme_sportTTS = Arrays.asList("sport","santé", "motivation", "bouger", "courrir", "se dégourdir", "endurer");
+	public List<String> theme_cultureTTS = Arrays.asList("culture", "cultiver", "penser", "musique", "théàtre", "cinéma");
+
+
+	
+
 
 	public List<Poi> pois = new ArrayList<Poi>();
 	public List<String> themes = new ArrayList<String>();
