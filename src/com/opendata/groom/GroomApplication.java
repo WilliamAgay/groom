@@ -1,7 +1,6 @@
 package com.opendata.groom;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -10,8 +9,6 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import bma.groomservice.data.Poi;
-import bma.groomservice.data.dataprovence.DataprovenceFileHelper;
 
 public class GroomApplication extends Application{
 

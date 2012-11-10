@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+     android:id="@+id/RelativeLayoutPolarisMapLayoutContainer"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="right" >
+    >
 
     <com.opendata.groom.polaris.PolarisMapView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/mapview"
+        android:id="@+id/PolarisMapViewLayoutMap"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:apiKey="05BiH1uRq25AnV6KHAZ8ZR9TLQABe7ZqQ_nIR9A" />
+        android:apiKey="0apTQhRzMn07vesEetZC6Ry6Llo1YigdLqZsXRg" />
+<!--         android:apiKey="05BiH1uRq25AnV6KHAZ8ZR9TLQABe7ZqQ_nIR9A" /> -->
 
-    <ListView android:visibility="gone"
-        android:id="@+id/idListView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
-    </ListView>
+<!--     <ListView android:visibility="gone" -->
+<!--         android:layout_alignParentLeft="true" -->
+<!--         android:layout_alignParentRight="true" -->
+<!--         android:layout_alignParentTop="true" -->
+<!--         android:layout_alignParentBottom="true" -->
+<!--         android:id="@+id/ListViewPolarisMapLayoutListe" -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="fill_parent" > -->
+<!--     </ListView> -->
     <!-- TODO: use viewStub -->
 
 

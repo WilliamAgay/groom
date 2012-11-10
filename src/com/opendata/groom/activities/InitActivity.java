@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.maps.MapActivity;
 import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 
@@ -83,6 +85,7 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 		}
 		else
 		{
+			initTileCLick();
 			findViewById(R.id.RelativeLayoutInitActivityContainer).setVisibility(View.VISIBLE);
 			findViewById(R.id.FrameLayoutQuestionLayout).setVisibility(View.GONE);
 			
@@ -94,6 +97,18 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		
+		
+		case R.id.FrameLayoutInitActivityTile1:
+		case R.id.FrameLayoutInitActivityTile2:
+		case R.id.FrameLayoutInitActivityTile3:
+		case R.id.FrameLayoutInitActivityTile4:
+		case R.id.FrameLayoutInitActivityTile5:
+		case R.id.FrameLayoutInitActivityTile6:
+			Intent intent = new Intent(InitActivity.this,MainContentActivity.class);
+			startActivity(intent);
+			finish();
+		break;
 		case R.id.ButtonQuestionLayoutGo:
 			if(posQuestion==0)
 			{
@@ -127,6 +142,7 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 					findViewById(R.id.RelativeLayoutInitActivityContainer).setVisibility(View.VISIBLE);
 					findViewById(R.id.FrameLayoutQuestionLayout).setVisibility(View.GONE);
 					findViewById(R.id.RelativeLayoutInitActivityContainer).startAnimation(growAnimation);
+					initTileCLick();
 				}
 			}
 			break;
@@ -137,7 +153,15 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 	}
 	
 	
-	
+	public void initTileCLick()
+	{
+		findViewById(R.id.FrameLayoutInitActivityTile1).setOnClickListener(this);
+		findViewById(R.id.FrameLayoutInitActivityTile2).setOnClickListener(this);
+		findViewById(R.id.FrameLayoutInitActivityTile3).setOnClickListener(this);
+		findViewById(R.id.FrameLayoutInitActivityTile4).setOnClickListener(this);
+		findViewById(R.id.FrameLayoutInitActivityTile5).setOnClickListener(this);
+		findViewById(R.id.FrameLayoutInitActivityTile6).setOnClickListener(this);
+	}
 	public void doAnimationtranslateIn()
 	{
 		if(posQuestion==1)

@@ -12,14 +12,19 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.opendata.groom.R;
+import com.opendata.groom.components.Flip3dAnimation;
 import com.opendata.groom.polaris.Annotation;
 import com.opendata.groom.polaris.MapCalloutView;
 import com.opendata.groom.polaris.PolarisMapView;
@@ -31,16 +36,31 @@ public class MainContentActivity extends MapActivity implements
 
 	private static final int SORT = 0;
 	private PolarisMapView mapView;
-
+	
+	
+	RelativeLayout rlContainer=null;
 	public void onCreate(Bundle savedInstanceState) {
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 
-		Log.e("TAG", "onCreate");
 		super.onCreate(savedInstanceState);
-
+		
 		setContentView(R.layout.polarismaplayout);
-
-		mapView = (PolarisMapView) findViewById(R.id.mapview);
+		mapView = (PolarisMapView) findViewById(R.id.PolarisMapViewLayoutMap);
+		
+		rlContainer = (RelativeLayout) findViewById(R.id.RelativeLayoutPolarisMapLayoutContainer);
+//		 lvEv = new ListView(MainContentActivity.this);
+//		 RelativeLayout.LayoutParams lp =new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+//		 
+//		 
+//		 lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
+//		 lp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 1);
+//		 lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 1);
+//		 lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 1);
+//		 lvEv.setVisibility(View.GONE);
+//		 lvEv.setLayoutParams(lp);
+//		 rlContainer.addView(lvEv);
+		 
+		
+		
 		mapView.setUserTrackingButtonEnabled(true);
 		mapView.setOnMapViewLongClickListener(this);
 		mapView.setOnAnnotationSelectionChangedListener(this);
@@ -103,7 +123,7 @@ public class MainContentActivity extends MapActivity implements
 			startActivity(intent);
 			return true;
 		case R.id.idMenuListe:
-			startListView(1);
+			startListView(R.id.idMenuListe);
 			return true;
 		case R.id.idMenuSort:
 			showDialog(SORT);
@@ -116,29 +136,62 @@ public class MainContentActivity extends MapActivity implements
 		}
 	}
 
-	private void startListView(int arg) {
-		if (arg == 1) {
-			Animation animeMe = AnimationUtils.loadAnimation(this,
-					R.anim.translate_map);
-			mapView.startAnimation(animeMe);
-			animeMe.setAnimationListener(new AnimationListener() {
-
-				@Override
-				public void onAnimationStart(Animation animation) {
-
-				}
-
-				@Override
-				public void onAnimationRepeat(Animation animation) {
-					// TODO Auto-generated method stub
-
-				}
-
-				@Override
-				public void onAnimationEnd(Animation animation) {
-
-				}
-			});
+	private void startListView(int idToShow) {
+		if (idToShow ==R.id.idMenuListe) {
+			
+			Intent intent = new Intent(MainContentActivity.this,MainContentListActivity.class);
+			startActivity(intent);
+			finish();
+			MainContentActivity.this.overridePendingTransition(R.anim.translate_map, R.anim.translate_map);
+			
+//			 lvEv.setVisibility(View.VISIBLE);
+//			Animation animation = AnimationUtils.loadAnimation(MainContentActivity.this, R.anim.translate_map);
+//			animation.setAnimationListener(new AnimationListener() {
+//				
+//				@Override
+//				public void onAnimationStart(Animation animation) {
+//					
+//					
+//					
+//				}
+//				
+//				@Override
+//				public void onAnimationRepeat(Animation animation) {
+//					// TODO Auto-generated method stub
+//					
+//				}
+//				
+//				@Override
+//				public void onAnimationEnd(Animation animation) {
+//					 RelativeLayout.LayoutParams lp =new RelativeLayout.LayoutParams(getWindow().getWindowManager().getDefaultDisplay().getWidth(), getWindow().getWindowManager().getDefaultDisplay().getHeight());
+//					 lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
+//					 lp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 1);
+//					 lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 1);
+//					 lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 1);
+//					 lvEv.setLayoutParams(lp);
+//					 animation.cancel();
+//				}
+//			});
+//			rlContainer.startAnimation(animation);
+//		    int cx = list.getWidth() / 2;
+//		    int cy = 0;
+//			Animation animation = new Flip3dAnimation(mapView, list, cx, cy, true);
+//		    animation.setAnimationListener(new AnimationListener() {
+//		      @Override
+//		      public void onAnimationEnd(Animation animation) {
+//		    	 mapView.setVisibility(View.GONE);
+//		    	 findViewById(R.id.ListViewPolarisMapLayoutListe).setVisibility(View.VISIBLE);
+//		      }
+//		      @Override
+//		      public void onAnimationRepeat(Animation animation) {
+//		      }
+//		      @Override
+//		      public void onAnimationStart(Animation animation) {
+//		    	  
+//		      }
+//		    });
+//		    mapView.startAnimation(animation);
+			
 		} else {
 
 		}
@@ -152,7 +205,7 @@ public class MainContentActivity extends MapActivity implements
 		mSelectedItems = new ArrayList(); // Where we track the selected items
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		// Set the dialog title
-		builder.setTitle("Thèmes des données")
+		builder.setTitle("Thï¿½mes des donnï¿½es")
 				// Specify the list array, the items to be selected by default
 				// (null for none),
 				// and the listener through which to receive callbacks when

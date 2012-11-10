@@ -41,9 +41,8 @@
         <activity
             android:name="com.opendata.groom.activities.TabActivity"
              />
-        <activity
-            android:name="com.opendata.groom.activities.MainContentActivity"
-             />
+        <activity    android:name="com.opendata.groom.activities.MainContentActivity" />
+        <activity    android:name="com.opendata.groom.activities.MainContentListActivity" />
         
     </application>
 
