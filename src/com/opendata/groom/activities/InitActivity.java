@@ -159,6 +159,9 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 			
 			@Override
 			public void onAnimationEnd(Animation animation) {
+				Animation translateInAnimation = AnimationUtils.loadAnimation(InitActivity.this, R.anim.translate_in);
+				findViewById(R.id.FrameLayoutQuestionLayout).startAnimation(translateInAnimation);
+				
 //				
 //				findViewById(R.id.FrameLayoutQuestionLayout).setVisibility(View.VISIBLE);
 //				((TextView)findViewById(R.id.TextViewQuestionLayoutQ)).setText(questions.get(posQuestion));
