@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:id="@+id/RelativeLayoutDashboardActivityContainer"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+  >
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayoutDashboardActivity1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="#DADADA"
+        android:paddingTop="20dip"
+        android:paddingBottom="20dip"
+          android:gravity="center"
+		android:layout_margin="10dip"
+        >
+         <TextView
+            android:id="@+id/TextViewDashboardActivityPropose"
+            android:gravity="center"
+            style="@style/styleSettingsTxtTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dip"
+            android:text="@string/james_vous_propose" />
+    </RelativeLayout>
+    
+    
+     <RelativeLayout
+           android:gravity="center"
+        android:id="@+id/RelativeLayoutDashboardActivity2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/RelativeLayoutDashboardActivity1"
+        android:background="#DADADA"
+        android:paddingTop="20dip"
+        android:paddingBottom="20dip"
+		android:layout_margin="10dip"
+        >
+         <TextView
+            android:id="@+id/TextViewDashboardActivityPropose"
+            style="@style/styleSettingsTxtTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dip"
+            android:text="@string/ma_selection" />
+    </RelativeLayout>
+    
+     
+      <RelativeLayout
+            android:gravity="center"
+        android:id="@+id/RelativeLayoutDashboardActivity3"
+        android:layout_below="@+id/RelativeLayoutDashboardActivity2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="#DADADA"
+        android:paddingTop="20dip"
+        android:paddingBottom="20dip"
+		android:layout_margin="10dip"
+        >
+         <TextView
+            android:id="@+id/TextViewDashboardActivityPropose"
+            style="@style/styleSettingsTxtTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dip"
+            android:text="@string/mes_themes" />
+    </RelativeLayout>
+
+</RelativeLayout>

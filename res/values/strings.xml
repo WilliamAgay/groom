@@ -8,6 +8,9 @@
     <string name="musique">MUSIQUE</string>
     <string name="autre">INCLASSABLE</string>
     <string name="a_venir">À venir!</string>
+    <string name="james_vous_propose">James vous propose</string>
+    <string name="ma_selection">Ma sélection</string>
+    <string name="mes_themes">Mes thèmes</string>
     
     <string name="desole_je_nai_pas_compris">Désolé. Je n\'ai pas compris.</string>
     <string name="vous_voulez_quest">%1s! Que de sorties!</string>

@@ -23,8 +23,8 @@
             />
         
         <activity
-            android:name="com.opendata.groom.activities.InitActivity"
-            android:theme="@style/AppTheme" >
+            android:name="com.opendata.groom.activities.DashboardActivity"
+             >
              <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -34,8 +34,10 @@
         <activity
             android:name="com.opendata.groom.activities.TabActivity"
              />
-        <activity    android:name="com.opendata.groom.activities.MainContentActivity" />
+        <activity    android:name="com.opendata.groom.activities.InitActivity" />
         <activity    android:name="com.opendata.groom.activities.MainContentListActivity" />
+        <activity    android:name="com.opendata.groom.activities.MainContentActivity" />
+        <activity    android:name="com.opendata.groom.activities.MainContentListFavoriteActivity" />
         <activity   android:theme="@style/AppTheme"  android:name="com.opendata.groom.activities.PoiDetailsActivity" />
         
     </application>

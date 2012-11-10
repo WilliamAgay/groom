@@ -57,8 +57,7 @@ public class MainContentListActivity extends Activity {
 		lvEv = (ListView) findViewById(R.id.ListViewmapListlayout);
 		List<Poi> pois = new ArrayList<Poi>(
 				((GroomApplication) getApplication()).pois);
-		lvEv.setAdapter(new SortieListAdapter(MainContentListActivity.this,
-				pois));
+		lvEv.setAdapter(new SortieListAdapter(MainContentListActivity.this, pois, false));
 		lvEv.setOnItemClickListener(new DetailClickListener(pois));
 
 		ActionBar actionBar = getActionBar();
@@ -159,6 +158,14 @@ public class MainContentListActivity extends Activity {
 						});
 
 		return builder.create();
+	}
+	
+	
+	@Override
+	public void onBackPressed() {
+		Intent  intent = new Intent(MainContentListActivity.this,MainContentActivity.class);
+		startActivity(intent);
+		finish();
 	}
 
 }

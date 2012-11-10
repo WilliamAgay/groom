@@ -7,10 +7,13 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import com.google.gson.Gson;
+
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import bma.groomservice.data.Poi;
 
 
@@ -37,6 +40,7 @@ public class GroomApplication extends Application {
 
 
 	public List<Poi> pois = new ArrayList<Poi>();
+	public List<Poi> favoritesPoi = new ArrayList<Poi>();
 	public List<String> themes = new ArrayList<String>();
 
 	public String accountName = null;
@@ -92,40 +96,39 @@ public class GroomApplication extends Application {
 		editor.commit();
 	}
 
-	public static ArrayList<String> getStringArrayPref(Context context,
-			String key) {
-		SharedPreferences prefs = PreferenceManager
-				.getDefaultSharedPreferences(context);
+	public  ArrayList<Poi> getPoisArrayPref(Context context) {
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
-		String json = prefs.getString(key, null);
-		ArrayList<String> urls = new ArrayList<String>();
+		String json = prefs.getString(PREF_FAVORITES, null);
+		ArrayList<Poi> pois = new ArrayList<Poi>();
 		if (json != null) {
 			try {
 				JSONArray a = new JSONArray(json);
 				for (int i = 0; i < a.length(); i++) {
-					String url = a.optString(i);
-					urls.add(url);
+					Poi poi = new Gson().fromJson(a.optString(i), Poi.class);
+					favoritesPoi.add(poi);
 				}
 			} catch (JSONException e) {
-				e.printStackTrace();
+				Log.e("getPoisArrayPref", e.getMessage());
 			}
 		}
-		return urls;
+		return pois;
 	}
 
-	public static void setStringArrayPref(Context context, String key,
-			ArrayList<String> values) {
-		SharedPreferences prefs = PreferenceManager
-				.getDefaultSharedPreferences(context);
+	public  void savePoiArrayPref(Context context) 
+	{
+
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		SharedPreferences.Editor editor = prefs.edit();
+		
 		JSONArray a = new JSONArray();
-		for (int i = 0; i < values.size(); i++) {
-			a.put(values.get(i));
+		for (int i = 0; i < favoritesPoi.size(); i++) {
+			a.put(favoritesPoi.get(i));
 		}
-		if (!values.isEmpty()) {
-			editor.putString(key, a.toString());
+		if (!favoritesPoi.isEmpty()) {
+			editor.putString(PREF_FAVORITES, a.toString());
 		} else {
-			editor.putString(key, null);
+			editor.putString(PREF_FAVORITES, null);
 		}
 		editor.commit();
 	}

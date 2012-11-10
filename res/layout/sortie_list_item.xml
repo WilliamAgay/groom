@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:background="#fafafa"
     android:padding="10dip">
 
     <ImageView android:id="@+id/ImageViewSortieListItemTitle"
@@ -24,9 +25,27 @@
   <TextView android:id="@+id/TextViewSortieListItemAdresse"
          android:layout_toRightOf="@+id/ImageViewSortieListItemTitle"
       android:layout_below="@+id/TextViewSortieListItemTitle"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
             android:singleLine="false"/>
+  
+  
+  <Button android:id="@+id/ButtonSortieListItemCoeur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/ButtonSortieListItemCoeur"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="2dip"
+            android:background="@drawable/picto_coeur_selector"
+            android:singleLine="true"/>
+  
+    <Button android:id="@+id/ButtonSortieListItemCoeur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/picto_plus"
+            android:singleLine="true"/>
 
 </RelativeLayout>

@@ -510,5 +510,13 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 	                "Please speak slowly and enunciate clearly.");
 	        startActivityForResult(intent, VOICE_RECOGNITION_REQUEST);
 	    }
+	  
+	  
+	  @Override
+		public void onBackPressed() {
+			Intent  intent = new Intent(InitActivity.this,DashboardActivity.class);
+			startActivity(intent);
+			finish();
+		}
 
 }
