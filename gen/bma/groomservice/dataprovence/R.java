@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.opendata.groom;
+package bma.groomservice.dataprovence;
 
 public final class R {
     public static final class anim {
