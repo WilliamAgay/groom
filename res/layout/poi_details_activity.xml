@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/LinearLayoutPoiDetailsActivity"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayoutPoiDetailsActivity"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_margin="0dip"
@@ -11,7 +10,39 @@
     android:gravity="center"
     android:paddingLeft="10dip" 
     android:paddingRight="10dip" 
-    
 >
 
-</LinearLayout>
+     <ImageView android:id="@+id/ImageViewPoiDetailsActivityTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_launcher"
+            android:singleLine="true"/>
+    
+    
+  <TextView android:id="@+id/TextViewPoiDetailsActivityTitle"
+      android:layout_toRightOf="@+id/ImageViewSortieListItemTitle"
+            android:layout_width="fill_parent"
+            android:textColor="#FFFFFF"
+            android:layout_height="wrap_content"
+            android:singleLine="true"/>
+
+  <TextView android:id="@+id/TextViewPoiDetailsActivityAdresse"
+         android:layout_toRightOf="@+id/ImageViewSortieListItemTitle"
+      android:layout_below="@+id/TextViewPoiDetailsActivityTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:singleLine="false"/>
+    
+     <WebView android:id="@+id/WebViewPoiDetailsActivitySite"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentRight="true"
+      		android:layout_below="@+id/TextViewPoiDetailsActivityAdresse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:singleLine="false"/>
+
+</RelativeLayout>
