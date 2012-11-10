@@ -30,5 +30,16 @@
         <item name="android:textSize">14sp</item>
     </style>
     
+       
+           <!-- the theme applied to the application or activity -->
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:background">@drawable/header</item>
+<!--         <item name="android:selectableItemBackground">@drawable/item_background_groom_selector</item> -->
+    </style>
+
+    <style name="GroomActivityTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <!-- other activity and action bar styles here -->
+    </style>
     
 </resources>

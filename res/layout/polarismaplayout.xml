@@ -10,8 +10,8 @@
         android:id="@+id/PolarisMapViewLayoutMap"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:apiKey="0apTQhRzMn07vesEetZC6Ry6Llo1YigdLqZsXRg" />
-<!--         android:apiKey="05BiH1uRq25AnV6KHAZ8ZR9TLQABe7ZqQ_nIR9A" /> -->
+        android:apiKey="05BiH1uRq25AnV6KHAZ8ZR9TLQABe7ZqQ_nIR9A" />
+<!--         android:apiKey="0apTQhRzMn07vesEetZC6Ry6Llo1YigdLqZsXRg" /> -->
 
 <!--     <ListView android:visibility="gone" -->
 <!--         android:layout_alignParentLeft="true" -->

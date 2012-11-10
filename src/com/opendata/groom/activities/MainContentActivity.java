@@ -10,9 +10,11 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.inputmethod.ExtractedTextRequest;
 import bma.groomservice.data.Poi;
 import bma.groomservice.data.PoiListener;
 import bma.groomservice.data.dataprovence.DataprovenceManager;
@@ -37,6 +39,7 @@ public class MainContentActivity extends MapActivity implements
 	private final ArrayList mSelectedItems = new ArrayList(); // Where we track
 																// the selected
 	private final String currentTheme = "";
+	private List<Poi> currentPoiList = new ArrayList<Poi>();
 
 	// items
 
@@ -65,12 +68,17 @@ public class MainContentActivity extends MapActivity implements
 		mapView.setUserTrackingButtonEnabled(true);
 		mapView.setOnMapViewLongClickListener(this);
 		mapView.setOnAnnotationSelectionChangedListener(this);
-
+//43.296191,5.379792
+		mapView.getController().setCenter(new GeoPoint((int)(43.296191 * 1E6), (int)(5.379792 * 1E6)));
 		mapView.getController().setZoom(16);
 		mapView.preLoad();
+		
+		
+		
 
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setDisplayShowTitleEnabled(false);
 
 		
 //		public static final String THEME_PLEINAIR = "PLEIN AIR";
@@ -84,6 +92,7 @@ public class MainContentActivity extends MapActivity implements
 	@Override
 	public void onPoiReceived(List<Poi> pois) {
 		if (pois != null && pois.size() > 0) {
+			currentPoiList = pois;
 			addAnnotationList(createAnnotationsOverlay(pois));
 			GroomApplication app = (GroomApplication) getApplication();
 			app.pois.addAll(pois);
@@ -92,6 +101,18 @@ public class MainContentActivity extends MapActivity implements
 
 	private void addAnnotationList(List<Annotation> aAnnotationsList) {
 		mapView.setAnnotations(aAnnotationsList, R.drawable.pleinair);
+	}
+	
+	@Override
+	protected void onStart() {
+	    super.onStart();
+	    mapView.onStart();
+	}
+	
+	@Override
+	protected void onStop() {
+	    super.onStop();
+	    mapView.onStop();
 	}
 
 	public List<Annotation> createAnnotationsOverlay(List<Poi> aPoiSet) {
@@ -117,8 +138,14 @@ public class MainContentActivity extends MapActivity implements
 	@Override
 	public void onAnnotationSelected(PolarisMapView mapView,
 			MapCalloutView calloutView, int position, Annotation annotation) {
-		// TODO Auto-generated method stub
-
+		
+        calloutView.setDisclosureEnabled(true);
+        calloutView.setClickable(true);
+//        if (!TextUtils.isEmpty(annotation.getSnippet())) {
+//            calloutView.setLeftAccessoryView(getLayoutInflater().inflate(R.layout.accessory, calloutView, false));
+//        } else {
+//            calloutView.setLeftAccessoryView(null);
+//        }
 	}
 
 	@Override
@@ -131,8 +158,10 @@ public class MainContentActivity extends MapActivity implements
 	@Override
 	public void onAnnotationClicked(PolarisMapView mapView,
 			MapCalloutView calloutView, int position, Annotation annotation) {
-		// TODO Auto-generated method stub
-
+		Intent intent = new Intent(MainContentActivity.this,PoiDetailsActivity.class);
+		if(currentPoiList != null && currentPoiList.get(position) != null)
+			intent.putExtra("poi",((Parcelable) currentPoiList.get(position)));
+		startActivity(intent);
 	}
 
 	@Override
