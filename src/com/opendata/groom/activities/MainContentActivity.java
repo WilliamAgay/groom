@@ -1,6 +1,7 @@
 package com.opendata.groom.activities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+<<<<<<< HEAD
 import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
@@ -20,9 +22,18 @@ import android.view.animation.AnimationUtils;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+=======
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import bma.groomservice.data.Poi;
+import bma.groomservice.data.PoiListener;
+import bma.groomservice.data.dataprovence.DataprovenceManager;
+>>>>>>> 5966fb296cb0a7c5d413dcfcaf4182b26c35d3be
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
+import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 import com.opendata.groom.components.Flip3dAnimation;
 import com.opendata.groom.polaris.Annotation;
@@ -32,13 +43,24 @@ import com.opendata.groom.polaris.PolarisMapView.OnAnnotationSelectionChangedLis
 import com.opendata.groom.polaris.PolarisMapView.OnMapViewLongClickListener;
 
 public class MainContentActivity extends MapActivity implements
-		OnMapViewLongClickListener, OnAnnotationSelectionChangedListener {
+		OnMapViewLongClickListener, OnAnnotationSelectionChangedListener,
+		PoiListener {
 
 	private static final int SORT = 0;
 	private PolarisMapView mapView;
+<<<<<<< HEAD
 	
 	
 	RelativeLayout rlContainer=null;
+=======
+	private final ArrayList mSelectedItems = new ArrayList(); // Where we track
+																// the selected
+	private final String currentTheme = "";
+
+	// items
+
+	@Override
+>>>>>>> 5966fb296cb0a7c5d413dcfcaf4182b26c35d3be
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
@@ -71,6 +93,35 @@ public class MainContentActivity extends MapActivity implements
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
+		new DataprovenceManager(this, false)
+				.findAll(new String[] { "PLEIN AIR" });
+	}
+
+	@Override
+	public void onPoiReceived(List<Poi> pois) {
+		if (pois != null && pois.size() > 0) {
+			addAnnotationList(createAnnotationsOverlay(pois));
+			GroomApplication app = (GroomApplication) getApplication();
+			app.pois.addAll(pois);
+		}
+	}
+
+	private void addAnnotationList(List<Annotation> aAnnotationsList) {
+		mapView.setAnnotations(aAnnotationsList, R.drawable.pleinair);
+	}
+
+	public List<Annotation> createAnnotationsOverlay(List<Poi> aPoiSet) {
+		List<Annotation> poiAnnotationList = new ArrayList<Annotation>();
+		if (aPoiSet != null) {
+			for (Poi poi : aPoiSet) {
+				poiAnnotationList.add(new Annotation(
+						new GeoPoint((int) (poi.latitude * 1e6),
+								(int) (poi.longitude * 1e6)),
+						poi.raisonsociale,
+						poi.adresseWeb != null ? poi.adresseWeb : ""));
+			}
+		}
+		return poiAnnotationList;
 	}
 
 	@Override
@@ -197,15 +248,16 @@ public class MainContentActivity extends MapActivity implements
 		}
 	}
 
-	ArrayList mSelectedItems = new ArrayList(); // Where we track the selected
-												// items
-
 	@Override
 	protected Dialog onCreateDialog(int arg) {
-		mSelectedItems = new ArrayList(); // Where we track the selected items
+		mSelectedItems.add(3);
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		// Set the dialog title
+<<<<<<< HEAD
 		builder.setTitle("Th�mes des donn�es")
+=======
+		builder.setTitle(getString(R.string.title_popup))
+>>>>>>> 5966fb296cb0a7c5d413dcfcaf4182b26c35d3be
 				// Specify the list array, the items to be selected by default
 				// (null for none),
 				// and the listener through which to receive callbacks when
@@ -228,17 +280,20 @@ public class MainContentActivity extends MapActivity implements
 							}
 						})
 				// Set the action buttons
-				.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int id) {
-						// User clicked OK, so save the mSelectedItems results
-						// somewhere
-						// or return them to the component that opened the
-						// dialog
-						dismissDialog(0);
-					}
-				})
-				.setNegativeButton("Annuler",
+				.setPositiveButton(getString(R.string.ok),
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int id) {
+								// User clicked OK, so save the mSelectedItems
+								// results
+								// somewhere
+								// or return them to the component that opened
+								// the
+								// dialog
+								dismissDialog(0);
+							}
+						})
+				.setNegativeButton(getString(R.string.cancel),
 						new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog, int id) {

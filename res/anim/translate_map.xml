@@ -2,6 +2,7 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <!-- <alpha android:fromAlpha="1.0" android:toAlpha="1.0"/> -->
+<<<<<<< HEAD
     <translate
         android:duration="300"
         android:fillAfter="false"
@@ -10,6 +11,23 @@
         android:repeatCount="0"
         android:fromYDelta="0"
          />
+=======
+    <rotate
+        android:duration="150"
+        android:fillAfter="true"
+        android:fillBefore="true"
+        android:fromDegrees="0"
+        android:pivotX="50%"
+        android:toDegrees="90" />
+
+    <alpha
+        android:fillAfter="true"
+        android:fillBefore="true"
+        android:fromAlpha="1"
+        android:startOffset="150"
+        android:duration="0"
+        android:toAlpha="0" />
+>>>>>>> 5966fb296cb0a7c5d413dcfcaf4182b26c35d3be
 
     
 </set>

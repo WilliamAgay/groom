@@ -6,6 +6,9 @@
     <string name="title_activity_main">Main</string>
     <string name="title_activity_chat">ChatActivity</string>
     <string name="bienvenue_header_account">Bienvenue %1s!</string>
+    <string name="title_popup">Thèmes des données</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Annuler</string>
 
     <string-array name="situation_array">
         <item>Célibataire</item>
