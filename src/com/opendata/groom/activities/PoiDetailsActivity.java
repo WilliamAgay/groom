@@ -1,16 +1,16 @@
 package com.opendata.groom.activities;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 import bma.groomservice.data.Poi;
+import bma.groomservice.data.dataprovence.DataprovenceManager;
 
-import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 
 public class PoiDetailsActivity extends Activity {
@@ -18,7 +18,33 @@ public class PoiDetailsActivity extends Activity {
 	private static final Logger logger = LoggerFactory
 			.getLogger(PoiDetailsActivity.class);
 
-	public static final String EXTRA_ID = "id";
+	public static final String EXTRA_POI = "poi";
+
+	private int getImageRcFromTheme(String theme) {
+		if (DataprovenceManager.THEME_CULTURE.equals(theme)) {
+			return R.drawable.ico_culture;
+		} else if (DataprovenceManager.THEME_PLEINAIR.equals(theme)) {
+			return R.drawable.ico_plein_air;
+		} else if (DataprovenceManager.THEME_RESTAURATION.equals(theme)) {
+			return R.drawable.ico_gastro;
+		} else if (DataprovenceManager.THEME_SPORT.equals(theme)) {
+			return R.drawable.sport;
+		} else
+			return -1;
+	}
+
+	private String formatAddress(Poi poi) {
+		StringBuffer sb = new StringBuffer();
+		if (poi.voie != null)
+			sb.append(poi.voie);
+		if (poi.bureaudistributeur != null)
+			sb.append(" ").append(poi.bureaudistributeur);
+		if (poi.codepostal != null)
+			sb.append("\n").append(poi.codepostal);
+		if (poi.ville != null)
+			sb.append(" ").append(poi.ville);
+		return sb.toString();
+	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -26,18 +52,31 @@ public class PoiDetailsActivity extends Activity {
 		setContentView(R.layout.poi_details_activity);
 
 		Intent tnt = getIntent();
-		if (!tnt.hasExtra(EXTRA_ID)) {
-			logger.error("Il manque l'id du POI !");
+		if (!tnt.hasExtra(EXTRA_POI)) {
+			logger.error("Il manque le POI !");
 			finish();
 		}
-		int id = tnt.getIntExtra(EXTRA_ID, -1);
-		List<Poi> pois = ((GroomApplication) getApplication()).pois;
-		if (pois.size() < id) {
-			logger.error("Aucun POI ne correspond à l'id {}", id);
-			finish();
-		}
-		Poi poi = pois.get(id);
-		logger.debug("Poi={}", poi);
-	}
 
+		Poi poi = tnt.getParcelableExtra(EXTRA_POI);
+		logger.debug("Poi={}", poi);
+
+		int icon = getImageRcFromTheme(poi.theme);
+		if (icon >= 0) {
+			((ImageView) findViewById(R.id.ImageViewPoiDetailsActivityTitle))
+					.setImageResource(icon);
+		}
+
+		((TextView) findViewById(R.id.TextViewPoiDetailsActivityTitle))
+				.setText(poi.raisonsociale);
+
+		((TextView) findViewById(R.id.TextViewPoiDetailsActivityAdresse))
+				.setText(formatAddress(poi));
+
+		((TextView) findViewById(R.id.TextViewPoiDetailsActivityTel))
+				.setText(poi.tlphone != null ? poi.tlphone : "");
+
+		((TextView) findViewById(R.id.TextViewPoiDetailsActivityWeb))
+				.setText(poi.adresseWeb != null ? poi.adresseWeb : "");
+
+	}
 }

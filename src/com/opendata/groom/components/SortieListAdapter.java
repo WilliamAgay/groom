@@ -1,5 +1,7 @@
 package com.opendata.groom.components;
 
+import java.util.List;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,23 +11,23 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import bma.groomservice.data.Poi;
 
-import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 
 public class SortieListAdapter extends BaseAdapter {
 	private final Context context;
 
-	// private ArrayList<Poi> poiList = new ArrayList<Poi>();
+	private final List<Poi> poiList;
 
-	public SortieListAdapter(Context context) {
+	public SortieListAdapter(Context context, List<Poi> pois) {
 		this.context = context;
-		// this.poiList=pois;
+		this.poiList = pois;
 	}
 
 	@Override
 	public int getCount() {
-		return ((GroomApplication) this.context.getApplicationContext()).pois
-				.size();
+		// return ((GroomApplication) this.context.getApplicationContext()).pois
+		// .size();
+		return poiList.size();
 	}
 
 	@Override
@@ -50,8 +52,10 @@ public class SortieListAdapter extends BaseAdapter {
 					R.layout.sortie_list_item, viewGroup, false);
 		}
 
-		Poi poi = ((GroomApplication) this.context.getApplicationContext()).pois
-				.get(index);
+		// Poi poi = ((GroomApplication)
+		// this.context.getApplicationContext()).pois
+		// .get(index);
+		Poi poi = poiList.get(index);
 
 		((TextView) layout.findViewById(R.id.TextViewSortieListItemTitle))
 				.setText(poi.raisonsociale);

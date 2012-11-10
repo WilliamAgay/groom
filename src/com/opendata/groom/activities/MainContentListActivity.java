@@ -1,6 +1,7 @@
 package com.opendata.groom.activities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -16,7 +17,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import bma.groomservice.data.Poi;
 
+import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 import com.opendata.groom.components.SortieListAdapter;
 
@@ -28,12 +31,18 @@ public class MainContentListActivity extends Activity {
 	/** Affiche le détail d'un POI lorsqu'on clique dessus dans la liste */
 	class DetailClickListener implements OnItemClickListener {
 
+		List<Poi> pois;
+
+		public DetailClickListener(List<Poi> pois) {
+			this.pois = pois;
+		}
+
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
 			Intent tnt = new Intent(getApplicationContext(),
 					PoiDetailsActivity.class);
-			tnt.putExtra("id", position);
+			tnt.putExtra(PoiDetailsActivity.EXTRA_POI, pois.get(position));
 			startActivity(tnt);
 		}
 	}
@@ -46,8 +55,11 @@ public class MainContentListActivity extends Activity {
 		setContentView(R.layout.map_list_layout);
 
 		lvEv = (ListView) findViewById(R.id.ListViewmapListlayout);
-		lvEv.setAdapter(new SortieListAdapter(MainContentListActivity.this));
-		lvEv.setOnItemClickListener(new DetailClickListener());
+		List<Poi> pois = new ArrayList<Poi>(
+				((GroomApplication) getApplication()).pois);
+		lvEv.setAdapter(new SortieListAdapter(MainContentListActivity.this,
+				pois));
+		lvEv.setOnItemClickListener(new DetailClickListener(pois));
 
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);

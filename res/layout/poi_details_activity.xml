@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/RelativeLayoutPoiDetailsActivity"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -21,13 +21,25 @@
             android:singleLine="true"/>
     
     
+  <TextView android:id="@+id/TextViewPoiDetailsActivityWeb"
+            android:layout_width="fill_parent"
+            android:textColor="#FFFFFF"
+            android:layout_height="wrap_content"
+            android:singleLine="true"/>
+    
+  <TextView android:id="@+id/TextViewPoiDetailsActivityTel"
+            android:layout_width="fill_parent"
+            android:textColor="#FFFFFF"
+            android:layout_height="wrap_content"
+            android:singleLine="true"/>
+      
   <TextView android:id="@+id/TextViewPoiDetailsActivityTitle"
       android:layout_toRightOf="@+id/ImageViewSortieListItemTitle"
             android:layout_width="fill_parent"
             android:textColor="#FFFFFF"
             android:layout_height="wrap_content"
             android:singleLine="true"/>
-
+  
   <TextView android:id="@+id/TextViewPoiDetailsActivityAdresse"
          android:layout_toRightOf="@+id/ImageViewSortieListItemTitle"
       android:layout_below="@+id/TextViewPoiDetailsActivityTitle"
@@ -45,4 +57,4 @@
             android:textColor="#FFFFFF"
             android:singleLine="false"/>
 
-</RelativeLayout>
+</LinearLayout>
