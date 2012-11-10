@@ -1,6 +1,14 @@
 <resources>
 
     <string name="app_name">Groom</string>
+    <string name="plein_air">PLEIN AIR</string>
+    <string name="restauration">RESTAURATION</string>
+    <string name="sport">SPORT</string>
+    <string name="culture">CULTURE</string>
+    <string name="musique">MUSIQUE</string>
+    <string name="autre">INCLASSABLE</string>
+    <string name="a_venir">À venir!</string>
+    
     <string name="desole_je_nai_pas_compris">Désolé. Je n\'ai pas compris.</string>
     <string name="vous_voulez_quest">%1s! Que de sorties!</string>
     <string name="question_tts">Quel type de sortie recherchez-vous?</string>

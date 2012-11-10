@@ -21,6 +21,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -32,14 +33,18 @@ import bma.groomservice.data.dataprovence.DataprovenceManager;
 import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 
-public class InitActivity extends Activity implements View.OnClickListener , OnSeekBarChangeListener, OnLongClickListener, OnInitListener
+public class InitActivity extends Activity implements View.OnClickListener , OnSeekBarChangeListener, OnInitListener
 {
 	  // Speech recognition
     private static final int VOICE_RECOGNITION_REQUEST = 0x10101;
 
 	private TextToSpeech mTextToSpeech = null;
-    private boolean speechSynthReady = false;
+	private boolean speechSynthReady = false;
+    private boolean needQuitAfterSpeach = false;
 	SeekBar seekBar=null;
+	
+	
+	String valueForQuitAfterSpeach = null;
 	
 	Button speek = null;
 	Spinner spinnerSituation=null;
@@ -60,6 +65,13 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 		
 		
 		
+		
+		((TextView)findViewById(R.id.FrameLayoutInitActivityTile1).findViewById(R.id.TextViewInitActivityChoix1)).setText(R.string.plein_air);
+		((TextView)findViewById(R.id.FrameLayoutInitActivityTile2).findViewById(R.id.TextViewInitActivityChoix1)).setText(R.string.sport);
+		((TextView)findViewById(R.id.FrameLayoutInitActivityTile3).findViewById(R.id.TextViewInitActivityChoix1)).setText(R.string.restauration);
+		((TextView)findViewById(R.id.FrameLayoutInitActivityTile4).findViewById(R.id.TextViewInitActivityChoix1)).setText(R.string.culture);
+		((TextView)findViewById(R.id.FrameLayoutInitActivityTile5).findViewById(R.id.TextViewInitActivityChoix1)).setText(R.string.musique);
+		((TextView)findViewById(R.id.FrameLayoutInitActivityTile6).findViewById(R.id.TextViewInitActivityChoix1)).setText(R.string.autre);
 		
 		findViewById(R.id.RelativeLayoutInitActivityContainer).setVisibility(View.GONE);
 		findViewById(R.id.FrameLayoutQuestionLayout).setVisibility(View.GONE);
@@ -130,8 +142,9 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 	    }
 
 	@Override
-	public void onClick(View v) {
-		Intent intent=null;
+	public void onClick(View v) 
+	{
+		boolean needDisplayMap = false;
 		switch (v.getId()) {
 		
 		
@@ -147,36 +160,38 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 //			finish();
 			break;
 		case R.id.FrameLayoutInitActivityTile1:
-			((GroomApplication)getApplicationContext()).themes=new ArrayList<String>();
-			((GroomApplication)getApplicationContext()).themes.add(DataprovenceManager.THEME_CULTURE);
-			 intent = new Intent(InitActivity.this,MainContentActivity.class);
-			startActivity(intent);
-			finish();
+			
+			
+			((CheckBox)findViewById(R.id.FrameLayoutInitActivityTile1).findViewById(R.id.CheckBoxInitActivityChoix1)).setChecked(true);
+			
+			needDisplayMap=true;
+			
 			break;
 		case R.id.FrameLayoutInitActivityTile2:
-			((GroomApplication)getApplicationContext()).themes=new ArrayList<String>();
-			((GroomApplication)getApplicationContext()).themes.add(DataprovenceManager.THEME_PLEINAIR);
-			 intent = new Intent(InitActivity.this,MainContentActivity.class);
-			startActivity(intent);
-			finish();
+			((CheckBox)findViewById(R.id.FrameLayoutInitActivityTile2).findViewById(R.id.CheckBoxInitActivityChoix1)).setChecked(true);
+			
+		
+			needDisplayMap=true;
+			
+			
 			break;
 		case R.id.FrameLayoutInitActivityTile3:
-			((GroomApplication)getApplicationContext()).themes=new ArrayList<String>();
-			((GroomApplication)getApplicationContext()).themes.add(DataprovenceManager.THEME_RESTAURATION);
-			 intent = new Intent(InitActivity.this,MainContentActivity.class);
-			startActivity(intent);
-			finish();
+			((CheckBox)findViewById(R.id.FrameLayoutInitActivityTile3).findViewById(R.id.CheckBoxInitActivityChoix1)).setChecked(true);
+			
+			needDisplayMap=true;
 			break;
 		case R.id.FrameLayoutInitActivityTile4:
-			((GroomApplication)getApplicationContext()).themes=new ArrayList<String>();
-			((GroomApplication)getApplicationContext()).themes.add(DataprovenceManager.THEME_SPORT);
-			 intent = new Intent(InitActivity.this,MainContentActivity.class);
-			startActivity(intent);
-			finish();
+			((CheckBox)findViewById(R.id.FrameLayoutInitActivityTile4).findViewById(R.id.CheckBoxInitActivityChoix1)).setChecked(true);
+			
+			needDisplayMap=true;
 			break;
 		case R.id.FrameLayoutInitActivityTile5:
+			((CheckBox)findViewById(R.id.FrameLayoutInitActivityTile5).findViewById(R.id.CheckBoxInitActivityChoix1)).setChecked(true);
+			Toast.makeText(InitActivity.this, R.string.a_venir, Toast.LENGTH_LONG).show();
 			break;
 		case R.id.FrameLayoutInitActivityTile6:
+			((CheckBox)findViewById(R.id.FrameLayoutInitActivityTile6).findViewById(R.id.CheckBoxInitActivityChoix1)).setChecked(true);
+			Toast.makeText(InitActivity.this, R.string.a_venir, Toast.LENGTH_LONG).show();
 			break;
 
 		case R.id.ButtonQuestionLayoutGo:
@@ -220,6 +235,32 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 		default:
 			break;
 		}
+		
+		if(needDisplayMap)
+		{
+			((GroomApplication)getApplicationContext()).themes=new ArrayList<String>();
+			if(((CheckBox)findViewById(R.id.FrameLayoutInitActivityTile1).findViewById(R.id.CheckBoxInitActivityChoix1)).isChecked())
+			{
+				((GroomApplication)getApplicationContext()).themes.add(DataprovenceManager.THEME_PLEINAIR);
+			}
+			if(((CheckBox)findViewById(R.id.FrameLayoutInitActivityTile2).findViewById(R.id.CheckBoxInitActivityChoix1)).isChecked())
+			{
+				((GroomApplication)getApplicationContext()).themes.add(DataprovenceManager.THEME_SPORT);
+			}
+			if(((CheckBox)findViewById(R.id.FrameLayoutInitActivityTile3).findViewById(R.id.CheckBoxInitActivityChoix1)).isChecked())
+			{
+				((GroomApplication)getApplicationContext()).themes.add(DataprovenceManager.THEME_RESTAURATION);
+			}
+			if(((CheckBox)findViewById(R.id.FrameLayoutInitActivityTile4).findViewById(R.id.CheckBoxInitActivityChoix1)).isChecked())
+			{
+				((GroomApplication)getApplicationContext()).themes.add(DataprovenceManager.THEME_CULTURE);
+			}
+			
+			
+			Intent intent = new Intent(InitActivity.this,MainContentActivity.class);
+			startActivity(intent);
+			finish();
+		}
 	}
 	
 	
@@ -227,6 +268,14 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 	{
 		speek.setVisibility(View.VISIBLE);
 		speek.setOnClickListener(this);
+		
+		(findViewById(R.id.FrameLayoutInitActivityTile1).findViewById(R.id.CheckBoxInitActivityChoix1)).setOnClickListener(InitActivity.this);
+		(findViewById(R.id.FrameLayoutInitActivityTile2).findViewById(R.id.CheckBoxInitActivityChoix1)).setOnClickListener(InitActivity.this);
+		(findViewById(R.id.FrameLayoutInitActivityTile3).findViewById(R.id.CheckBoxInitActivityChoix1)).setOnClickListener(InitActivity.this);
+		(findViewById(R.id.FrameLayoutInitActivityTile4).findViewById(R.id.CheckBoxInitActivityChoix1)).setOnClickListener(InitActivity.this);
+		(findViewById(R.id.FrameLayoutInitActivityTile5).findViewById(R.id.CheckBoxInitActivityChoix1)).setOnClickListener(InitActivity.this);
+		(findViewById(R.id.FrameLayoutInitActivityTile6).findViewById(R.id.CheckBoxInitActivityChoix1)).setOnClickListener(InitActivity.this);
+
 		findViewById(R.id.FrameLayoutInitActivityTile1).setOnClickListener(this);
 		findViewById(R.id.FrameLayoutInitActivityTile2).setOnClickListener(this);
 		findViewById(R.id.FrameLayoutInitActivityTile3).setOnClickListener(this);
@@ -326,16 +375,17 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 		
 	}
 
-	@Override
-	public boolean onLongClick(View v) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 	
 	@Override
     public void onInit(int status) {
         if (status == TextToSpeech.SUCCESS) {
             speechSynthReady = true;
+            
+            if(valueForQuitAfterSpeach!=null)
+            {
+            	listenToMe(valueForQuitAfterSpeach);
+            }
         }
     }
 	
@@ -377,27 +427,21 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 	            	
 	            	if(((GroomApplication)getApplicationContext()).themes.size()==0)
 	            	{
-	            		listenToMe(getResources().getString(R.string.desole_je_nai_pas_compris));
+	            		needQuitAfterSpeach=false;
+	            		valueForQuitAfterSpeach=getResources().getString(R.string.desole_je_nai_pas_compris);
 	            	}
 	            	else
 	            	{
-	            		String value= "";
+	            		
+	            		valueForQuitAfterSpeach= "";
 	            		for(String m : ((GroomApplication)getApplicationContext()).themes)
 		            	{
-	            			value += m+", ";
+	            			valueForQuitAfterSpeach += m+", ";
 		            	}
-	            		listenToMe(getResources().getString(R.string.vous_voulez_quest, value));
-		            	mHandler.postDelayed(new Runnable() {
-							
-							@Override
-							public void run() {
-								 Intent intent = new Intent(InitActivity.this,MainContentActivity.class);
-									startActivity(intent);
-									finish();
-							}
-						}, 4000);
+	            		
+	            		needQuitAfterSpeach=true;
 	            	}
-	            	
+	            	mTextToSpeech = new TextToSpeech(getApplicationContext(), this);
 	            	
 	            	
 	            }
@@ -443,6 +487,18 @@ public class InitActivity extends Activity implements View.OnClickListener , OnS
 				}
 			}, 3000);
            
+        }
+        if(needQuitAfterSpeach)
+        {
+        	mHandler.postDelayed(new Runnable() {
+				
+				@Override
+				public void run() {
+					 Intent intent = new Intent(InitActivity.this,MainContentActivity.class);
+						startActivity(intent);
+						finish();
+				}
+			}, 10000);
         }
         
     }
