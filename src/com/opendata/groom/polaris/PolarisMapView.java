@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.cyrilmottier.polaris;
+package com.opendata.groom.polaris;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +30,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.cyrilmottier.polaris.MapCalloutView.OnDoubleTapListener;
-import com.cyrilmottier.polaris.internal.AnnotationsOverlay;
-import com.cyrilmottier.polaris.internal.AnnotationsOverlay.MystiqueCallback;
-import com.cyrilmottier.polaris.internal.OverlayContainer;
-import com.cyrilmottier.polaris.internal.OverlayContainer.MagnetoCallback;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.MapActivity;
@@ -43,6 +38,11 @@ import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 import com.opendata.groom.R;
+import com.opendata.groom.polaris.MapCalloutView.OnDoubleTapListener;
+import com.opendata.groom.polaris.internal.AnnotationsOverlay;
+import com.opendata.groom.polaris.internal.OverlayContainer;
+import com.opendata.groom.polaris.internal.AnnotationsOverlay.MystiqueCallback;
+import com.opendata.groom.polaris.internal.OverlayContainer.MagnetoCallback;
 
 //@formatter:off
 /**

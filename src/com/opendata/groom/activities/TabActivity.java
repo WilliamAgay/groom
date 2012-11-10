@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 import com.opendata.groom.R;
 
@@ -23,7 +24,7 @@ public class TabActivity extends FragmentActivity implements ActionBar.TabListen
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.tab_actiity_fragment);
 
         // Create the adapter that will return a fragment for each of the three primary sections
         // of the app.
@@ -31,7 +32,9 @@ public class TabActivity extends FragmentActivity implements ActionBar.TabListen
 
         // Set up the action bar.
         final ActionBar actionBar = getActionBar();
-
+        
+        if(actionBar == null)
+        	Log.e("TAG", "Action bar est null");
         // Specify that the Home/Up button should not be enabled, since there is no hierarchical
         // parent.
         actionBar.setHomeButtonEnabled(false);
@@ -105,7 +108,7 @@ public class TabActivity extends FragmentActivity implements ActionBar.TabListen
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
 
         @Override

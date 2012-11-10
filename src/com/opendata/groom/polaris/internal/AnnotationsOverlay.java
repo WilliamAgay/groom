@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.cyrilmottier.polaris.internal;
+package com.opendata.groom.polaris.internal;
 
 import java.util.List;
 
 import android.graphics.drawable.Drawable;
 
-import com.cyrilmottier.polaris.Annotation;
-import com.cyrilmottier.polaris.PolarisMapView;
 import com.google.android.maps.ItemizedOverlay;
+import com.opendata.groom.polaris.Annotation;
+import com.opendata.groom.polaris.PolarisMapView;
 
 /**
  * @author Cyril Mottier
