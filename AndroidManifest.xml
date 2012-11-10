@@ -20,10 +20,12 @@
         <activity android:theme="@style/AppTheme"
             android:name=".activities.MainActivity"
             android:label="@string/title_activity_main" >
-             <intent-filter>
+            
+              <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            
            
         </activity>
         <activity android:theme="@style/AppTheme"
@@ -34,6 +36,10 @@
             android:name="com.opendata.groom.activities.InitActivity"
             android:theme="@style/AppTheme" >
             
+<<<<<<< HEAD
+=======
+           
+>>>>>>> refs/remotes/origin/master
             </activity>
         <activity
             android:name="com.opendata.groom.activities.TabActivity"

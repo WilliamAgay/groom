@@ -1,5 +1,6 @@
 package com.opendata.groom.activities;
 
+import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 import com.opendata.groom.R.id;
 import com.opendata.groom.R.layout;
@@ -15,8 +16,16 @@ public class MainActivity extends Activity {
 	private Button boutonChat;
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
+		if( ((GroomApplication)getApplicationContext()).accountName==null)
+		{
+			Intent intent = new Intent(MainActivity.this,InitActivity.class);
+			startActivity(intent);
+			finish();
+			overridePendingTransition(0, 0);
+		}
 		setContentView(R.layout.activity_main);
 		boutonChat = (Button) findViewById(R.id.boutonChat);
 		boutonChat.setOnClickListener(new View.OnClickListener() {

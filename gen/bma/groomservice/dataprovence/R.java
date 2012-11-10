@@ -5,22 +5,10 @@
  * should not be modified by hand.
  */
 
-package com.opendata.groom;
+package bma.groomservice.dataprovence;
 
 public final class R {
     public static final class anim {
-<<<<<<< HEAD
-        public static final int polaris__grow_fade_in_from_bottom=0x7f040000;
-        public static final int polaris__shrink_fade_out_to_bottom=0x7f040001;
-        public static final int translate_in=0x7f040002;
-        public static final int translate_in_after=0x7f040003;
-        public static final int translate_list_in=0x7f040004;
-        public static final int translate_map=0x7f040005;
-    }
-    public static final class array {
-        public static final int labelTheme=0x7f080000;
-        public static final int valuesTheme=0x7f080001;
-=======
         public static final int grow_from_middle=0x7f040000;
         public static final int polaris__grow_fade_in_from_bottom=0x7f040001;
         public static final int polaris__shrink_fade_out_to_bottom=0x7f040002;
@@ -29,46 +17,25 @@ public final class R {
     }
     public static final class array {
         public static final int situation_array=0x7f0a0000;
->>>>>>> refs/remotes/origin/master
     }
     public static final class attr {
     }
     public static final class color {
-<<<<<<< HEAD
-        public static final int polaris__primary=0x7f090000;
-        public static final int polaris__secondary=0x7f090001;
-=======
         public static final int polaris__primary=0x7f080000;
         public static final int polaris__secondary=0x7f080001;
->>>>>>> refs/remotes/origin/master
     }
     public static final class dimen {
-<<<<<<< HEAD
-        public static final int polaris__font_size_normal=0x7f0a0004;
-        public static final int polaris__font_size_small=0x7f0a0003;
-        public static final int polaris__spacing_large=0x7f0a0002;
-        public static final int polaris__spacing_normal=0x7f0a0001;
-        public static final int polaris__spacing_small=0x7f0a0000;
-=======
         public static final int polaris__font_size_normal=0x7f090004;
         public static final int polaris__font_size_small=0x7f090003;
         public static final int polaris__spacing_large=0x7f090002;
         public static final int polaris__spacing_normal=0x7f090001;
         public static final int polaris__spacing_small=0x7f090000;
->>>>>>> refs/remotes/origin/master
     }
     public static final class drawable {
-<<<<<<< HEAD
-        public static final int da_ic_menu_layers=0x7f020000;
-        public static final int ic_action_search=0x7f020001;
-        public static final int ic_arrow_black=0x7f020002;
-        public static final int ic_arrow_white=0x7f020003;
-=======
         public static final int ic_action_search=0x7f020000;
         public static final int ic_arrow_black=0x7f020001;
         public static final int ic_arrow_white=0x7f020002;
         public static final int ic_btn_speak_now=0x7f020003;
->>>>>>> refs/remotes/origin/master
         public static final int ic_launcher=0x7f020004;
         public static final int polaris__arrow_to_right=0x7f020005;
         public static final int polaris__btn_map_overlay=0x7f020006;
@@ -90,62 +57,6 @@ public final class R {
         public static final int polaris__map_callout_right_cap_pressed=0x7f020016;
     }
     public static final class id {
-<<<<<<< HEAD
-        public static final int ButtonInitActivityGo=0x7f0c000e;
-        public static final int ButtonQuestionLayoutGo=0x7f0c0032;
-        public static final int CheckBoxInitActivityChoix1=0x7f0c0026;
-        public static final int EditTextQuestionLayoutR=0x7f0c0031;
-        public static final int FrameLayoutQuestionLayout=0x7f0c0023;
-        public static final int History=0x7f0c0000;
-        public static final int ImageViewInitActivitySettings=0x7f0c0021;
-        public static final int IncludeInitActivityTile1=0x7f0c0013;
-        public static final int IncludeInitActivityTile2=0x7f0c0014;
-        public static final int IncludeInitActivityTile3=0x7f0c0018;
-        public static final int IncludeInitActivityTile4=0x7f0c0019;
-        public static final int IncludeInitActivityTile5=0x7f0c001d;
-        public static final int IncludeInitActivityTile6=0x7f0c001e;
-        public static final int InputMessage=0x7f0c0001;
-        public static final int LinearLayoutInitActivityContainerFooter=0x7f0c0010;
-        public static final int LinearLayoutInitActivityContainerHeader=0x7f0c000b;
-        public static final int LinearLayoutInitActivityContainerTiles=0x7f0c000f;
-        public static final int RelativeLayoutInitActivityChoix1=0x7f0c0024;
-        public static final int RelativeLayoutInitActivityContainer=0x7f0c000a;
-        public static final int RelativeLayoutInitActivityFooterContainer=0x7f0c0020;
-        public static final int RelativeLayoutInitActivityHeaderContainer=0x7f0c000c;
-        public static final int RelativeLayoutInitActivityLine1Tiles=0x7f0c0011;
-        public static final int RelativeLayoutInitActivityLine2Tiles=0x7f0c0016;
-        public static final int RelativeLayoutInitActivityLine3Tiles=0x7f0c001b;
-        public static final int RelativeLayoutQuestionLayout=0x7f0c002f;
-        public static final int TextViewInitActivityChat=0x7f0c0022;
-        public static final int TextViewInitActivityChoix1=0x7f0c0025;
-        public static final int TextViewInitActivityHeader=0x7f0c000d;
-        public static final int TextViewQuestionLayoutQ=0x7f0c0030;
-        public static final int ViewInitActivityLine1Separator=0x7f0c0015;
-        public static final int ViewInitActivityLine1TilesSeparator=0x7f0c0012;
-        public static final int ViewInitActivityLine2Separator=0x7f0c001a;
-        public static final int ViewInitActivityLine2TilesSeparator=0x7f0c0017;
-        public static final int ViewInitActivityLine3Separator=0x7f0c001f;
-        public static final int ViewInitActivityLine3TilesSeparator=0x7f0c001c;
-        public static final int boutonChat=0x7f0c0007;
-        public static final int btn_Send=0x7f0c0005;
-        public static final int button1=0x7f0c0008;
-        public static final int button2=0x7f0c0009;
-        public static final int idListView=0x7f0c002e;
-        public static final int idMenuListe=0x7f0c0036;
-        public static final int idMenuSort=0x7f0c0035;
-        public static final int idMenuTheme=0x7f0c0037;
-        public static final int listView=0x7f0c0002;
-        public static final int llout=0x7f0c0003;
-        public static final int mapview=0x7f0c002d;
-        public static final int menu_settings=0x7f0c0034;
-        public static final int pager=0x7f0c0033;
-        public static final int polaris__callout=0x7f0c0027;
-        public static final int polaris__content=0x7f0c0029;
-        public static final int polaris__content_container=0x7f0c0028;
-        public static final int polaris__disclosure=0x7f0c002c;
-        public static final int polaris__subtitle=0x7f0c002b;
-        public static final int polaris__title=0x7f0c002a;
-=======
         public static final int ButtonInitActivityGo=0x7f0c000f;
         public static final int ButtonQuestionLayoutGo=0x7f0c0038;
         public static final int CheckBoxInitActivityChoix1=0x7f0c0027;
@@ -203,7 +114,6 @@ public final class R {
         public static final int polaris__disclosure=0x7f0c002d;
         public static final int polaris__subtitle=0x7f0c002c;
         public static final int polaris__title=0x7f0c002b;
->>>>>>> refs/remotes/origin/master
         public static final int textView1=0x7f0c0006;
         public static final int txt_inputText=0x7f0c0004;
     }
@@ -218,24 +128,16 @@ public final class R {
         public static final int init_layout_tile=0x7f030003;
         public static final int polaris__map_callout_view_merge=0x7f030004;
         public static final int polaris__user_tracking_button=0x7f030005;
-        public static final int polarismaplayout=0x7f030006;
-        public static final int question_layout=0x7f030007;
-        public static final int tab_actiity_fragment=0x7f030008;
+        public static final int question_layout=0x7f030006;
+        public static final int tab_actiity_fragment=0x7f030007;
     }
     public static final class menu {
         public static final int activity_chat=0x7f0b0000;
         public static final int activity_main=0x7f0b0001;
-<<<<<<< HEAD
-        public static final int menu_map=0x7f0b0002;
-=======
->>>>>>> refs/remotes/origin/master
     }
     public static final class string {
         public static final int app_name=0x7f060000;
-<<<<<<< HEAD
-=======
         public static final int bienvenue_header_account=0x7f060007;
->>>>>>> refs/remotes/origin/master
         public static final int hello_world=0x7f060003;
         public static final int menu_settings=0x7f060004;
         public static final int polaris__locate_myself=0x7f060001;
