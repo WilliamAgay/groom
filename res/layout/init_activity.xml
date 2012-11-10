@@ -52,7 +52,7 @@
         android:layout_above="@+id/LinearLayoutInitActivityContainerFooter"
         android:layout_margin="0dip"
         android:background="#000000"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:padding="0dip" >
 
         <RelativeLayout
@@ -61,13 +61,44 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:layout_margin="0dip"
-            android:background="#000000"
+            android:background="#FFFFFF"
             android:padding="0dip" >
+                 <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toLeftOf="@+id/ViewInitActivityLine1TilesSeparator"
+                        android:layout_alignParentTop="true"
+                         >
+                                <include
+                        android:id="@+id/IncludeInitActivityTile1"
+                        layout="@layout/init_layout_tile" />
+                          </FrameLayout>
+                   <View
+                    android:id="@+id/ViewInitActivityLine1TilesSeparator"
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_centerHorizontal="true"
+                    android:background="#000000" />
             
+                   <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                         android:layout_toRightOf="@+id/ViewInitActivityLine1TilesSeparator"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                         >
+                      <include
+                        android:id="@+id/IncludeInitActivityTile2"
+                        layout="@layout/init_layout_tile" />
+                  </FrameLayout>
+                      
        </RelativeLayout>
        
         <View
-              android:id="@+id/ViewInitActivityLine1TilesSeparator"
+              android:id="@+id/ViewInitActivityLine1Separator"
              android:layout_width="fill_parent"
                 android:layout_height="1dip"
                 android:background="#000000" />
@@ -78,13 +109,45 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:layout_margin="0dip"
-            android:background="#000000"
+            android:background="#FFFFFF"
             android:padding="0dip" >
             
+                               <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toLeftOf="@+id/ViewInitActivityLine2TilesSeparator"
+                        android:layout_alignParentTop="true"
+                         >
+                                <include
+                        android:id="@+id/IncludeInitActivityTile3"
+                        layout="@layout/init_layout_tile" />
+                          </FrameLayout>
+                   <View
+                    android:id="@+id/ViewInitActivityLine2TilesSeparator"
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_centerHorizontal="true"
+                    android:background="#000000" />
+            
+                   <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                         android:layout_toRightOf="@+id/ViewInitActivityLine2TilesSeparator"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                         >
+                      <include
+                        android:id="@+id/IncludeInitActivityTile4"
+                        layout="@layout/init_layout_tile" />
+                  </FrameLayout>
+                                
        </RelativeLayout>
        
         <View
-              android:id="@+id/ViewInitActivityLine2TilesSeparator"
+              android:id="@+id/ViewInitActivityLine2Separator"
              android:layout_width="fill_parent"
                 android:layout_height="1dip"
                 android:background="#000000" />
@@ -95,220 +158,52 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:layout_margin="0dip"
-            android:background="#000000"
+            android:background="#FFFFFF"
             android:padding="0dip" >
+                                
+                                 <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toLeftOf="@+id/ViewInitActivityLine3TilesSeparator"
+                        android:layout_alignParentTop="true"
+                         >
+                                <include
+                        android:id="@+id/IncludeInitActivityTile5"
+                        layout="@layout/init_layout_tile" />
+                          </FrameLayout>
+                   <View
+                    android:id="@+id/ViewInitActivityLine3TilesSeparator"
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_centerHorizontal="true"
+                    android:background="#000000" />
+            
+                   <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                         android:layout_toRightOf="@+id/ViewInitActivityLine3TilesSeparator"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                         >
+                      <include
+                        android:id="@+id/IncludeInitActivityTile6"
+                        layout="@layout/init_layout_tile" />
+                  </FrameLayout>
+                                
             
        </RelativeLayout>
        
         <View
-              android:id="@+id/ViewInitActivityLine3TilesSeparator"
+              android:id="@+id/ViewInitActivityLine3Separator"
              android:layout_width="fill_parent"
                 android:layout_height="1dip"
                 android:background="#000000" />
 
         </LinearLayout>
-<!--             <View -->
-<!--                 android:id="@+id/ViewInitActivityContainerTilesSeparator" -->
-<!--                 android:layout_width="fill_parent" -->
-<!--                 android:layout_height="1dp" -->
-<!--                 android:layout_centerVertical="true" -->
-<!--                 android:background="#000000" /> -->
 
-<!--             <RelativeLayout -->
-<!--                 android:id="@+id/RelativeLayoutInitActivityContainerLigne2" -->
-<!--                 android:layout_width="wrap_content" -->
-<!--                 android:layout_height="wrap_content" -->
-<!--                 android:layout_above="@+id/ViewInitActivityContainerTilesSeparator" -->
-<!--                 android:layout_alignParentLeft="true" -->
-<!--                 android:layout_alignParentRight="true" -->
-<!--                 android:layout_alignParentTop="true" -->
-<!--                 android:paddingTop="0dip" > -->
-
-<!--                 <RelativeLayout -->
-<!--                     android:id="@+id/RelativeLayoutInitActivityTilesChoix1" -->
-<!--                     android:layout_width="0dp" -->
-<!--                     android:layout_height="wrap_content" -->
-<!--                     android:layout_alignBottom="@+id/ViewInitActivityContainerLigne2Separator" -->
-<!--                     android:layout_alignParentLeft="true" -->
-<!--                     android:layout_alignRight="@+id/ViewInitActivityContainerLigne2Separator" -->
-<!--                     android:layout_alignTop="@+id/ViewInitActivityContainerLigne2Separator" -->
-<!--                     android:layout_marginRight="0dip" -->
-<!--                     android:layout_marginTop="0dip" -->
-<!--                     android:background="@android:color/transparent" -->
-<!--                     android:paddingTop="0dip" > -->
-
-<!--                     <include -->
-<!--                         android:id="@+id/IncludeInitActivityTile2" -->
-<!--                         android:layout_width="wrap_content" -->
-<!--                         android:layout_height="wrap_content" -->
-<!--                         android:layout_alignParentBottom="true" -->
-<!--                         android:layout_alignParentLeft="true" -->
-<!--                         android:layout_alignParentRight="true" -->
-<!--                         android:layout_alignParentTop="true" -->
-<!--                         layout="@layout/init_layout_tile" /> -->
-<!--                 </RelativeLayout> -->
-
-<!--                 <RelativeLayout -->
-<!--                     android:id="@+id/RelativeLayoutInitActivityChoix2" -->
-<!--                     android:layout_width="0dp" -->
-<!--                     android:layout_height="wrap_content" -->
-<!--                     android:layout_alignBottom="@+id/ViewInitActivityContainerLigne2Separator" -->
-<!--                     android:layout_alignLeft="@+id/ViewInitActivityContainerLigne2Separator" -->
-<!--                     android:layout_alignParentRight="true" -->
-<!--                     android:layout_alignTop="@+id/ViewInitActivityContainerLigne2Separator" -->
-<!--                     android:layout_marginLeft="0dip" -->
-<!--                     android:background="@android:color/transparent" > -->
-
-<!--                     <include -->
-<!--                         android:id="@+id/IncludeInitActivityTile" -->
-<!--                         android:layout_width="wrap_content" -->
-<!--                         android:layout_height="wrap_content" -->
-<!--                         android:layout_alignParentBottom="true" -->
-<!--                         android:layout_alignParentLeft="true" -->
-<!--                         android:layout_alignParentRight="true" -->
-<!--                         android:layout_alignParentTop="true" -->
-<!--                         layout="@layout/init_layout_tile" /> -->
-<!--                 </RelativeLayout> -->
-
-
-<!--             </RelativeLayout> -->
-
-<!--             <RelativeLayout -->
-<!--                 android:id="@+id/RelativeLayoutInitActivityContainerLigne3" -->
-<!--                 android:layout_width="wrap_content" -->
-<!--                 android:layout_height="wrap_content" -->
-<!--                 android:layout_alignParentBottom="true" -->
-<!--                 android:layout_alignParentLeft="true" -->
-<!--                 android:layout_alignParentRight="true" -->
-<!--                 android:layout_below="@+id/ViewInitActivityContainerTilesSeparator" -->
-<!--                 android:orientation="horizontal" -->
-<!--                 android:paddingTop="0dip" > -->
-
-<!--                 <RelativeLayout -->
-<!--                     android:id="@+id/RelativeLayoutInitActivityChoix3" -->
-<!--                     android:layout_width="0dp" -->
-<!--                     android:layout_height="wrap_content" -->
-<!--                     android:layout_alignBottom="@+id/ViewInitActivityContainerLigne3Separator" -->
-<!--                     android:layout_alignParentLeft="true" -->
-<!--                     android:layout_alignRight="@+id/ViewInitActivityContainerLigne3Separator" -->
-<!--                     android:layout_alignTop="@+id/ViewInitActivityContainerLigne3Separator" -->
-<!--                     android:layout_marginRight="0dip" -->
-<!--                     android:background="@android:color/transparent" > -->
-
-<!--                     <include -->
-<!--                         android:id="@+id/IncludeInitActivityTile4" -->
-<!--                         android:layout_width="wrap_content" -->
-<!--                         android:layout_height="wrap_content" -->
-<!--                         android:layout_alignParentBottom="true" -->
-<!--                         android:layout_alignParentLeft="true" -->
-<!--                         android:layout_alignParentRight="true" -->
-<!--                         android:layout_alignParentTop="true" -->
-<!--                         layout="@layout/init_layout_tile" /> -->
-<!--                 </RelativeLayout> -->
-
-<!--                 <RelativeLayout -->
-<!--                     android:id="@+id/RelativeLayoutInitActivityTiles4" -->
-<!--                     android:layout_width="0dp" -->
-<!--                     android:layout_height="wrap_content" -->
-<!--                     android:layout_alignBottom="@+id/ViewInitActivityContainerLigne3Separator" -->
-<!--                     android:layout_alignLeft="@+id/ViewInitActivityContainerLigne3Separator" -->
-<!--                     android:layout_alignParentRight="true" -->
-<!--                     android:layout_alignTop="@+id/ViewInitActivityContainerLigne3Separator" -->
-<!--                     android:layout_marginLeft="0dip" -->
-<!--                     android:background="@android:color/transparent" > -->
-
-<!--                     <include -->
-<!--                         android:id="@+id/IncludeInitActivityTile" -->
-<!--                         android:layout_width="wrap_content" -->
-<!--                         android:layout_height="wrap_content" -->
-<!--                         android:layout_alignParentBottom="true" -->
-<!--                         android:layout_alignParentLeft="true" -->
-<!--                         android:layout_alignParentRight="true" -->
-<!--                         android:layout_alignParentTop="true" -->
-<!--                         layout="@layout/init_layout_tile" /> -->
-<!--                 </RelativeLayout> -->
-
-<!--                 <View -->
-<!--                     android:id="@+id/ViewInitActivityContainerLigne3Separator" -->
-<!--                     android:layout_width="1dp" -->
-<!--                     android:layout_height="fill_parent" -->
-<!--                     android:layout_centerHorizontal="true" -->
-<!--                     android:background="#000000" /> -->
-<!--             </RelativeLayout> -->
-
-				
-    
-
-<!--         <View -->
-<!--             android:id="@+id/ViewInitActivityContainerTilesSeparator2" -->
-<!--             android:layout_width="fill_parent" -->
-<!--             android:layout_height="1dp" -->
-<!--             android:layout_centerVertical="true" -->
-<!--             android:background="#000000" /> -->
-
-<!--         <RelativeLayout -->
-<!--             android:id="@+id/RelativeLayoutInitActivityContainerLigne4" -->
-<!--             android:layout_width="wrap_content" -->
-<!--             android:layout_height="wrap_content" -->
-<!--             android:layout_alignParentBottom="true" -->
-<!--             android:layout_alignParentLeft="true" -->
-<!--             android:layout_alignParentRight="true" -->
-<!--             android:layout_below="@+id/ViewInitActivityContainerTilesSeparator2" -->
-<!--             android:orientation="horizontal" -->
-<!--             android:paddingTop="0dip" > -->
-
-<!--             <RelativeLayout -->
-<!--                 android:id="@+id/RelativeLayoutInitActivityChoix5" -->
-<!--                 android:layout_width="0dp" -->
-<!--                 android:layout_height="wrap_content" -->
-<!--                 android:layout_alignBottom="@+id/ViewInitActivityContainerLigne4Separator" -->
-<!--                 android:layout_alignParentLeft="true" -->
-<!--                 android:layout_alignRight="@+id/ViewInitActivityContainerLigne4Separator" -->
-<!--                 android:layout_alignTop="@+id/ViewInitActivityContainerLigne4Separator" -->
-<!--                 android:layout_marginRight="0dip" -->
-<!--                 android:background="@android:color/transparent" > -->
-
-<!--                 <include -->
-<!--                     android:id="@+id/IncludeInitActivityTile5" -->
-<!--                     android:layout_width="wrap_content" -->
-<!--                     android:layout_height="wrap_content" -->
-<!--                     android:layout_alignParentBottom="true" -->
-<!--                     android:layout_alignParentLeft="true" -->
-<!--                     android:layout_alignParentRight="true" -->
-<!--                     android:layout_alignParentTop="true" -->
-<!--                     layout="@layout/init_layout_tile" /> -->
-<!--             </RelativeLayout> -->
-
-<!--             <RelativeLayout -->
-<!--                 android:id="@+id/RelativeLayoutInitActivityTiles6" -->
-<!--                 android:layout_width="0dp" -->
-<!--                 android:layout_height="wrap_content" -->
-<!--                 android:layout_alignBottom="@+id/ViewInitActivityContainerLigne5Separator" -->
-<!--                 android:layout_alignLeft="@+id/ViewInitActivityContainerLigne5Separator" -->
-<!--                 android:layout_alignParentRight="true" -->
-<!--                 android:layout_alignTop="@+id/ViewInitActivityContainerLigne5Separator" -->
-<!--                 android:layout_marginLeft="0dip" -->
-<!--                 android:background="@android:color/transparent" > -->
-
-<!--                 <include -->
-<!--                     android:id="@+id/IncludeInitActivityTile6" -->
-<!--                     android:layout_width="wrap_content" -->
-<!--                     android:layout_height="wrap_content" -->
-<!--                     android:layout_alignParentBottom="true" -->
-<!--                     android:layout_alignParentLeft="true" -->
-<!--                     android:layout_alignParentRight="true" -->
-<!--                     android:layout_alignParentTop="true" -->
-<!--                     layout="@layout/init_layout_tile" /> -->
-<!--             </RelativeLayout> -->
-
-<!--             <View -->
-<!--                 android:id="@+id/ViewInitActivityContainerLigne5Separator" -->
-<!--                 android:layout_width="1dp" -->
-<!--                 android:layout_height="fill_parent" -->
-<!--                 android:layout_centerHorizontal="true" -->
-<!--                 android:background="#000000" /> -->
-<!--         </RelativeLayout> -->
-    
 
     <LinearLayout
         android:id="@+id/LinearLayoutInitActivityContainerFooter"
@@ -344,5 +239,18 @@
                 android:text="discutez directement avec votre conseiller! 24/24h" />
         </RelativeLayout>
     </LinearLayout>
+    
+     <FrameLayout 
+         android:id="@+id/FrameLayoutQuestionLayout"
+         android:layout_margin="10dip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+	
+                         >
+      <include
+            android:id="@+id/IncludeInitActivityTile1"
+            layout="@layout/question_layout" />
+</FrameLayout>
 
 </RelativeLayout>

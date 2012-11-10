@@ -13,22 +13,36 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 	private Button boutonChat;
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        boutonChat = (Button) findViewById(R.id.boutonChat);
-        boutonChat.setOnClickListener(new View.OnClickListener(){
-        	
-        @Override
-        public void onClick(View v) {
-    	Intent intent = new Intent(getApplicationContext(),ChatActivity.class);
-        startActivity(intent)
-;        }
-    });
-    
-    
 
-  
-    }
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		boutonChat = (Button) findViewById(R.id.boutonChat);
+		boutonChat.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getApplicationContext(),
+						ChatActivity.class);
+				startActivity(intent);
+			}
+		});
+
+	}
+
+	public void OnClickButton(View v) {
+		switch (v.getId()) {
+		case R.id.button1:
+			startActivity(new Intent(getApplicationContext(),
+					InitActivity.class));
+			break;
+		case R.id.button2:
+			startActivity(new Intent(getApplicationContext(), TabActivity.class));
+			break;
+
+		default:
+			break;
+		}
+	}
 }
