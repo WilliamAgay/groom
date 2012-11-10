@@ -1,0 +1,317 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayoutInitActivityContainer"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="0dip"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"
+    android:padding="0dip" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayoutInitActivityContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="0dip"
+        android:background="@android:color/transparent"
+        android:orientation="vertical"
+        android:padding="0dip" >
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutInitActivityContainerHeader"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutInitActivityHeaderContainer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dip"
+                android:background="#000000"
+                android:padding="5dip" >
+
+                <TextView
+                    android:id="@+id/TextViewInitActivityHeader"
+                    style="@style/styleSettingsTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="8dip"
+                    android:text="Bienvenue !" />
+
+                <Button
+                    android:id="@+id/ButtonInitActivityGo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_arrow_white"
+                    android:layout_marginRight="10dip" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutInitActivityContainerTiles"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_margin="0dip"
+            android:layout_weight="5"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal"
+            android:padding="0dip" >
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutInitActivityContainerTiles"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="0dip"
+                android:padding="0dip" 
+                android:background="#000000">
+
+                <View
+                    android:id="@+id/ViewInitActivityContainerTilesSeparator"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_centerVertical="true"
+                    android:background="#000000" />
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayoutInitActivityContainerLigne2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/ViewInitActivityContainerTilesSeparator"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingTop="0dip" >
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutInitActivityTilesChoix1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/ViewInitActivityContainerLigne2Separator"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignRight="@+id/ViewInitActivityContainerLigne2Separator"
+                        android:layout_alignTop="@+id/ViewInitActivityContainerLigne2Separator"
+                        android:layout_marginRight="0dip"
+                        android:layout_marginTop="0dip"
+                        android:background="@android:color/transparent"
+                        android:paddingTop="0dip" >
+
+                        <RelativeLayout
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/RelativeLayoutInitActivityChoix1"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_margin="0dip"
+                            android:background="#CCCCCC"
+                            android:padding="0dip" >
+
+                            <TextView
+                                android:id="@+id/TextViewInitActivityChoix1"
+                                style="@style/styleSettingsTxtTitre"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@+id/TextViewHomeBoutiqueSsTitre"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentLeft="true"
+                                android:paddingLeft="8dip"
+                                android:text="CHOIX 1" />
+
+                            <CheckBox
+                                android:id="@+id/CheckBoxInitActivityChoix1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:padding="10dip" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutInitActivityChoix2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/ViewInitActivityContainerLigne2Separator"
+                        android:layout_alignLeft="@+id/ViewInitActivityContainerLigne2Separator"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/ViewInitActivityContainerLigne2Separator"
+                        android:layout_marginLeft="0dip"
+                        android:background="@android:color/transparent" >
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutInitActivityChoix2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_margin="0dip"
+                            android:background="#CCCCCC"
+                            android:padding="0dip" >
+
+                            <TextView
+                                android:id="@+id/TextViewInitActivityChoix2"
+                                style="@style/styleSettingsTxtTitre"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentLeft="true"
+                                android:paddingLeft="8dip"
+                                android:text="CHOIX 2" />
+
+                            <CheckBox
+                                android:id="@+id/CheckBoxInitActivityChoix2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:padding="10dip" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/ViewInitActivityContainerLigne2Separator"
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:layout_centerHorizontal="true"
+                        android:background="#000000" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RelativeLayoutInitActivityContainerLigne3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/ViewInitActivityContainerTilesSeparator"
+                    android:orientation="horizontal"
+                    android:paddingTop="0dip" >
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutInitActivityChoix3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/ViewInitActivityContainerLigne3Separator"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignRight="@+id/ViewInitActivityContainerLigne3Separator"
+                        android:layout_alignTop="@+id/ViewInitActivityContainerLigne3Separator"
+                        android:layout_marginRight="0dip"
+                        android:background="@android:color/transparent" >
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutInitActivityChoix2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_margin="0dip"
+                            android:background="#CCCCCC"
+                            android:padding="0dip" >
+
+                            <TextView
+                                android:id="@+id/TextViewInitActivityChoix3"
+                                style="@style/styleSettingsTxtTitre"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentLeft="true"
+                                android:paddingLeft="8dip"
+                                android:text="CHOIX 3" />
+
+                            <CheckBox
+                                android:id="@+id/CheckBoxInitActivityChoix3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:padding="10dip" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayoutInitActivityTilesMonCompte"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/ViewInitActivityContainerLigne3Separator"
+                        android:layout_alignLeft="@+id/ViewInitActivityContainerLigne3Separator"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/ViewInitActivityContainerLigne3Separator"
+                        android:layout_marginLeft="0dip"
+                        android:background="@android:color/transparent" >
+
+                        <RelativeLayout
+                            android:id="@+id/RelativeLayoutInitActivityChoix4"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_margin="0dip"
+                            android:background="#CCCCCC"
+                            android:padding="0dip" >
+
+                            <TextView
+                                android:id="@+id/TextViewInitActivityChoix4"
+                                style="@style/styleSettingsTxtTitre"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentLeft="true"
+                                android:paddingLeft="8dip"
+                                android:text="CHOIX 4" />
+
+                            <CheckBox
+                                android:id="@+id/CheckBoxInitActivityChoix4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:padding="10dip" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/ViewInitActivityContainerLigne3Separator"
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:layout_centerHorizontal="true"
+                        android:background="#000000" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutInitActivityContainerFooter"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal"
+            android:paddingTop="0dip" >
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutInitActivityFooterContainer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#000000" >
+
+                <ImageView
+                    android:id="@+id/ImageViewInitActivitySettings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingRight="2dip"
+                    android:src="@drawable/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/TextViewInitActivityChat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                     android:layout_toRightOf="@+id/ImageViewInitActivitySettings"
+                    android:paddingRight="5dip"
+                    android:text="discutez directement avec votre conseiller! 24/24h" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
