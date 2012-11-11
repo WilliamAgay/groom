@@ -57,7 +57,8 @@ public class MainContentListFavoriteActivity extends Activity {
 		lvEv = (ListView) findViewById(R.id.ListViewmapListlayout);
 		List<Poi> pois = new ArrayList<Poi>(
 				((GroomApplication) getApplication()).pois);
-		lvEv.setAdapter(new SortieListAdapter(MainContentListFavoriteActivity.this, pois, true));
+		lvEv.setAdapter(new SortieListAdapter(
+				MainContentListFavoriteActivity.this, pois));
 		lvEv.setOnItemClickListener(new DetailClickListener(pois));
 
 		ActionBar actionBar = getActionBar();
@@ -162,13 +163,10 @@ public class MainContentListFavoriteActivity extends Activity {
 
 	@Override
 	public void onBackPressed() {
-		Intent  intent = new Intent(MainContentListFavoriteActivity.this,DashboardActivity.class);
+		Intent intent = new Intent(MainContentListFavoriteActivity.this,
+				DashboardActivity.class);
 		startActivity(intent);
 		finish();
 	}
-	
-	
-	
-	
 
 }

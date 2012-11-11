@@ -79,7 +79,6 @@ public final class R {
     }
     public static final class id {
         public static final int ButtonQuestionLayoutGo=0x7f0c004a;
-        public static final int ButtonSortieListItemCoeur=0x7f0c004f;
         public static final int ButtonSortieListItemFavoritePlus=0x7f0c004d;
         public static final int CheckBoxInitActivityChoix1=0x7f0c002d;
         public static final int CheckBoxSortieListItemFavorite=0x7f0c004e;
@@ -146,16 +145,16 @@ public final class R {
         public static final int bonjour_question1=0x7f0c0003;
         public static final int bonjour_question2=0x7f0c0005;
         public static final int btn_Send=0x7f0c000c;
-        public static final int idMenuListe=0x7f0c0054;
-        public static final int idMenuSort=0x7f0c0053;
-        public static final int idMenuTheme=0x7f0c0055;
-        public static final int idMenuTts=0x7f0c0052;
+        public static final int idMenuListe=0x7f0c0053;
+        public static final int idMenuSort=0x7f0c0052;
+        public static final int idMenuTheme=0x7f0c0054;
+        public static final int idMenuTts=0x7f0c0051;
         public static final int idico1=0x7f0c002b;
         public static final int linearLayout1=0x7f0c0001;
         public static final int listView=0x7f0c0009;
         public static final int llout=0x7f0c000a;
-        public static final int menu_settings=0x7f0c0051;
-        public static final int pager=0x7f0c0050;
+        public static final int menu_settings=0x7f0c0050;
+        public static final int pager=0x7f0c004f;
         public static final int polaris__callout=0x7f0c0038;
         public static final int polaris__content=0x7f0c003a;
         public static final int polaris__content_container=0x7f0c0039;
