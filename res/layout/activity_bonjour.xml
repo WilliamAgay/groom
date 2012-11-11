@@ -5,7 +5,7 @@
     android:layout_gravity="top" >
 
     <TextView
-        android:id="@+id/bonjour_footer"
+        android:id="@+id/TextViewActivityBonjourFooter"
         android:layout_width="fill_parent"
         android:layout_height="52dp"
         android:layout_column="0"
@@ -44,7 +44,7 @@
             android:textStyle="bold|italic" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/EditTextActivityBonjourNom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dip"
@@ -61,7 +61,8 @@
             android:textStyle="bold|italic" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/EditTextActivityBonjourDureeSejour"
+           
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10" >

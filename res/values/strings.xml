@@ -8,13 +8,12 @@
     <string name="musique">MUSIQUE</string>
     <string name="autre">INCLASSABLE</string>
     <string name="a_venir">À venir!</string>
-<<<<<<< HEAD
+
     <string name="james_vous_propose">James vous propose</string>
     <string name="ma_selection">Ma sélection</string>
     <string name="mes_themes">Mes thèmes</string>
     
-=======
->>>>>>> e3a526f4ac6bd064952330476c41d995825e1c6c
+
     <string name="desole_je_nai_pas_compris">Désolé. Je n\'ai pas compris.</string>
     <string name="vous_voulez_quest">%1s! Que de sorties!</string>
     <string name="question_tts">Quel type de sortie recherchez-vous?</string>
@@ -38,6 +37,7 @@
         <item>En déplacement</item>
     </string-array>
 
+    <string name="title_activity_notif">Aidez moi un peu, quelles sont vos envies du jour?</string>
     <string name="title_activity_bonjour">BonjourActivity</string>
 
 </resources>
