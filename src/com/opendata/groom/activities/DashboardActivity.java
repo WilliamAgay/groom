@@ -221,14 +221,17 @@ public class DashboardActivity extends Activity implements OnClickListener,OnIni
 //         String textToSpeak = textView.getText().toString();
      	
          mTextToSpeech.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH, null);
-         Handler h = new Handler();
-         h.postDelayed(new Runnable() {
-				
-				@Override
-				public void run() {
-					speakToMe();
-				}
-			}, 3000);
+         if(textToSpeak!=null && textToSpeak.equals(getResources().getString(R.string.question_tts)))
+         {
+	         Handler h = new Handler();
+	         h.postDelayed(new Runnable() {
+					
+					@Override
+					public void run() {
+						speakToMe();
+					}
+				}, 3000);
+         }
         
      }
      if(needQuitAfterSpeach)
@@ -242,7 +245,7 @@ public class DashboardActivity extends Activity implements OnClickListener,OnIni
 						startActivity(intent);
 						finish();
 				}
-			}, 10000);
+			}, 600);
      }
      
  }
