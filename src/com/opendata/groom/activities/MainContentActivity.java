@@ -11,6 +11,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -44,6 +45,11 @@ public class MainContentActivity extends MapActivity implements
 	private final String currentTheme = "";
 	private final List<Poi> currentPoiList = new ArrayList<Poi>();
 
+	private Drawable gastro;
+	private Drawable sport;
+	private Drawable pleinAir;
+	private Drawable culturelle;
+
 	// items
 
 	@Override
@@ -68,6 +74,11 @@ public class MainContentActivity extends MapActivity implements
 		// lvEv.setLayoutParams(lp);
 		// rlContainer.addView(lvEv);
 
+		gastro = this.getResources().getDrawable(R.drawable.gastro);
+		sport = this.getResources().getDrawable(R.drawable.sport);
+		pleinAir = this.getResources().getDrawable(R.drawable.pleinair);
+		culturelle = this.getResources().getDrawable(R.drawable.culture);
+
 		mapView.setUserTrackingButtonEnabled(true);
 		mapView.setOnMapViewLongClickListener(this);
 		mapView.setOnAnnotationSelectionChangedListener(this);
@@ -90,6 +101,7 @@ public class MainContentActivity extends MapActivity implements
 				((GroomApplication) getApplicationContext()).themes);
 		new DataprovenceManager(this, false)
 				.findAll(((GroomApplication) getApplicationContext()).themes);
+
 	}
 
 	@Override
@@ -129,6 +141,7 @@ public class MainContentActivity extends MapActivity implements
 		List<Annotation> poiAnnotationList = new ArrayList<Annotation>();
 		if (aPoiSet != null) {
 			for (Poi poi : aPoiSet) {
+<<<<<<< HEAD
 				// Drawable marker = null;
 				if (DataprovenceManager.THEME_CULTURE
 						.equalsIgnoreCase(poi.theme)) {
@@ -168,6 +181,13 @@ public class MainContentActivity extends MapActivity implements
 				// (int) (poi.longitude * 1e6)),
 				// poi.raisonsociale,
 				// poi.adresseweb != null ? poi.adresseweb : ""));
+=======
+					poiAnnotationList.add(new Annotation(new GeoPoint(
+							(int) (poi.latitude * 1e6),
+							(int) (poi.longitude * 1e6)), poi.raisonsociale,
+							poi.adresseWeb != null ? poi.adresseWeb : ""));
+				
+>>>>>>> 69c502a0f08f8c0f6dccdbffb28121e58fa0d3ee
 			}
 		}
 		return poiAnnotationList;

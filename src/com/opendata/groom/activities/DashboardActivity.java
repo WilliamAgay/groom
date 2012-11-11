@@ -264,9 +264,9 @@ public class DashboardActivity extends Activity implements OnClickListener,
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.idMenuTts:
-			listenToMe(getResources().getString(R.string.question_tts));
-			return true;
+//		case R.id.idMenuTts:
+//			listenToMe(getResources().getString(R.string.question_tts));
+//			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}

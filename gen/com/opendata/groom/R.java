@@ -158,10 +158,17 @@ public final class R {
         public static final int bonjour_question1=0x7f0c0003;
         public static final int bonjour_question2=0x7f0c0005;
         public static final int btn_Send=0x7f0c000a;
+<<<<<<< HEAD
         public static final int idMenuListe=0x7f0c004f;
         public static final int idMenuTheme=0x7f0c0050;
         public static final int idMenuTts=0x7f0c004e;
         public static final int idico1=0x7f0c0028;
+=======
+        public static final int idMenuListe=0x7f0c0050;
+        public static final int idMenuSort=0x7f0c004f;
+        public static final int idMenuTheme=0x7f0c0051;
+        public static final int idico1=0x7f0c0029;
+>>>>>>> 69c502a0f08f8c0f6dccdbffb28121e58fa0d3ee
         public static final int linearLayout1=0x7f0c0001;
         public static final int llout=0x7f0c0008;
         public static final int menu_settings=0x7f0c004d;
