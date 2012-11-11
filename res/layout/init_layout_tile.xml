@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android" >
-                   <RelativeLayout
+                   <RelativeLayout 
                             xmlns:android="http://schemas.android.com/apk/res/android"
                             android:id="@+id/RelativeLayoutInitActivityChoix1"
                             android:layout_width="wrap_content"
-                            android:layout_height="160dip"
+                            android:layout_height="140dip"
                             android:layout_margin="0dip"
-                            android:background="#CCCCCC"
-                            android:padding="0dip" >
-
+                            android:padding="0dip" android:paddingBottom="15dp" android:paddingLeft="10dp"  >
+                            
+                       <ImageView
+                           android:id="@+id/idico1"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_centerHorizontal="true"
+                           android:layout_centerInParent="true"
+                           android:layout_centerVertical="true" />
+
                             <TextView
                                 android:id="@+id/TextViewInitActivityChoix1"
                                 style="@style/styleSettingsTxtTitre"
@@ -16,6 +23,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
                                 android:layout_alignParentLeft="true"
+                                android:layout_centerHorizontal="true"
                                 android:paddingLeft="8dip"
                                 android:text="CHOIX" />
 
@@ -26,5 +34,6 @@
                                 android:layout_alignParentRight="true"
                                 android:layout_alignParentTop="true"
                                 android:padding="10dip" />
+
                         </RelativeLayout>
 </merge>

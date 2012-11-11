@@ -23,38 +23,36 @@ import bma.groomservice.data.dataprovence.DataprovenceManager;
 import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 
-public class DashboardActivity extends Activity implements OnClickListener,OnInitListener {
+public class DashboardActivity extends Activity implements OnClickListener,
+		OnInitListener {
 
-	
-	  // Speech recognition
-    private static final int VOICE_RECOGNITION_REQUEST = 0x10101;
+	// Speech recognition
+	private static final int VOICE_RECOGNITION_REQUEST = 0x10101;
 
 	private TextToSpeech mTextToSpeech = null;
 	private boolean speechSynthReady = false;
-    private boolean needQuitAfterSpeach = false;
-    
-    String valueForQuitAfterSpeach = null;
-	
-    ImageView speek = null;
-	
+	private boolean needQuitAfterSpeach = false;
+
+	String valueForQuitAfterSpeach = null;
+
+	ImageView speek = null;
+
 	@Override
-	public void onCreate(Bundle savedInstanceState) 
-	{
+	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.dashboard_activity);
-		
-		if(((GroomApplication)getApplicationContext()).accountName==null)
-		{
-			Intent intent = new Intent(DashboardActivity.this,BonjourActivity.class);
+
+		if (((GroomApplication) getApplicationContext()).accountName == null) {
+			Intent intent = new Intent(DashboardActivity.this,
+					BonjourActivity.class);
 			startActivity(intent);
 
 		}
 		speek = (ImageView) findViewById(R.id.ImageViewDashboardActivitySpeek);
 		speek.setVisibility(View.GONE);
-		 mTextToSpeech = new TextToSpeech(getApplicationContext(), this);
-			
+		mTextToSpeech = new TextToSpeech(getApplicationContext(), this);
 
 		findViewById(R.id.RelativeLayoutDashboardActivity1).setOnClickListener(
 				this);
@@ -69,24 +67,22 @@ public class DashboardActivity extends Activity implements OnClickListener,OnIni
 
 	}
 
-	
-	
-	 public void onInit(int status) {
-	        if (status == TextToSpeech.SUCCESS) {
-	            speechSynthReady = true;
-	            speek.setVisibility(View.VISIBLE);
-	            speek.setOnClickListener(this);
-	            if(valueForQuitAfterSpeach!=null)
-	            {
-	            	listenToMe(valueForQuitAfterSpeach);
-	            }
-	        }
-	    }
+	public void onInit(int status) {
+		if (status == TextToSpeech.SUCCESS) {
+			speechSynthReady = true;
+			speek.setVisibility(View.VISIBLE);
+			speek.setOnClickListener(this);
+			if (valueForQuitAfterSpeach != null) {
+				listenToMe(valueForQuitAfterSpeach);
+			}
+		}
+	}
+
 	@Override
 	public void onClick(View v) {
 		Intent intent;
 		switch (v.getId()) {
-		
+
 		case R.id.ImageViewDashboardActivitySpeek:
 
 			listenToMe(getResources().getString(R.string.question_tts));
@@ -117,164 +113,159 @@ public class DashboardActivity extends Activity implements OnClickListener,OnIni
 		}
 
 	}
-	
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
+
 	}
-	
-	 @Override
-	    protected void onPause() {
-	        super.onPause();
-	        mTextToSpeech.shutdown();
-	        mTextToSpeech = null;
-	    }
 
-	 
-	 @Override
-	    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-	        if (requestCode == VOICE_RECOGNITION_REQUEST && resultCode == RESULT_OK) 
-	        {
-	            ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-	            if(matches.size()==0)
-	            {
-	            	listenToMe(getResources().getString(R.string.desole_je_nai_pas_compris));
-	            }
-	            else
-	            {
-	    			((GroomApplication)getApplicationContext()).themes=new ArrayList<String>();
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (mTextToSpeech != null) {
+			mTextToSpeech.shutdown();
+			mTextToSpeech = null;
+		}
+	}
 
-	            	for(String m : matches)
-	            	{
-	            		if(((GroomApplication)getApplicationContext()).theme_pleinAirTTS.indexOf(m)!=-1)
-	            		{
-	            			((GroomApplication)getApplicationContext()).themes.add(DataprovenceManager.THEME_PLEINAIR);
-	            		}
-	            		if(((GroomApplication)getApplicationContext()).theme_cultureTTS.indexOf(m)!=-1)
-	            		{
-	            			((GroomApplication)getApplicationContext()).themes.add(DataprovenceManager.THEME_CULTURE);
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == VOICE_RECOGNITION_REQUEST && resultCode == RESULT_OK) {
+			ArrayList<String> matches = data
+					.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+			if (matches.size() == 0) {
+				listenToMe(getResources().getString(
+						R.string.desole_je_nai_pas_compris));
+			} else {
+				((GroomApplication) getApplicationContext()).themes = new ArrayList<String>();
 
-	            		}
-	            		if(((GroomApplication)getApplicationContext()).theme_restaurationTTS.indexOf(m)!=-1)
-	            		{
-	            			((GroomApplication)getApplicationContext()).themes.add(DataprovenceManager.THEME_RESTAURATION);
+				for (String m : matches) {
+					if (((GroomApplication) getApplicationContext()).theme_pleinAirTTS
+							.indexOf(m) != -1) {
+						((GroomApplication) getApplicationContext()).themes
+								.add(DataprovenceManager.THEME_PLEINAIR);
+					}
+					if (((GroomApplication) getApplicationContext()).theme_cultureTTS
+							.indexOf(m) != -1) {
+						((GroomApplication) getApplicationContext()).themes
+								.add(DataprovenceManager.THEME_CULTURE);
 
-	            		}
-	            		if(((GroomApplication)getApplicationContext()).theme_sportTTS.indexOf(m)!=-1)
-	            		{
-	            			((GroomApplication)getApplicationContext()).themes.add(DataprovenceManager.THEME_SPORT);
+					}
+					if (((GroomApplication) getApplicationContext()).theme_restaurationTTS
+							.indexOf(m) != -1) {
+						((GroomApplication) getApplicationContext()).themes
+								.add(DataprovenceManager.THEME_RESTAURATION);
 
-	            		}
-	            	}
-	            	
-	            	if(((GroomApplication)getApplicationContext()).themes.size()==0)
-	            	{
-	            		needQuitAfterSpeach=false;
-	            		valueForQuitAfterSpeach=getResources().getString(R.string.desole_je_nai_pas_compris);
-	            	}
-	            	else
-	            	{
-	            		
-	            		valueForQuitAfterSpeach= "";
-	            		for(String m : ((GroomApplication)getApplicationContext()).themes)
-		            	{
-	            			valueForQuitAfterSpeach += m+", ";
-		            	}
-	            		
-	            		needQuitAfterSpeach=true;
-	            	}
-	            	mTextToSpeech = new TextToSpeech(getApplicationContext(), this);
-	            	
-	            	
-	            }
-//	            TextView textView = (TextView) findViewById(R.id.speech_io_text);
-//	            String firstMatch = matches.get(0);
-//	            textView.setText(firstMatch);
-	            
-	            
-	            
-	        }
-	    }
+					}
+					if (((GroomApplication) getApplicationContext()).theme_sportTTS
+							.indexOf(m) != -1) {
+						((GroomApplication) getApplicationContext()).themes
+								.add(DataprovenceManager.THEME_SPORT);
 
-	
-	public void listenToMe( String textToSpeak) {
-     if (!speechSynthReady) {
-         Toast.makeText(getApplicationContext(),
-                 "Speech Synthesis not ready.", Toast.LENGTH_SHORT).show();
-         return;
-     }
-     if(mTextToSpeech==null)
-     {
-     	mTextToSpeech = new TextToSpeech(getApplicationContext(), this);
-     	return;
-     }
-     int result = mTextToSpeech.setLanguage(Locale.FRANCE);
-     if (result == TextToSpeech.LANG_MISSING_DATA
-             || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-         Toast.makeText(
-                 getApplicationContext(),
-                 "Language not available. Check code or config in settings.",
-                 Toast.LENGTH_SHORT).show();
-     } else {
-//         TextView textView = (TextView) findViewById(R.id.speech_io_text);
-//         String textToSpeak = textView.getText().toString();
-     	
-         mTextToSpeech.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH, null);
-         if(textToSpeak!=null && textToSpeak.equals(getResources().getString(R.string.question_tts)))
-         {
-	         Handler h = new Handler();
-	         h.postDelayed(new Runnable() {
-					
+					}
+				}
+
+				if (((GroomApplication) getApplicationContext()).themes.size() == 0) {
+					needQuitAfterSpeach = false;
+					valueForQuitAfterSpeach = getResources().getString(
+							R.string.desole_je_nai_pas_compris);
+				} else {
+
+					valueForQuitAfterSpeach = "";
+					for (String m : ((GroomApplication) getApplicationContext()).themes) {
+						valueForQuitAfterSpeach += m + ", ";
+					}
+
+					needQuitAfterSpeach = true;
+				}
+				mTextToSpeech = new TextToSpeech(getApplicationContext(), this);
+
+			}
+			// TextView textView = (TextView) findViewById(R.id.speech_io_text);
+			// String firstMatch = matches.get(0);
+			// textView.setText(firstMatch);
+
+		}
+	}
+
+	public void listenToMe(String textToSpeak) {
+		if (!speechSynthReady) {
+			Toast.makeText(getApplicationContext(),
+					"Speech Synthesis not ready.", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		if (mTextToSpeech == null) {
+			mTextToSpeech = new TextToSpeech(getApplicationContext(), this);
+			return;
+		}
+		int result = mTextToSpeech.setLanguage(Locale.FRANCE);
+		if (result == TextToSpeech.LANG_MISSING_DATA
+				|| result == TextToSpeech.LANG_NOT_SUPPORTED) {
+			Toast.makeText(
+					getApplicationContext(),
+					"Language not available. Check code or config in settings.",
+					Toast.LENGTH_SHORT).show();
+		} else {
+			// TextView textView = (TextView) findViewById(R.id.speech_io_text);
+			// String textToSpeak = textView.getText().toString();
+
+			mTextToSpeech.speak(textToSpeak, TextToSpeech.QUEUE_FLUSH, null);
+			if (textToSpeak != null
+					&& textToSpeak.equals(getResources().getString(
+							R.string.question_tts))) {
+				Handler h = new Handler();
+				h.postDelayed(new Runnable() {
+
 					@Override
 					public void run() {
 						speakToMe();
 					}
 				}, 3000);
-         }
-        
-     }
-     if(needQuitAfterSpeach)
-     {
-    	 Handler mHandler = new Handler();
-     	mHandler.postDelayed(new Runnable() {
-				
+			}
+
+		}
+		if (needQuitAfterSpeach) {
+			Handler mHandler = new Handler();
+			mHandler.postDelayed(new Runnable() {
+
 				@Override
 				public void run() {
-					 Intent intent = new Intent(DashboardActivity.this,MainContentActivity.class);
-						startActivity(intent);
-						finish();
+					Intent intent = new Intent(DashboardActivity.this,
+							MainContentActivity.class);
+					startActivity(intent);
+					finish();
 				}
 			}, 600);
-     }
-     
- }
-	  public void speakToMe() {
-	        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-	        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-	                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-	        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
-	                "Please speak slowly and enunciate clearly.");
-	        startActivityForResult(intent, VOICE_RECOGNITION_REQUEST);
-	    }
-	  
-	  @Override
-		public boolean onOptionsItemSelected(MenuItem item) {
-			switch (item.getItemId()) {
-			case R.id.idMenuTts:
-				listenToMe(getResources().getString(R.string.question_tts));
-				return true;
-			default:
-				return super.onOptionsItemSelected(item);
-			}
 		}
-	  
-	  @Override
-		public boolean onCreateOptionsMenu(Menu menu) {
-			MenuInflater inflater = getMenuInflater();
-			inflater.inflate(R.menu.menu_init, menu);
+
+	}
+
+	public void speakToMe() {
+		Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+		intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+				RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+		intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+				"Please speak slowly and enunciate clearly.");
+		startActivityForResult(intent, VOICE_RECOGNITION_REQUEST);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.idMenuTts:
+			listenToMe(getResources().getString(R.string.question_tts));
 			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu_init, menu);
+		return true;
+	}
 
 }
