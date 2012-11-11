@@ -5,6 +5,11 @@
     <string name="restauration">RESTAURATION</string>
     <string name="sport">SPORT</string>
     <string name="culture">CULTURE</string>
+    <string name="app_name">Groom</string>
+    <string name="plein_air">  PLEIN AIR  </string>
+    <string name="restauration">  RESTAURATION  </string>
+    <string name="sport">  SPORT  </string>
+    <string name="culture">  CULTURE  </string>
     <string name="musique">MUSIQUE</string>
     <string name="autre">INCLASSABLE</string>
     <string name="a_venir">À venir!</string>
@@ -30,6 +35,7 @@
     <string name="bonjour_question1">Et vous quel est votre prénom ?</string>
     <string name="bonjour_question2">Quelle est la durée de votre séjour parmi nous ?</string>
     <string name="bonjour_footer">Définissez vos centres d\'intérêts &gt;&gt;</string>
+    <string name="complet_champs">Veuillez compléter les champs SVP!</string>
     
     <string-array name="situation_array">
         <item>Célibataire</item>
