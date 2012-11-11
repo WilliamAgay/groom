@@ -86,7 +86,7 @@ public class PoiDetailsActivity extends Activity {
 			((TextView) findViewById(R.id.TextViewPoiDetailsActivityWeb))
 					.setText(poi.adresseWeb != null ? poi.adresseWeb : "");
 
-			wv.loadUrl("http://google.fr");
+			wv.loadUrl(poi.adresseWeb);
 		} else {
 			wv.setVisibility(WebView.INVISIBLE);
 		}

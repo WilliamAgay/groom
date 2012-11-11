@@ -1,27 +1,39 @@
 package com.opendata.groom.activities;
 
+import io.socket.IOAcknowledge;
+import io.socket.IOCallback;
+import io.socket.SocketIO;
+import io.socket.SocketIOException;
+
+import java.net.MalformedURLException;
+
+import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 
-public class ChatActivity extends Activity 
-{
-	
-	
-	
-	
-
-	private Handler handler = new Handler();
+public class ChatActivity extends Activity implements IOCallback {
+	Logger logger = LoggerFactory.getLogger(ChatActivity.class);
+	private final Handler handler = new Handler();
 	public ListView msgView;
 	public ArrayAdapter<String> msgList;
-//	public ArrayAdapter<String> msgList=new ArrayAdapter<String>(this,
-//			android.R.layout.simple_list_item_1);;
-	
+	SocketIO socket;
+
+	// public ArrayAdapter<String> msgList=new ArrayAdapter<String>(this,
+	// android.R.layout.simple_list_item_1);;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -29,150 +41,167 @@ public class ChatActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_chat);
 
-//		 msgView = (ListView) findViewById(R.id.listView);
-//
-//		msgList = new ArrayAdapter<String>(this,
-//				android.R.layout.simple_list_item_1);
-//		msgView.setAdapter(msgList);
-//
-////		msgView.smoothScrollToPosition(msgList.getCount() - 1);
-//
-//		Button btnSend = (Button) findViewById(R.id.btn_Send);
-//		
-//		receiveMsg();
-//		btnSend.setOnClickListener(new View.OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//
-//				final EditText txtEdit = (EditText) findViewById(R.id.txt_inputText);
-//				//msgList.add(txtEdit.getText().toString());
-//				sendMessageToServer(txtEdit.getText().toString());
-//				msgView.smoothScrollToPosition(msgList.getCount() - 1);
-//			
-//			}			
-//		});
-		
-//		receiveMsg();
-		//----------------------------
-		//server msg receieve
-		//-----------------------
-		
+		// msgView = (ListView) findViewById(R.id.listView);
+		//
+		// msgList = new ArrayAdapter<String>(this,
+		// android.R.layout.simple_list_item_1);
+		// msgView.setAdapter(msgList);
+		//
+		// // msgView.smoothScrollToPosition(msgList.getCount() - 1);
+		//
+		// Button btnSend = (Button) findViewById(R.id.btn_Send);
+		//
+		// receiveMsg();
+		// btnSend.setOnClickListener(new View.OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View v) {
+		// // TODO Auto-generated method stub
+		//
+		// final EditText txtEdit = (EditText) findViewById(R.id.txt_inputText);
+		// //msgList.add(txtEdit.getText().toString());
+		// sendMessageToServer(txtEdit.getText().toString());
+		// msgView.smoothScrollToPosition(msgList.getCount() - 1);
+		//
+		// }
+		// });
 
-		
-		//End Receive msg from server//
-	}
-//	public void sendMessageToServer(String str) {
-//		
-//		final String str1=str;
-//		new Thread(new Runnable() {
-//			
-//			@Override
-//			public void run() {
-//				// TODO Auto-generated method stub
-//				//String host = "opuntia.cs.utep.edu";
-//				String host="10.0.2.2";
-//				String host2 = "127.0.0.1";
-//				PrintWriter out;
-//				try {
-//					Socket socket = new Socket(host, 8008);
-//					out = new PrintWriter(socket.getOutputStream());
-//
-//					// out.println("hello");
-//					out.println(str1);
-//					Log.d("", "hello");
-//					out.flush();
-//				} catch (UnknownHostException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//					Log.d("", "hello222");
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//					Log.d("", "hello4333");
-//				}
-//	
-//			}
-//		}).start();
-//			}
+		((Button) findViewById(R.id.btn_Send))
+				.setOnClickListener(new OnClickListener() {
 
-	
-	/*
-	public void receiveMsg()
-	{
-		new Thread(new Runnable()
-		{
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				
-				//final  String host="opuntia.cs.utep.edu";
-				final String host="10.0.2.2";
-				//final String host="localhost";
-		    	Socket socket = null ;
-		    	BufferedReader in = null;
-		        try {
-					socket = new Socket(host,8008);
-				} catch (UnknownHostException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-				try {
-					in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-		    	while(true)
-		    	{
-		    		String msg = null;
-					try {
-						msg = in.readLine();
-						Log.d("","MSGGG:  "+ msg);
-						
-						//msgList.add(msg);
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+					@Override
+					public void onClick(View v) {
+						EditText et = (EditText) findViewById(R.id.txt_inputText);
+						socket.emit("sendchat", et.getText().toString());
 					}
-		    		if(msg == null)
-		    		{
-		    			break;
-		    		}
-		    		else
-		    		{
-		    			displayMsg(msg);
-		    		}
-		    	}
-			
-			}
-		}).start();
-		
-		
+				});
+
+		// receiveMsg();
+		// ----------------------------
+		// server msg receieve
+		// -----------------------
+
+		try {
+			socket = new SocketIO("http://87.106.98.48:3000");
+		} catch (MalformedURLException mue) {
+			logger.error(mue.getMessage(), mue);
+		}
+
+		socket.connect(this);
+		socket.emit("adduser",
+				((GroomApplication) getApplication()).accountName);
+		// End Receive msg from server//
 	}
-	
-	public void displayMsg(String msg)
-	{ 
-		final String mssg=msg;
-	    handler.post(new Runnable() {
-			
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				msgList.add(mssg);
-				msgView.setAdapter(msgList);
-				msgView.smoothScrollToPosition(msgList.getCount() - 1);
-				Log.d("","hi");
-			}
-		});
-		
+
+	@Override
+	public void onDisconnect() {
+		// TODO Auto-generated method stub
+
 	}
-	*/
+
+	@Override
+	public void onConnect() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onMessage(String paramString, IOAcknowledge paramIOAcknowledge) {
+		TextView tv = (TextView) findViewById(R.id.thistory);
+		tv.setText(tv.getText() + "\nstr:" + paramString);
+	}
+
+	@Override
+	public void onMessage(JSONObject paramJSONObject,
+			IOAcknowledge paramIOAcknowledge) {
+		TextView tv = (TextView) findViewById(R.id.thistory);
+		tv.setText(tv.getText() + "\n" + "json:" + paramJSONObject);
+	}
+
+	@Override
+	public void on(String paramString, IOAcknowledge paramIOAcknowledge,
+			Object... paramArrayOfObject) {
+		TextView tv = (TextView) findViewById(R.id.thistory);
+		tv.setText(tv.getText() + "\n" + "on:" + paramString + ","
+				+ paramArrayOfObject);
+	}
+
+	@Override
+	public void onError(SocketIOException paramSocketIOException) {
+		// TODO Auto-generated method stub
+
+	}
+	// public void sendMessageToServer(String str) {
+	//
+	// final String str1=str;
+	// new Thread(new Runnable() {
+	//
+	// @Override
+	// public void run() {
+	// // TODO Auto-generated method stub
+	// //String host = "opuntia.cs.utep.edu";
+	// String host="10.0.2.2";
+	// String host2 = "127.0.0.1";
+	// PrintWriter out;
+	// try {
+	// Socket socket = new Socket(host, 8008);
+	// out = new PrintWriter(socket.getOutputStream());
+	//
+	// // out.println("hello");
+	// out.println(str1);
+	// Log.d("", "hello");
+	// out.flush();
+	// } catch (UnknownHostException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// Log.d("", "hello222");
+	// } catch (IOException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// Log.d("", "hello4333");
+	// }
+	//
+	// }
+	// }).start();
+	// }
+
+	/*
+	 * public void receiveMsg() { new Thread(new Runnable() {
+	 * 
+	 * @Override public void run() { // TODO Auto-generated method stub
+	 * 
+	 * //final String host="opuntia.cs.utep.edu"; final String host="10.0.2.2";
+	 * //final String host="localhost"; Socket socket = null ; BufferedReader in
+	 * = null; try { socket = new Socket(host,8008); } catch
+	 * (UnknownHostException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); } catch (IOException e) { // TODO Auto-generated
+	 * catch block e.printStackTrace(); }
+	 * 
+	 * try { in = new BufferedReader(new
+	 * InputStreamReader(socket.getInputStream())); } catch (IOException e) { //
+	 * TODO Auto-generated catch block e.printStackTrace(); }
+	 * 
+	 * while(true) { String msg = null; try { msg = in.readLine();
+	 * Log.d("","MSGGG:  "+ msg);
+	 * 
+	 * //msgList.add(msg); } catch (IOException e) { // TODO Auto-generated
+	 * catch block e.printStackTrace(); } if(msg == null) { break; } else {
+	 * displayMsg(msg); } }
+	 * 
+	 * } }).start();
+	 * 
+	 * 
+	 * }
+	 * 
+	 * public void displayMsg(String msg) { final String mssg=msg;
+	 * handler.post(new Runnable() {
+	 * 
+	 * @Override public void run() { // TODO Auto-generated method stub
+	 * msgList.add(mssg); msgView.setAdapter(msgList);
+	 * msgView.smoothScrollToPosition(msgList.getCount() - 1); Log.d("","hi"); }
+	 * });
+	 * 
+	 * }
+	 */
 
 }

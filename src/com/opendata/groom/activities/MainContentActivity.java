@@ -93,7 +93,10 @@ public class MainContentActivity extends MapActivity implements
 		// public static final String THEME_CULTURE = "CULTURE";
 		new DataprovenceManager(this, false)
 				.findAll(((GroomApplication) getApplicationContext()).themes);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8d38dce431dbfc5d237fbb54b8b3ec2c43040b46
 	}
 
 	@Override
