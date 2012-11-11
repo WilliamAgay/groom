@@ -23,20 +23,17 @@
     
   <TextView android:id="@+id/TextViewPoiDetailsActivityWeb"
             android:layout_width="fill_parent"
-            android:textColor="#FFFFFF"
             android:layout_height="wrap_content"
             android:singleLine="true"/>
     
   <TextView android:id="@+id/TextViewPoiDetailsActivityTel"
             android:layout_width="fill_parent"
-            android:textColor="#FFFFFF"
             android:layout_height="wrap_content"
             android:singleLine="true"/>
       
   <TextView android:id="@+id/TextViewPoiDetailsActivityTitle"
       android:layout_toRightOf="@+id/ImageViewSortieListItemTitle"
             android:layout_width="fill_parent"
-            android:textColor="#FFFFFF"
             android:layout_height="wrap_content"
             android:singleLine="true"/>
   
@@ -45,7 +42,6 @@
       android:layout_below="@+id/TextViewPoiDetailsActivityTitle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
             android:singleLine="false"/>
     
      <WebView android:id="@+id/WebViewPoiDetailsActivitySite"
@@ -54,7 +50,6 @@
       		android:layout_below="@+id/TextViewPoiDetailsActivityAdresse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
             android:singleLine="false"/>
 
 </LinearLayout>
