@@ -150,10 +150,9 @@ public final class R {
         public static final int bonjour_question1=0x7f0c0003;
         public static final int bonjour_question2=0x7f0c0005;
         public static final int btn_Send=0x7f0c000c;
-        public static final int idMenuListe=0x7f0c0053;
-        public static final int idMenuSort=0x7f0c0052;
-        public static final int idMenuTheme=0x7f0c0054;
-        public static final int idMenuTts=0x7f0c0051;
+        public static final int idMenuListe=0x7f0c0052;
+        public static final int idMenuSort=0x7f0c0051;
+        public static final int idMenuTheme=0x7f0c0053;
         public static final int idico1=0x7f0c002b;
         public static final int linearLayout1=0x7f0c0001;
         public static final int listView=0x7f0c0009;

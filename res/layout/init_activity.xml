@@ -192,6 +192,8 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:paddingRight="10dip"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
                     android:paddingLeft="5dip"
                     android:src="@drawable/picto_bell" />
 

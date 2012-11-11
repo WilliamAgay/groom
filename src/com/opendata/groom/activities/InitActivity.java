@@ -55,10 +55,10 @@ public int lighter = 0x44000000;
 				.setText(R.string.plein_air);
 		((TextView) findViewById(R.id.FrameLayoutInitActivityTile2)
 				.findViewById(R.id.TextViewInitActivityChoix1))
-				.setText(R.string.sport);
+				.setText(getString(R.string.sport)+" ");
 		((TextView) findViewById(R.id.FrameLayoutInitActivityTile3)
 				.findViewById(R.id.TextViewInitActivityChoix1))
-				.setText(R.string.restauration);
+				.setText(getString(R.string.restauration)+ " ");
 		((TextView) findViewById(R.id.FrameLayoutInitActivityTile4)
 				.findViewById(R.id.TextViewInitActivityChoix1))
 				.setText(R.string.culture);

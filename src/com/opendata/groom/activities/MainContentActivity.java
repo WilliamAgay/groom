@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,6 +23,7 @@ import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 import com.opendata.groom.polaris.Annotation;
 import com.opendata.groom.polaris.MapCalloutView;
+import com.opendata.groom.polaris.MapViewUtils;
 import com.opendata.groom.polaris.PolarisMapView;
 import com.opendata.groom.polaris.PolarisMapView.OnAnnotationSelectionChangedListener;
 import com.opendata.groom.polaris.PolarisMapView.OnMapViewLongClickListener;
@@ -37,6 +39,11 @@ public class MainContentActivity extends MapActivity implements
 																// the selected
 	private final String currentTheme = "";
 	private final List<Poi> currentPoiList = new ArrayList<Poi>();
+
+	private Drawable gastro;
+	private Drawable sport;
+	private Drawable pleinAir;
+	private Drawable culturelle;
 
 	// items
 
@@ -62,6 +69,11 @@ public class MainContentActivity extends MapActivity implements
 		// lvEv.setLayoutParams(lp);
 		// rlContainer.addView(lvEv);
 
+		gastro = this.getResources().getDrawable(R.drawable.gastro);
+		sport = this.getResources().getDrawable(R.drawable.sport);
+		pleinAir = this.getResources().getDrawable(R.drawable.pleinair);
+		culturelle = this.getResources().getDrawable(R.drawable.culture);
+
 		mapView.setUserTrackingButtonEnabled(true);
 		mapView.setOnMapViewLongClickListener(this);
 		mapView.setOnAnnotationSelectionChangedListener(this);
@@ -75,22 +87,13 @@ public class MainContentActivity extends MapActivity implements
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setDisplayShowTitleEnabled(false);
 
-<<<<<<< HEAD
-		
-//		public static final String THEME_PLEINAIR = "PLEIN AIR";
-//		public static final String THEME_RESTAURATION = "RESTAURATION";
-//		public static final String THEME_SPORT = "SPORT";
-//		public static final String THEME_CULTURE = "CULTURE";
-		new DataprovenceManager(this, false) 
-				.findAll( ((GroomApplication)getApplicationContext()).themes) ;
-=======
 		// public static final String THEME_PLEINAIR = "PLEIN AIR";
 		// public static final String THEME_RESTAURATION = "RESTAURATION";
 		// public static final String THEME_SPORT = "SPORT";
 		// public static final String THEME_CULTURE = "CULTURE";
 		new DataprovenceManager(this, false)
 				.findAll(((GroomApplication) getApplicationContext()).themes);
->>>>>>> e37f70cc00a086b93dccf2ac03c0878763085f4e
+
 	}
 
 	@Override
@@ -130,11 +133,11 @@ public class MainContentActivity extends MapActivity implements
 		List<Annotation> poiAnnotationList = new ArrayList<Annotation>();
 		if (aPoiSet != null) {
 			for (Poi poi : aPoiSet) {
-				poiAnnotationList.add(new Annotation(
-						new GeoPoint((int) (poi.latitude * 1e6),
-								(int) (poi.longitude * 1e6)),
-						poi.raisonsociale,
-						poi.adresseWeb != null ? poi.adresseWeb : ""));
+					poiAnnotationList.add(new Annotation(new GeoPoint(
+							(int) (poi.latitude * 1e6),
+							(int) (poi.longitude * 1e6)), poi.raisonsociale,
+							poi.adresseWeb != null ? poi.adresseWeb : ""));
+				
 			}
 		}
 		return poiAnnotationList;
