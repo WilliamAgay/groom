@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-     android:id="@+id/RelativeLayoutDashboardActivityContainer"
+    android:id="@+id/RelativeLayoutDashboardActivityContainer"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-  >
+    android:layout_height="fill_parent" >
 
+    <!--
     <RelativeLayout
         android:id="@+id/RelativeLayoutDashboardActivity1"
         android:layout_width="wrap_content"
@@ -72,15 +72,142 @@
             android:paddingLeft="8dip"
             android:text="@string/mes_themes" />
     </RelativeLayout>
-    
-        <ImageButton android:layout_below="@+id/RelativeLayoutDashboardActivity3"
-                    android:id="@+id/ImageViewDashboardActivitySpeek"
+    -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/RelativeLayoutDashboardActivity1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_dash_1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/RelativeLayoutDashboardActivity2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_dash_2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/RelativeLayoutDashboardActivity3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_dash_3" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayoutInitActivityContainerFooter"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:paddingTop="0dip" >
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayoutInitActivityFooterContainer"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent" >
+
+            <ImageView
+                android:id="@+id/ImageViewInitActivitySettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="5dip"
+                android:paddingRight="10dip"
+                android:src="@drawable/picto_bell" />
+
+            <TextView
+                android:id="@+id/TextViewInitActivityChat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/ImageViewInitActivitySettings"
+                android:paddingRight="5dip"
+                android:text="discutez directement avec votre conseiller! 24/24h" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ImageViewDashboardActivitySpeek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/LinearLayoutInitActivityContainerFooter"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:padding="10dip"
+        android:src="@drawable/ic_btn_speak_now" />
+
+    <!--
+        <LinearLayout
+            android:id="@+id/LinearLayoutInitActivityContainerFooter"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal"
+            android:paddingTop="0dip" >
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutInitActivityFooterContainer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent" >
+
+                <ImageView
+                    android:id="@+id/ImageViewInitActivitySettings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dip"
-                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:padding="10dip"
-                    android:src="@drawable/ic_btn_speak_now" />
+                    android:paddingRight="10dip"
+                    android:paddingLeft="5dip"
+                    android:src="@drawable/picto_bell" />
+
+                <TextView
+                    android:id="@+id/TextViewInitActivityChat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/ImageViewInitActivitySettings"
+                    android:paddingRight="5dip"
+                    android:text="discutez directement avec votre conseiller! 24/24h" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/ImageViewDashboardActivitySpeek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/LinearLayoutInitActivityContainerFooter"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="26dp"
+            android:padding="10dip"
+            android:src="@drawable/ic_btn_speak_now" />
+    -->
 
 </RelativeLayout>

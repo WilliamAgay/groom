@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -57,6 +58,15 @@ public class MainContentListActivity extends Activity {
 		lvEv = (ListView) findViewById(R.id.ListViewmapListlayout);
 		List<Poi> pois = new ArrayList<Poi>(
 				((GroomApplication) getApplication()).pois);
+
+		if (getIntent().hasExtra("fromDash")) {
+			if (getIntent().getBooleanExtra("fromDash", false)) {
+				if (pois.size() > 30) {
+					pois = pois.subList(0, 30);
+				}
+			}
+		}
+
 		lvEv.setAdapter(new SortieListAdapter(MainContentListActivity.this,
 				pois));
 		lvEv.setOnItemClickListener(new DetailClickListener(pois));
@@ -65,6 +75,15 @@ public class MainContentListActivity extends Activity {
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setDisplayShowTitleEnabled(false);
 
+		findViewById(R.id.TextViewInitActivityChat).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						startActivity(new Intent(getApplicationContext(),
+								ChatActivity.class));
+					}
+				});
 	}
 
 	@Override
@@ -79,16 +98,16 @@ public class MainContentListActivity extends Activity {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			// app icon in action bar clicked; go home
-			Intent intent = new Intent(this, InitActivity.class);
+			Intent intent = new Intent(this, DashboardActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			return true;
 		case R.id.idMenuListe:
 			startMapView(R.id.idMenuListe);
 			return true;
-		case R.id.idMenuSort:
-			showDialog(SORT);
-			return true;
+			// case R.id.idMenuSort:
+			// showDialog(SORT);
+			// return true;
 		case R.id.idMenuTheme:
 			startActivity(new Intent(MainContentListActivity.this,
 					InitActivity.class));

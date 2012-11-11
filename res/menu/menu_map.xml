@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     
-    <item
-        android:id="@+id/idMenuSort"
-        android:icon="@drawable/da_ic_menu_layers"
-        android:showAsAction="ifRoom"
-        android:title="Trier"/>
+<!--     <item -->
+<!--         android:id="@+id/idMenuSort" -->
+<!--         android:icon="@drawable/da_ic_menu_layers" -->
+<!--         android:showAsAction="ifRoom" -->
+<!--         android:title="Trier"/> -->
     <item
         android:id="@+id/idMenuListe"
-        android:icon="@drawable/picto_liste"
+        android:icon="@drawable/liste_wh"
         android:showAsAction="ifRoom"
         android:title="Liste"/>
     <item
         android:id="@+id/idMenuTheme"
-        android:icon="@drawable/picto_themes"
+        android:icon="@drawable/themes_wh"
         android:showAsAction="ifRoom"
         android:title="Thème"/>
 

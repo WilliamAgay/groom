@@ -23,7 +23,8 @@ import com.opendata.groom.R;
 public class InitActivity extends Activity implements View.OnClickListener {
 
 	// Handler mHandler = new Handler();
-public int lighter = 0x44000000;
+	public int lighter = 0x44000000;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,10 +34,10 @@ public int lighter = 0x44000000;
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setDisplayShowTitleEnabled(false);
-		
+
 		Typeface androgyne = Typeface.createFromAsset(getAssets(),
 				"Androgyne_TB.otf");
-		
+
 		((TextView) findViewById(R.id.FrameLayoutInitActivityTile1)
 				.findViewById(R.id.TextViewInitActivityChoix1))
 				.setTypeface(androgyne);
@@ -64,7 +65,7 @@ public int lighter = 0x44000000;
 				.setText(R.string.culture);
 
 		// findViewById(R.id.FrameLayoutInitActivityTile1).setBackgroundResource(R.drawable.ico_plein_air);
-		if (((GroomApplication) getApplicationContext()).prefPleinAirSelected)
+		if (((GroomApplication) getApplication()).prefPleinAirSelected)
 			findViewById(R.id.FrameLayoutInitActivityTile1).setBackgroundColor(
 					lighter);
 		else
@@ -75,7 +76,7 @@ public int lighter = 0x44000000;
 				.setBackgroundResource(R.drawable.ico_plein_air);
 
 		// findViewById(R.id.FrameLayoutInitActivityTile2).setBackgroundResource(R.drawable.ico_sport);
-		if (((GroomApplication) getApplicationContext()).prefSportSelected)
+		if (((GroomApplication) getApplication()).prefSportSelected)
 			findViewById(R.id.FrameLayoutInitActivityTile2).setBackgroundColor(
 					lighter);
 		else
@@ -85,7 +86,7 @@ public int lighter = 0x44000000;
 				.findViewById(R.id.idico1))
 				.setBackgroundResource(R.drawable.ico_sport);
 
-		if (((GroomApplication) getApplicationContext()).prefRestoSelected)
+		if (((GroomApplication) getApplication()).prefRestoSelected)
 			findViewById(R.id.FrameLayoutInitActivityTile3).setBackgroundColor(
 					lighter);
 		else
@@ -96,7 +97,7 @@ public int lighter = 0x44000000;
 				.setBackgroundResource(R.drawable.ico_gastro);
 		// findViewById(R.id.FrameLayoutInitActivityTile3).setBackgroundResource(R.drawable.ico_gastro);
 
-		if (((GroomApplication) getApplicationContext()).prefCultureSelected)
+		if (((GroomApplication) getApplication()).prefCultureSelected)
 			findViewById(R.id.FrameLayoutInitActivityTile4).setBackgroundColor(
 					lighter);
 		else
@@ -109,16 +110,16 @@ public int lighter = 0x44000000;
 
 		((CheckBox) findViewById(R.id.FrameLayoutInitActivityTile1)
 				.findViewById(R.id.CheckBoxInitActivityChoix1))
-				.setChecked(((GroomApplication) getApplicationContext()).prefPleinAirSelected);
+				.setChecked(((GroomApplication) getApplication()).prefPleinAirSelected);
 		((CheckBox) findViewById(R.id.FrameLayoutInitActivityTile2)
 				.findViewById(R.id.CheckBoxInitActivityChoix1))
-				.setChecked(((GroomApplication) getApplicationContext()).prefSportSelected);
+				.setChecked(((GroomApplication) getApplication()).prefSportSelected);
 		((CheckBox) findViewById(R.id.FrameLayoutInitActivityTile3)
 				.findViewById(R.id.CheckBoxInitActivityChoix1))
-				.setChecked(((GroomApplication) getApplicationContext()).prefRestoSelected);
+				.setChecked(((GroomApplication) getApplication()).prefRestoSelected);
 		((CheckBox) findViewById(R.id.FrameLayoutInitActivityTile4)
 				.findViewById(R.id.CheckBoxInitActivityChoix1))
-				.setChecked(((GroomApplication) getApplicationContext()).prefCultureSelected);
+				.setChecked(((GroomApplication) getApplication()).prefCultureSelected);
 
 		((CheckBox) findViewById(R.id.FrameLayoutInitActivityTile1)
 				.findViewById(R.id.CheckBoxInitActivityChoix1))
@@ -127,12 +128,12 @@ public int lighter = 0x44000000;
 					@Override
 					public void onCheckedChanged(CompoundButton buttonView,
 							boolean isChecked) {
-						((GroomApplication) getApplicationContext()).prefPleinAirSelected = isChecked;
-						((GroomApplication) getApplicationContext())
+						((GroomApplication) getApplication()).prefPleinAirSelected = isChecked;
+						((GroomApplication) getApplication())
 								.saveThemeDataInPref(
 										GroomApplication.PREF_PLEINAIR,
 										isChecked);
-						if (((GroomApplication) getApplicationContext()).prefPleinAirSelected)
+						if (((GroomApplication) getApplication()).prefPleinAirSelected)
 							findViewById(R.id.FrameLayoutInitActivityTile1)
 									.setBackgroundColor(0x44000000);
 						else
@@ -148,11 +149,11 @@ public int lighter = 0x44000000;
 					@Override
 					public void onCheckedChanged(CompoundButton buttonView,
 							boolean isChecked) {
-						((GroomApplication) getApplicationContext()).prefSportSelected = isChecked;
-						((GroomApplication) getApplicationContext())
+						((GroomApplication) getApplication()).prefSportSelected = isChecked;
+						((GroomApplication) getApplication())
 								.saveThemeDataInPref(
 										GroomApplication.PREF_SPORT, isChecked);
-						if (((GroomApplication) getApplicationContext()).prefSportSelected)
+						if (((GroomApplication) getApplication()).prefSportSelected)
 							findViewById(R.id.FrameLayoutInitActivityTile2)
 									.setBackgroundColor(lighter);
 						else
@@ -168,11 +169,11 @@ public int lighter = 0x44000000;
 					@Override
 					public void onCheckedChanged(CompoundButton buttonView,
 							boolean isChecked) {
-						((GroomApplication) getApplicationContext()).prefRestoSelected = isChecked;
-						((GroomApplication) getApplicationContext())
+						((GroomApplication) getApplication()).prefRestoSelected = isChecked;
+						((GroomApplication) getApplication())
 								.saveThemeDataInPref(
 										GroomApplication.PREF_RESTO, isChecked);
-						if (((GroomApplication) getApplicationContext()).prefRestoSelected)
+						if (((GroomApplication) getApplication()).prefRestoSelected)
 							findViewById(R.id.FrameLayoutInitActivityTile3)
 									.setBackgroundColor(lighter);
 						else
@@ -188,12 +189,12 @@ public int lighter = 0x44000000;
 					@Override
 					public void onCheckedChanged(CompoundButton buttonView,
 							boolean isChecked) {
-						((GroomApplication) getApplicationContext()).prefCultureSelected = isChecked;
-						((GroomApplication) getApplicationContext())
+						((GroomApplication) getApplication()).prefCultureSelected = isChecked;
+						((GroomApplication) getApplication())
 								.saveThemeDataInPref(
 										GroomApplication.PREF_CULTURE,
 										isChecked);
-						if (((GroomApplication) getApplicationContext()).prefCultureSelected)
+						if (((GroomApplication) getApplication()).prefCultureSelected)
 							findViewById(R.id.FrameLayoutInitActivityTile4)
 									.setBackgroundColor(lighter);
 						else
@@ -222,7 +223,7 @@ public int lighter = 0x44000000;
 		switch (v.getId()) {
 
 		case R.id.ImageViewInitActivitySettingsValider:
-			((GroomApplication) getApplicationContext()).fillThemes();
+			((GroomApplication) getApplication()).fillThemes();
 			Intent intent = new Intent(InitActivity.this,
 					MainContentActivity.class);
 			startActivity(intent);
