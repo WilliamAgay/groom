@@ -54,9 +54,10 @@ public class SortieListAdapter extends BaseAdapter {
 		// if (view instanceof RelativeLayout) {
 		// layout = (RelativeLayout) view;
 		// } else {
-		LayoutInflater factory = LayoutInflater.from(viewGroup.getContext());
+		LayoutInflater factory = LayoutInflater.from(context);
 
-		View layout = factory.inflate(R.layout.sortie_list_item, viewGroup);
+		View layout = factory.inflate(R.layout.sortie_list_item, viewGroup,
+				false);
 		/*
 		 * if(!isFavorite) layout = (RelativeLayout)
 		 * factory.inflate(R.layout.sortie_list_item, viewGroup, false); else
