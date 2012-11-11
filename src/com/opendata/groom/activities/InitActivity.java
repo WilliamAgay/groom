@@ -9,9 +9,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.RelativeLayout;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -46,7 +46,6 @@ public class InitActivity extends Activity implements View.OnClickListener {
 				.findViewById(R.id.TextViewInitActivityChoix1))
 				.setText(R.string.culture);
 
-		
 		// findViewById(R.id.FrameLayoutInitActivityTile1).setBackgroundResource(R.drawable.ico_plein_air);
 		if (((GroomApplication) getApplicationContext()).prefPleinAirSelected)
 			findViewById(R.id.FrameLayoutInitActivityTile1).setBackgroundColor(
@@ -189,10 +188,17 @@ public class InitActivity extends Activity implements View.OnClickListener {
 		findViewById(R.id.ImageViewInitActivitySettingsValider)
 				.setOnClickListener(this);
 
+		findViewById(R.id.TextViewInitActivityChat).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						startActivity(new Intent(getApplicationContext(),
+								ChatActivity.class));
+					}
+				});
+
 	}
-
-	
-
 
 	@Override
 	public void onClick(View v) {
