@@ -7,16 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import bma.groomservice.data.Poi;
 import bma.groomservice.data.dataprovence.DataprovenceManager;
 
-import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 
 public class SortieListAdapter extends BaseAdapter {
@@ -55,21 +50,21 @@ public class SortieListAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int index, View view, ViewGroup viewGroup) {
-		final RelativeLayout layout;
-		if (view instanceof RelativeLayout) {
-			layout = (RelativeLayout) view;
-		} else {
-			LayoutInflater factory = LayoutInflater.from(context);
-			layout = (RelativeLayout) factory.inflate(
-					R.layout.sortie_list_item, viewGroup, false);
-			/*
-			 * if(!isFavorite) layout = (RelativeLayout)
-			 * factory.inflate(R.layout.sortie_list_item, viewGroup, false);
-			 * else layout = (RelativeLayout)
-			 * factory.inflate(R.layout.sortie_list_favorite_item, viewGroup,
-			 * false);
-			 */
-		}
+		// final RelativeLayout layout;
+		// if (view instanceof RelativeLayout) {
+		// layout = (RelativeLayout) view;
+		// } else {
+		LayoutInflater factory = LayoutInflater.from(viewGroup.getContext());
+
+		View layout = factory.inflate(R.layout.sortie_list_item, viewGroup);
+		/*
+		 * if(!isFavorite) layout = (RelativeLayout)
+		 * factory.inflate(R.layout.sortie_list_item, viewGroup, false); else
+		 * layout = (RelativeLayout)
+		 * factory.inflate(R.layout.sortie_list_favorite_item, viewGroup,
+		 * false);
+		 */
+		// }
 
 		// Poi poi = ((GroomApplication)
 		// this.context.getApplicationContext()).pois
@@ -120,24 +115,25 @@ public class SortieListAdapter extends BaseAdapter {
 		 * }
 		 */
 
-		if (layout.findViewById(R.id.CheckBoxSortieListItemFavorite) != null) {
-			final int indexf = index;
-			layout.findViewById(R.id.CheckBoxSortieListItemFavorite)
-					.setSelected(poi.done);
-			((CheckBox) layout
-					.findViewById(R.id.CheckBoxSortieListItemFavorite))
-					.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-						@Override
-						public void onCheckedChanged(CompoundButton buttonView,
-								boolean isChecked) {
-							((GroomApplication) context.getApplicationContext()).favoritesPoi
-									.get(indexf).done = isChecked;
-							((GroomApplication) context.getApplicationContext())
-									.savePoiArrayPref(context);
-						}
-					});
-		}
+		// if (layout.findViewById(R.id.CheckBoxSortieListItemFavorite) != null)
+		// {
+		// final int indexf = index;
+		// layout.findViewById(R.id.CheckBoxSortieListItemFavorite)
+		// .setSelected(poi.done);
+		// ((CheckBox) layout
+		// .findViewById(R.id.CheckBoxSortieListItemFavorite))
+		// .setOnCheckedChangeListener(new OnCheckedChangeListener() {
+		//
+		// @Override
+		// public void onCheckedChanged(CompoundButton buttonView,
+		// boolean isChecked) {
+		// ((GroomApplication) context.getApplicationContext()).favoritesPoi
+		// .get(indexf).done = isChecked;
+		// ((GroomApplication) context.getApplicationContext())
+		// .savePoiArrayPref(context);
+		// }
+		// });
+		// }
 		return layout;
 	}
 }

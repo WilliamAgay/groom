@@ -1,7 +1,6 @@
 package com.opendata.groom.activities;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import android.app.ActionBar;
@@ -10,11 +9,9 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.inputmethod.ExtractedTextRequest;
 import bma.groomservice.data.Poi;
 import bma.groomservice.data.PoiListener;
 import bma.groomservice.data.dataprovence.DataprovenceManager;
@@ -39,7 +36,7 @@ public class MainContentActivity extends MapActivity implements
 	private final ArrayList mSelectedItems = new ArrayList(); // Where we track
 																// the selected
 	private final String currentTheme = "";
-	private List<Poi> currentPoiList = new ArrayList<Poi>();
+	private final List<Poi> currentPoiList = new ArrayList<Poi>();
 
 	// items
 
@@ -47,80 +44,76 @@ public class MainContentActivity extends MapActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.polarismaplayout);
 		mapView = (PolarisMapView) findViewById(R.id.PolarisMapViewLayoutMap);
-		
-		
-//		 lvEv = new ListView(MainContentActivity.this);
-//		 RelativeLayout.LayoutParams lp =new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-//		 
-//		 
-//		 lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
-//		 lp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 1);
-//		 lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 1);
-//		 lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 1);
-//		 lvEv.setVisibility(View.GONE);
-//		 lvEv.setLayoutParams(lp);
-//		 rlContainer.addView(lvEv);
-		 
-		
-		
+
+		// lvEv = new ListView(MainContentActivity.this);
+		// RelativeLayout.LayoutParams lp =new
+		// RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
+		// LayoutParams.WRAP_CONTENT);
+		//
+		//
+		// lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
+		// lp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 1);
+		// lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 1);
+		// lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 1);
+		// lvEv.setVisibility(View.GONE);
+		// lvEv.setLayoutParams(lp);
+		// rlContainer.addView(lvEv);
+
 		mapView.setUserTrackingButtonEnabled(true);
 		mapView.setOnMapViewLongClickListener(this);
 		mapView.setOnAnnotationSelectionChangedListener(this);
-//43.296191,5.379792
-//		mapView.getController().setCenter(new GeoPoint((int)(43.296191 * 1E6), (int)(5.379792 * 1E6)));
+		// 43.296191,5.379792
+		// mapView.getController().setCenter(new GeoPoint((int)(43.296191 *
+		// 1E6), (int)(5.379792 * 1E6)));
 		mapView.getController().setZoom(16);
 		mapView.preLoad();
-		
-		
-		
 
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setDisplayShowTitleEnabled(false);
 
-		
-//		public static final String THEME_PLEINAIR = "PLEIN AIR";
-//		public static final String THEME_RESTAURATION = "RESTAURATION";
-//		public static final String THEME_SPORT = "SPORT";
-//		public static final String THEME_CULTURE = "CULTURE";
+		// public static final String THEME_PLEINAIR = "PLEIN AIR";
+		// public static final String THEME_RESTAURATION = "RESTAURATION";
+		// public static final String THEME_SPORT = "SPORT";
+		// public static final String THEME_CULTURE = "CULTURE";
 		new DataprovenceManager(this, false)
-				.findAll( ((GroomApplication)getApplicationContext()).themes) ;
+				.findAll(((GroomApplication) getApplicationContext()).themes);
 	}
 
 	@Override
 	public void onPoiReceived(List<Poi> pois) {
 		if (pois != null && pois.size() > 0 && currentPoiList.size() <= 80) {
 			currentPoiList.addAll(pois);
-			addAnnotationList(createAnnotationsOverlay(pois));
+			addAnnotationList(createAnnotationsOverlay(currentPoiList));
 			GroomApplication app = (GroomApplication) getApplication();
 			app.pois.addAll(pois);
 		}
 	}
 
 	private void addAnnotationList(List<Annotation> aAnnotationsList) {
-		if(((GroomApplication)getApplicationContext()).prefPleinAirSelected)
+		if (((GroomApplication) getApplicationContext()).prefPleinAirSelected)
 			mapView.setAnnotations(aAnnotationsList, R.drawable.pleinair);
-		if(((GroomApplication)getApplicationContext()).prefCultureSelected)
+		if (((GroomApplication) getApplicationContext()).prefCultureSelected)
 			mapView.setAnnotations(aAnnotationsList, R.drawable.culture);
-		if(((GroomApplication)getApplicationContext()).prefRestoSelected)
+		if (((GroomApplication) getApplicationContext()).prefRestoSelected)
 			mapView.setAnnotations(aAnnotationsList, R.drawable.gastro);
-		if(((GroomApplication)getApplicationContext()).prefSportSelected)
+		if (((GroomApplication) getApplicationContext()).prefSportSelected)
 			mapView.setAnnotations(aAnnotationsList, R.drawable.sport);
 	}
-	
+
 	@Override
 	protected void onStart() {
-	    super.onStart();
-	    mapView.onStart();
+		super.onStart();
+		mapView.onStart();
 	}
-	
+
 	@Override
 	protected void onStop() {
-	    super.onStop();
-	    mapView.onStop();
+		super.onStop();
+		mapView.onStop();
 	}
 
 	public List<Annotation> createAnnotationsOverlay(List<Poi> aPoiSet) {
@@ -146,14 +139,15 @@ public class MainContentActivity extends MapActivity implements
 	@Override
 	public void onAnnotationSelected(PolarisMapView mapView,
 			MapCalloutView calloutView, int position, Annotation annotation) {
-		
-        calloutView.setDisclosureEnabled(true);
-        calloutView.setClickable(true);
-//        if (!TextUtils.isEmpty(annotation.getSnippet())) {
-//            calloutView.setLeftAccessoryView(getLayoutInflater().inflate(R.layout.accessory, calloutView, false));
-//        } else {
-//            calloutView.setLeftAccessoryView(null);
-//        }
+
+		calloutView.setDisclosureEnabled(true);
+		calloutView.setClickable(true);
+		// if (!TextUtils.isEmpty(annotation.getSnippet())) {
+		// calloutView.setLeftAccessoryView(getLayoutInflater().inflate(R.layout.accessory,
+		// calloutView, false));
+		// } else {
+		// calloutView.setLeftAccessoryView(null);
+		// }
 	}
 
 	@Override
@@ -166,9 +160,10 @@ public class MainContentActivity extends MapActivity implements
 	@Override
 	public void onAnnotationClicked(PolarisMapView mapView,
 			MapCalloutView calloutView, int position, Annotation annotation) {
-		Intent intent = new Intent(MainContentActivity.this,PoiDetailsActivity.class);
-		if(currentPoiList != null && currentPoiList.get(position) != null)
-			intent.putExtra("poi",((Parcelable) currentPoiList.get(position)));
+		Intent intent = new Intent(MainContentActivity.this,
+				PoiDetailsActivity.class);
+		if (currentPoiList != null && currentPoiList.get(position) != null)
+			intent.putExtra("poi", currentPoiList.get(position));
 		startActivity(intent);
 	}
 
@@ -209,61 +204,68 @@ public class MainContentActivity extends MapActivity implements
 	}
 
 	private void startListView(int idToShow) {
-		if (idToShow ==R.id.idMenuListe) {
-			
-			Intent intent = new Intent(MainContentActivity.this,MainContentListActivity.class);
+		if (idToShow == R.id.idMenuListe) {
+
+			Intent intent = new Intent(MainContentActivity.this,
+					MainContentListActivity.class);
 			startActivity(intent);
 			finish();
-			MainContentActivity.this.overridePendingTransition(R.anim.translate_map, R.anim.translate_map);
-			
-//			 lvEv.setVisibility(View.VISIBLE);
-//			Animation animation = AnimationUtils.loadAnimation(MainContentActivity.this, R.anim.translate_map);
-//			animation.setAnimationListener(new AnimationListener() {
-//				
-//				@Override
-//				public void onAnimationStart(Animation animation) {
-//					
-//					
-//					
-//				}
-//				
-//				@Override
-//				public void onAnimationRepeat(Animation animation) {
-//					// TODO Auto-generated method stub
-//					
-//				}
-//				
-//				@Override
-//				public void onAnimationEnd(Animation animation) {
-//					 RelativeLayout.LayoutParams lp =new RelativeLayout.LayoutParams(getWindow().getWindowManager().getDefaultDisplay().getWidth(), getWindow().getWindowManager().getDefaultDisplay().getHeight());
-//					 lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
-//					 lp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 1);
-//					 lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 1);
-//					 lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 1);
-//					 lvEv.setLayoutParams(lp);
-//					 animation.cancel();
-//				}
-//			});
-//			rlContainer.startAnimation(animation);
-//		    int cx = list.getWidth() / 2;
-//		    int cy = 0;
-//			Animation animation = new Flip3dAnimation(mapView, list, cx, cy, true);
-//		    animation.setAnimationListener(new AnimationListener() {
-//		      @Override
-//		      public void onAnimationEnd(Animation animation) {
-//		    	 mapView.setVisibility(View.GONE);
-//		    	 findViewById(R.id.ListViewPolarisMapLayoutListe).setVisibility(View.VISIBLE);
-//		      }
-//		      @Override
-//		      public void onAnimationRepeat(Animation animation) {
-//		      }
-//		      @Override
-//		      public void onAnimationStart(Animation animation) {
-//		    	  
-//		      }
-//		    });
-//		    mapView.startAnimation(animation);
-			
+			MainContentActivity.this.overridePendingTransition(
+					R.anim.translate_map, R.anim.translate_map);
+
+			// lvEv.setVisibility(View.VISIBLE);
+			// Animation animation =
+			// AnimationUtils.loadAnimation(MainContentActivity.this,
+			// R.anim.translate_map);
+			// animation.setAnimationListener(new AnimationListener() {
+			//
+			// @Override
+			// public void onAnimationStart(Animation animation) {
+			//
+			//
+			//
+			// }
+			//
+			// @Override
+			// public void onAnimationRepeat(Animation animation) {
+			// // TODO Auto-generated method stub
+			//
+			// }
+			//
+			// @Override
+			// public void onAnimationEnd(Animation animation) {
+			// RelativeLayout.LayoutParams lp =new
+			// RelativeLayout.LayoutParams(getWindow().getWindowManager().getDefaultDisplay().getWidth(),
+			// getWindow().getWindowManager().getDefaultDisplay().getHeight());
+			// lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
+			// lp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 1);
+			// lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 1);
+			// lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 1);
+			// lvEv.setLayoutParams(lp);
+			// animation.cancel();
+			// }
+			// });
+			// rlContainer.startAnimation(animation);
+			// int cx = list.getWidth() / 2;
+			// int cy = 0;
+			// Animation animation = new Flip3dAnimation(mapView, list, cx, cy,
+			// true);
+			// animation.setAnimationListener(new AnimationListener() {
+			// @Override
+			// public void onAnimationEnd(Animation animation) {
+			// mapView.setVisibility(View.GONE);
+			// findViewById(R.id.ListViewPolarisMapLayoutListe).setVisibility(View.VISIBLE);
+			// }
+			// @Override
+			// public void onAnimationRepeat(Animation animation) {
+			// }
+			// @Override
+			// public void onAnimationStart(Animation animation) {
+			//
+			// }
+			// });
+			// mapView.startAnimation(animation);
+
 		} else {
 
 		}
@@ -274,14 +276,14 @@ public class MainContentActivity extends MapActivity implements
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		// Set the dialog title
 
-		boolean[] checkedVal = {false,false,false,false};
-		if(((GroomApplication)getApplicationContext()).prefPleinAirSelected)
+		boolean[] checkedVal = { false, false, false, false };
+		if (((GroomApplication) getApplicationContext()).prefPleinAirSelected)
 			checkedVal[1] = true;
-		if(((GroomApplication)getApplicationContext()).prefCultureSelected)
+		if (((GroomApplication) getApplicationContext()).prefCultureSelected)
 			checkedVal[0] = true;
-		if(((GroomApplication)getApplicationContext()).prefRestoSelected)
+		if (((GroomApplication) getApplicationContext()).prefRestoSelected)
 			checkedVal[3] = true;
-		if(((GroomApplication)getApplicationContext()).prefSportSelected)
+		if (((GroomApplication) getApplicationContext()).prefSportSelected)
 			checkedVal[2] = true;
 
 		builder.setTitle(getString(R.string.title_popup))
@@ -331,11 +333,13 @@ public class MainContentActivity extends MapActivity implements
 
 		return builder.create();
 	}
-	 @Override
-		public void onBackPressed() {
-			Intent  intent = new Intent(MainContentActivity.this,DashboardActivity.class);
-			startActivity(intent);
-			finish();
-		}
+
+	@Override
+	public void onBackPressed() {
+		Intent intent = new Intent(MainContentActivity.this,
+				DashboardActivity.class);
+		startActivity(intent);
+		finish();
+	}
 
 }
