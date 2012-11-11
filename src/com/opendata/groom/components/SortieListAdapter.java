@@ -74,7 +74,7 @@ public class SortieListAdapter extends BaseAdapter {
 		((TextView) layout.findViewById(R.id.TextViewSortieListItemAdresse))
 				.setText(poi.theme);
 
-		ImageView imv = ((ImageView) layout.findViewById(R.id.TextViewSortieListItemAdresse));
+		ImageView imv = ((ImageView) layout.findViewById(R.id.ImageViewSortieListItemTitle ));
 		if(poi.theme.equals(DataprovenceManager.THEME_CULTURE)) imv.setImageDrawable(context.getResources().getDrawable(R.drawable.ico_culture));
 		else if(poi.theme.equals(DataprovenceManager.THEME_PLEINAIR)) imv.setImageDrawable(context.getResources().getDrawable(R.drawable.ico_culture));
 		else if(poi.theme.equals(DataprovenceManager.THEME_RESTAURATION)) imv.setImageDrawable(context.getResources().getDrawable(R.drawable.ico_gastro));

@@ -59,6 +59,7 @@ public class InitActivity extends Activity implements View.OnClickListener
 			
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				((GroomApplication)getApplicationContext()).prefPleinAirSelected=isChecked;
 				((GroomApplication)getApplicationContext()).saveThemeDataInPref(GroomApplication.PREF_PLEINAIR, isChecked);
 
 			}
@@ -67,6 +68,7 @@ public class InitActivity extends Activity implements View.OnClickListener
 			
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				((GroomApplication)getApplicationContext()).prefSportSelected=isChecked;
 				((GroomApplication)getApplicationContext()).saveThemeDataInPref(GroomApplication.PREF_SPORT, isChecked);
 
 			}
@@ -75,6 +77,7 @@ public class InitActivity extends Activity implements View.OnClickListener
 			
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				((GroomApplication)getApplicationContext()).prefRestoSelected=isChecked;
 				((GroomApplication)getApplicationContext()).saveThemeDataInPref(GroomApplication.PREF_RESTO, isChecked);
 
 			}
@@ -83,6 +86,7 @@ public class InitActivity extends Activity implements View.OnClickListener
 			
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				((GroomApplication)getApplicationContext()).prefCultureSelected=isChecked;
 				((GroomApplication)getApplicationContext()).saveThemeDataInPref(GroomApplication.PREF_CULTURE, isChecked);
 
 			}
