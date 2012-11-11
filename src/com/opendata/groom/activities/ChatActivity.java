@@ -12,15 +12,20 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Html;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 
 public class ChatActivity extends Activity implements IOCallback {
@@ -64,32 +69,48 @@ public class ChatActivity extends Activity implements IOCallback {
 		// }
 		// });
 
-		((Button) findViewById(R.id.btn_Send))
-				.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						EditText et = (EditText) findViewById(R.id.txt_inputText);
-						socket.emit("sendchat", et.getText().toString());
+		((EditText) findViewById(R.id.txt_inputText)).setOnEditorActionListener(new TextView.OnEditorActionListener() {
+		    @Override
+		    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+		        if (actionId == EditorInfo.IME_ACTION_SEND) {
+		        	if(socket!=null && socket.isConnected())
+					{
+						socket.emit("sendchat", ((EditText) findViewById(R.id.txt_inputText)).getText().toString());
 					}
-				});
+					else
+					{
+						Toast.makeText(ChatActivity.this, "En attente de connexion..", Toast.LENGTH_SHORT).show();
+						connectSocket();
+					}
+		            return true;
+		        }
+		        return false;
+		    }
+		});
+		
+		
 
 		// receiveMsg();
 		// ----------------------------
 		// server msg receieve
 		// -----------------------
+		connectSocket();
+		
+	}
 
+	
+	public void connectSocket()
+	{
 		try {
 			socket = new SocketIO("http://87.106.98.48:3000");
 
 			socket.connect(this);
-			socket.emit("adduser", "toto");
+			socket.emit("adduser",( (GroomApplication)getApplicationContext()).accountName);
 			// End Receive msg from server/
 		} catch (Exception e) {
 			Log.e("oncreate", e.getMessage());
 		}
 	}
-
 	@Override
 	public void onDisconnect() {
 		// TODO Auto-generated method stub
@@ -104,35 +125,74 @@ public class ChatActivity extends Activity implements IOCallback {
 
 	@Override
 	public void onMessage(String paramString, IOAcknowledge paramIOAcknowledge) {
-		TextView tv = (TextView) findViewById(R.id.thistory);
-		tv.setText(tv.getText() + "\nstr:" + paramString);
+		
+			writeMessage(((GroomApplication)getApplicationContext()).accountName, paramString);
+		
 	}
 
 	@Override
 	public void onMessage(JSONObject paramJSONObject,
 			IOAcknowledge paramIOAcknowledge) {
-		TextView tv = (TextView) findViewById(R.id.thistory);
 		Log.d("onMessage", "" + paramJSONObject);
-		String theText = "";
+		
 		if (paramJSONObject != null && !paramJSONObject.isNull("args")) {
 			try {
 				JSONArray arr = (JSONArray) paramJSONObject.get("args");
 				JSONObject obj = (JSONObject) arr.get(0);
 				if (obj.has("toto"))
-					theText = obj.getString("toto");
+				{
+					writeMessage("toto", obj.getString("toto"));
+				}
+				if (obj.has(((GroomApplication)getApplicationContext()).accountName))
+				{
+					writeMessage(((GroomApplication)getApplicationContext()).accountName, obj.getString(((GroomApplication)getApplicationContext()).accountName));
+				}
+				if (obj.has("SERVER"))
+				{
+					writeMessage(((GroomApplication)getApplicationContext()).accountName, obj.getString("SERVER"));
+				}
+					
 			} catch (JSONException e) {
 				Log.e("JSONException", e.getMessage());
 			}
 		}
-		tv.setText(tv.getText().toString() + "\n" + "json :" + theText);
+		
 	}
 
 	@Override
 	public void on(String paramString, IOAcknowledge paramIOAcknowledge,
-			Object... paramArrayOfObject) {
+			Object... paramArrayOfObject) 
+	{
+		if(paramArrayOfObject!=null && paramArrayOfObject.length>0)
+		{
+			try {
+				
+				if( paramArrayOfObject.length>1 && paramArrayOfObject[1].getClass()==String.class)
+				{
+					writeMessage((String) paramArrayOfObject[0],(String) paramArrayOfObject[1]);
+				}
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				Log.e("Exception on",e.getMessage());
+			}
+		}
+		
+	}
+	
+	
+	public void writeMessage(String emetteur, String theText)
+	{
+		String color ="#B98A24";
+		if(emetteur!=null && emetteur.equals("toto"))
+		{
+			color ="#425155";
+		}
 		TextView tv = (TextView) findViewById(R.id.thistory);
-		tv.setText(tv.getText() + "\n" + "on:" + paramString + ","
-				+ paramArrayOfObject);
+		tv.setText(Html.fromHtml(tv.getText().toString() + "<br><font color=\""+color+"\"><b>" + emetteur+"</b></font>  " + theText));
+
+		
+		
 	}
 
 	@Override
@@ -173,6 +233,17 @@ public class ChatActivity extends Activity implements IOCallback {
 	// }
 	// }).start();
 	// }
+
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		if (socket.isConnected())
+		{
+			socket.disconnect();
+		}
+	}
 
 	/*
 	 * public void receiveMsg() { new Thread(new Runnable() {

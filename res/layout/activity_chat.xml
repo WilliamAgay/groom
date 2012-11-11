@@ -16,6 +16,7 @@
     </FrameLayout>
 
     <LinearLayout
+          android:padding="5dip"
         android:id="@+id/llout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -24,17 +25,18 @@
 
         <EditText
             android:id="@+id/txt_inputText"
-            android:layout_width="125dp"
+          android:lines="1"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.8"
-            android:text="Text here" />
+            android:imeOptions="actionSend"
+            android:hint="Votre message ici" />
 
-        <Button
-            android:id="@+id/btn_Send"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:text="Send" />
+        <!-- <Button -->
+        <!-- android:id="@+id/btn_Send" -->
+        <!-- android:layout_width="100dp" -->
+        <!-- android:layout_height="wrap_content" -->
+        <!-- android:layout_weight="0.2" -->
+        <!-- android:text="Send" /> -->
     </LinearLayout>
 
 </LinearLayout>

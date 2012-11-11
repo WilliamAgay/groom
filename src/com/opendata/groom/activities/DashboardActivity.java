@@ -35,7 +35,6 @@ public class DashboardActivity extends Activity implements OnClickListener,
 
 	String valueForQuitAfterSpeach = null;
 
-	ImageView speek = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -50,8 +49,9 @@ public class DashboardActivity extends Activity implements OnClickListener,
 			startActivity(intent);
 
 		}
-		speek = (ImageView) findViewById(R.id.ImageViewDashboardActivitySpeek);
-		speek.setVisibility(View.GONE);
+		ImageView speek = (ImageView) findViewById(R.id.ImageViewDashboardActivitySpeek);
+		if(speek!=null)
+			speek.setVisibility(View.GONE);
 		mTextToSpeech = new TextToSpeech(getApplicationContext(), this);
 
 		findViewById(R.id.RelativeLayoutDashboardActivity1).setOnClickListener(
@@ -70,8 +70,12 @@ public class DashboardActivity extends Activity implements OnClickListener,
 	public void onInit(int status) {
 		if (status == TextToSpeech.SUCCESS) {
 			speechSynthReady = true;
-			speek.setVisibility(View.VISIBLE);
-			speek.setOnClickListener(this);
+//			 findViewById(R.id.ImageViewDashboardActivitySpeek).setVisibility(View.VISIBLE);
+			if( findViewById(R.id.ImageViewDashboardActivitySpeek)!=null)
+			{
+				 findViewById(R.id.ImageViewDashboardActivitySpeek).setOnClickListener(this);
+
+			}
 			if (valueForQuitAfterSpeach != null) {
 				listenToMe(valueForQuitAfterSpeach);
 			}
