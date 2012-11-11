@@ -85,9 +85,9 @@ public class MainContentListFavoriteActivity extends Activity {
 		case R.id.idMenuListe:
 			startMapView(R.id.idMenuListe);
 			return true;
-		case R.id.idMenuSort:
-			showDialog(SORT);
-			return true;
+			// case R.id.idMenuSort:
+			// showDialog(SORT);
+			// return true;
 		case R.id.idMenuTheme:
 			startActivity(new Intent(MainContentListFavoriteActivity.this,
 					InitActivity.class));

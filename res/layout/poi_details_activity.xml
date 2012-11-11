@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/RelativeLayoutPoiDetailsActivity"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_margin="0dip"
+    android:layout_alignParentTop="true"
     android:background="@android:color/transparent"
     android:layout_gravity="center"
     android:orientation="vertical"
@@ -48,8 +50,48 @@
          android:layout_alignParentLeft="true"
          android:layout_alignParentRight="true"
       		android:layout_below="@+id/TextViewPoiDetailsActivityAdresse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="300dp"
             android:singleLine="false"/>
 
+     
+     
+     
 </LinearLayout>
+
+ <LinearLayout
+            android:id="@+id/LinearLayoutInitActivityContainerFooter"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal"
+            android:paddingTop="0dip" >
+
+            <RelativeLayout
+                android:id="@+id/RelativeLayoutInitActivityFooterContainer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent" >
+
+                <ImageView
+                    android:id="@+id/ImageViewInitActivitySettings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="10dip"
+                    android:paddingLeft="5dip"
+                    android:src="@drawable/picto_bell" />
+
+                <TextView
+                    android:id="@+id/TextViewInitActivityChat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/ImageViewInitActivitySettings"
+                    android:paddingRight="5dip"
+                    android:text="discutez directement avec votre conseiller! 24/24h" />
+            </RelativeLayout>
+        </LinearLayout>
+</RelativeLayout>

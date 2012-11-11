@@ -65,8 +65,18 @@ public class DashboardActivity extends Activity implements OnClickListener,
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setDisplayShowTitleEnabled(false);
 
+		findViewById(R.id.TextViewInitActivityChat).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						startActivity(new Intent(getApplicationContext(),
+								ChatActivity.class));
+					}
+				});
 	}
 
+	@Override
 	public void onInit(int status) {
 		if (status == TextToSpeech.SUCCESS) {
 			speechSynthReady = true;
@@ -97,7 +107,8 @@ public class DashboardActivity extends Activity implements OnClickListener,
 
 		case R.id.RelativeLayoutDashboardActivity2:
 			intent = new Intent(DashboardActivity.this,
-					MainContentActivity.class);
+					MainContentListActivity.class);
+			intent.putExtra("fromDash", true);
 			startActivity(intent);
 			finish();
 			break;

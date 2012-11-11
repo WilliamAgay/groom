@@ -21,7 +21,6 @@
         android:theme="@style/GroomActivityTheme" >
         <uses-library android:name="com.google.android.maps" />
 
-
         <activity android:name="com.opendata.groom.activities.DashboardActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +35,6 @@
         <activity android:name="com.opendata.groom.activities.PoiDetailsActivity" />
         <activity android:name="com.opendata.groom.activities.InitActivity" />
         <activity android:name="com.opendata.groom.activities.MainContentListFavoriteActivity" />
-       
         <activity
             android:name=".activities.BonjourActivity"
             android:label="@string/title_activity_bonjour" >

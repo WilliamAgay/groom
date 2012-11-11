@@ -3,6 +3,9 @@ package com.opendata.groom.activities;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -22,6 +25,7 @@ import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 import com.opendata.groom.polaris.Annotation;
 import com.opendata.groom.polaris.MapCalloutView;
+import com.opendata.groom.polaris.MapViewUtils;
 import com.opendata.groom.polaris.PolarisMapView;
 import com.opendata.groom.polaris.PolarisMapView.OnAnnotationSelectionChangedListener;
 import com.opendata.groom.polaris.PolarisMapView.OnMapViewLongClickListener;
@@ -29,6 +33,8 @@ import com.opendata.groom.polaris.PolarisMapView.OnMapViewLongClickListener;
 public class MainContentActivity extends MapActivity implements
 		OnMapViewLongClickListener, OnAnnotationSelectionChangedListener,
 		PoiListener {
+
+	Logger logger = LoggerFactory.getLogger(MainContentActivity.class);
 
 	private static final int SORT = 0;
 	private PolarisMapView mapView;
@@ -79,13 +85,16 @@ public class MainContentActivity extends MapActivity implements
 		// public static final String THEME_RESTAURATION = "RESTAURATION";
 		// public static final String THEME_SPORT = "SPORT";
 		// public static final String THEME_CULTURE = "CULTURE";
+		((GroomApplication) getApplication()).fillThemes();
+		logger.debug("themes={}",
+				((GroomApplication) getApplicationContext()).themes);
 		new DataprovenceManager(this, false)
 				.findAll(((GroomApplication) getApplicationContext()).themes);
 	}
 
 	@Override
 	public void onPoiReceived(List<Poi> pois) {
-		if (pois != null && pois.size() > 0 && currentPoiList.size() <= 80) {
+		if (pois != null && pois.size() > 0 /* && currentPoiList.size() <= 320 */) {
 			currentPoiList.addAll(pois);
 			addAnnotationList(createAnnotationsOverlay(currentPoiList));
 			GroomApplication app = (GroomApplication) getApplication();
@@ -120,11 +129,45 @@ public class MainContentActivity extends MapActivity implements
 		List<Annotation> poiAnnotationList = new ArrayList<Annotation>();
 		if (aPoiSet != null) {
 			for (Poi poi : aPoiSet) {
-				poiAnnotationList.add(new Annotation(
-						new GeoPoint((int) (poi.latitude * 1e6),
-								(int) (poi.longitude * 1e6)),
-						poi.raisonsociale,
-						poi.adresseWeb != null ? poi.adresseWeb : ""));
+				// Drawable marker = null;
+				if (DataprovenceManager.THEME_CULTURE
+						.equalsIgnoreCase(poi.theme)) {
+					poiAnnotationList.add(new Annotation(new GeoPoint(
+							(int) (poi.latitude * 1e6),
+							(int) (poi.longitude * 1e6)), poi.raisonsociale,
+							poi.adresseweb != null ? poi.adresseweb : "",
+							MapViewUtils.boundMarkerCenterBottom(getResources()
+									.getDrawable(R.drawable.culture))));
+				} else if (DataprovenceManager.THEME_PLEINAIR
+						.equalsIgnoreCase(poi.theme)) {
+					poiAnnotationList.add(new Annotation(new GeoPoint(
+							(int) (poi.latitude * 1e6),
+							(int) (poi.longitude * 1e6)), poi.raisonsociale,
+							poi.adresseweb != null ? poi.adresseweb : "",
+							MapViewUtils.boundMarkerCenterBottom(getResources()
+									.getDrawable(R.drawable.pleinair))));
+				} else if (DataprovenceManager.THEME_RESTAURATION
+						.equalsIgnoreCase(poi.theme)) {
+					poiAnnotationList.add(new Annotation(new GeoPoint(
+							(int) (poi.latitude * 1e6),
+							(int) (poi.longitude * 1e6)), poi.raisonsociale,
+							poi.adresseweb != null ? poi.adresseweb : "",
+							MapViewUtils.boundMarkerCenterBottom(getResources()
+									.getDrawable(R.drawable.gastro))));
+				} else if (DataprovenceManager.THEME_SPORT
+						.equalsIgnoreCase(poi.theme)) {
+					poiAnnotationList.add(new Annotation(new GeoPoint(
+							(int) (poi.latitude * 1e6),
+							(int) (poi.longitude * 1e6)), poi.raisonsociale,
+							poi.adresseweb != null ? poi.adresseweb : "",
+							MapViewUtils.boundMarkerCenterBottom(getResources()
+									.getDrawable(R.drawable.sport))));
+				}
+				// poiAnnotationList.add(new Annotation(
+				// new GeoPoint((int) (poi.latitude * 1e6),
+				// (int) (poi.longitude * 1e6)),
+				// poi.raisonsociale,
+				// poi.adresseweb != null ? poi.adresseweb : ""));
 			}
 		}
 		return poiAnnotationList;
@@ -185,16 +228,16 @@ public class MainContentActivity extends MapActivity implements
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			// app icon in action bar clicked; go home
-			Intent intent = new Intent(this, InitActivity.class);
+			Intent intent = new Intent(this, DashboardActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			return true;
 		case R.id.idMenuListe:
 			startListView(R.id.idMenuListe);
 			return true;
-		case R.id.idMenuSort:
-			showDialog(SORT);
-			return true;
+			// case R.id.idMenuSort:
+			// showDialog(SORT);
+			// return true;
 		case R.id.idMenuTheme:
 			startActivity(new Intent(this, InitActivity.class));
 			return true;
