@@ -3,9 +3,11 @@ package com.opendata.groom.activities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import bma.groomservice.data.Poi;
@@ -51,6 +53,10 @@ public class PoiDetailsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.poi_details_activity);
 
+		ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setDisplayShowTitleEnabled(false);
+
 		Intent tnt = getIntent();
 		if (!tnt.hasExtra(EXTRA_POI)) {
 			logger.error("Il manque le POI !");
@@ -75,8 +81,15 @@ public class PoiDetailsActivity extends Activity {
 		((TextView) findViewById(R.id.TextViewPoiDetailsActivityTel))
 				.setText(poi.tlphone != null ? poi.tlphone : "");
 
-		((TextView) findViewById(R.id.TextViewPoiDetailsActivityWeb))
-				.setText(poi.adresseWeb != null ? poi.adresseWeb : "");
+		WebView wv = (WebView) findViewById(R.id.WebViewPoiDetailsActivitySite);
+		if (poi.adresseWeb != null) {
+			((TextView) findViewById(R.id.TextViewPoiDetailsActivityWeb))
+					.setText(poi.adresseWeb != null ? poi.adresseWeb : "");
+
+			wv.loadUrl("http://google.fr");
+		} else {
+			wv.setVisibility(WebView.INVISIBLE);
+		}
 
 	}
 }

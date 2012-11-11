@@ -3,6 +3,7 @@ package com.opendata.groom.activities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -31,6 +32,10 @@ public class BonjourActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+
+		ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setDisplayShowTitleEnabled(false);
 
 		// si le nom est déjà renseigné on zappe cet écran
 		SharedPreferences prefs = PreferenceManager
