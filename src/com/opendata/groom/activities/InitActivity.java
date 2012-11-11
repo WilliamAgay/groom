@@ -111,7 +111,7 @@ public class InitActivity extends Activity implements View.OnClickListener
 		
 		
 		case R.id.ImageViewInitActivitySettingsValider :
-			Intent  intent = new Intent(InitActivity.this,DashboardActivity.class);
+			Intent  intent = new Intent(InitActivity.this,MainContentActivity.class);
 			startActivity(intent);
 			finish();
 			break;

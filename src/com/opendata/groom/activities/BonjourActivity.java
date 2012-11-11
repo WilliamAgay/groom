@@ -25,7 +25,7 @@ public class BonjourActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_bonjour);
 		nomEDT = (EditText) findViewById(R.id.EditTextActivityBonjourNom);
-		dureeEDT = (EditText) findViewById(R.id.EditTextActivityBonjourNom);
+		dureeEDT = (EditText) findViewById(R.id.EditTextActivityBonjourDureeSejour);
 		Typeface androgyne = Typeface.createFromAsset(getAssets(),
 				"Androgyne_TB.otf");
 		((TextView) findViewById(R.id.bonjour_question1))
@@ -55,7 +55,7 @@ public class BonjourActivity extends Activity {
 							AlertDialog.Builder builder = new AlertDialog.Builder(
 									BonjourActivity.this);
 							builder.setTitle("Attention!");
-							builder.setMessage("Veuillez complÃ©ter les champs SVP!");
+							builder.setMessage("Veuillez compléter les champs SVP!");
 							builder.setIcon(R.drawable.ic_launcher);
 							builder.setPositiveButton("OK",
 									new DialogInterface.OnClickListener() {
