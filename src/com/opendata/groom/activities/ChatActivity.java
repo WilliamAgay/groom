@@ -68,20 +68,19 @@ public class ChatActivity extends Activity implements IOCallback {
 		//
 		// }
 		// });
-
+		findViewById(R.id.ButtonActivityChatSend).setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				sendMessage();
+			}
+		});
+		
 		((EditText) findViewById(R.id.txt_inputText)).setOnEditorActionListener(new TextView.OnEditorActionListener() {
 		    @Override
 		    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 		        if (actionId == EditorInfo.IME_ACTION_SEND) {
-		        	if(socket!=null && socket.isConnected())
-					{
-						socket.emit("sendchat", ((EditText) findViewById(R.id.txt_inputText)).getText().toString());
-					}
-					else
-					{
-						Toast.makeText(ChatActivity.this, "En attente de connexion..", Toast.LENGTH_SHORT).show();
-						connectSocket();
-					}
+		        	sendMessage();
 		            return true;
 		        }
 		        return false;
@@ -98,6 +97,18 @@ public class ChatActivity extends Activity implements IOCallback {
 		
 	}
 
+	public void sendMessage()
+	{
+		if(socket!=null && socket.isConnected())
+		{
+			socket.emit("sendchat", ((EditText) findViewById(R.id.txt_inputText)).getText().toString());
+		}
+		else
+		{
+			Toast.makeText(ChatActivity.this, "En attente de connexion..", Toast.LENGTH_SHORT).show();
+			connectSocket();
+		}
+	}
 	
 	public void connectSocket()
 	{
@@ -189,7 +200,7 @@ public class ChatActivity extends Activity implements IOCallback {
 			color ="#425155";
 		}
 		TextView tv = (TextView) findViewById(R.id.thistory);
-		tv.setText(Html.fromHtml(tv.getText().toString() + "<br><font color=\""+color+"\"><b>" + emetteur+"</b></font>  " + theText));
+		tv.setText(tv.getText().toString() +Html.fromHtml( "<br><font color=\""+color+"\"><b>" + emetteur+"</b></font>  " + theText));
 
 		
 		

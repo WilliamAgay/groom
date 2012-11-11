@@ -26,17 +26,17 @@
         <EditText
             android:id="@+id/txt_inputText"
           android:lines="1"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:imeOptions="actionSend"
+            android:layout_weight="1"
             android:hint="Votre message ici" />
 
-        <!-- <Button -->
-        <!-- android:id="@+id/btn_Send" -->
-        <!-- android:layout_width="100dp" -->
-        <!-- android:layout_height="wrap_content" -->
-        <!-- android:layout_weight="0.2" -->
-        <!-- android:text="Send" /> -->
+        <Button
+        android:id="@+id/ButtonActivityChatSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK" />
     </LinearLayout>
 
 </LinearLayout>
