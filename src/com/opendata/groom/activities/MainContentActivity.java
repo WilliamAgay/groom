@@ -315,5 +315,11 @@ public class MainContentActivity extends MapActivity implements
 
 		return builder.create();
 	}
+	 @Override
+		public void onBackPressed() {
+			Intent  intent = new Intent(MainContentActivity.this,DashboardActivity.class);
+			startActivity(intent);
+			finish();
+		}
 
 }
