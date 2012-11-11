@@ -43,10 +43,10 @@ public class InitActivity extends Activity implements View.OnClickListener
 		
 		
 		
-		(findViewById(R.id.FrameLayoutInitActivityTile1).findViewById(R.id.FrameLayoutInitActivityTile1)).setBackgroundResource(R.drawable.ico_plein_air);
-		(findViewById(R.id.FrameLayoutInitActivityTile2).findViewById(R.id.FrameLayoutInitActivityTile1)).setBackgroundResource(R.drawable.ico_sport);
-		(findViewById(R.id.FrameLayoutInitActivityTile3).findViewById(R.id.FrameLayoutInitActivityTile1)).setBackgroundResource(R.drawable.ico_gastro);
-		(findViewById(R.id.FrameLayoutInitActivityTile4).findViewById(R.id.FrameLayoutInitActivityTile1)).setBackgroundResource(R.drawable.ico_culture);
+		findViewById(R.id.FrameLayoutInitActivityTile1).setBackgroundResource(R.drawable.ico_plein_air);
+		findViewById(R.id.FrameLayoutInitActivityTile2).setBackgroundResource(R.drawable.ico_sport);
+		findViewById(R.id.FrameLayoutInitActivityTile3).setBackgroundResource(R.drawable.ico_gastro);
+		findViewById(R.id.FrameLayoutInitActivityTile4).setBackgroundResource(R.drawable.ico_culture);
 		
 		
 		

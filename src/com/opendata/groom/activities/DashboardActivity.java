@@ -53,7 +53,8 @@ public class DashboardActivity extends Activity implements OnClickListener,OnIni
 		}
 		speek = (ImageView) findViewById(R.id.ImageViewDashboardActivitySpeek);
 		speek.setVisibility(View.GONE);
-		
+		 mTextToSpeech = new TextToSpeech(getApplicationContext(), this);
+			
 
 		findViewById(R.id.RelativeLayoutDashboardActivity1).setOnClickListener(
 				this);
@@ -120,7 +121,6 @@ public class DashboardActivity extends Activity implements OnClickListener,OnIni
 	@Override
 	protected void onResume() {
 		super.onResume();
-		 mTextToSpeech = new TextToSpeech(getApplicationContext(), this);
 		
 	}
 	
