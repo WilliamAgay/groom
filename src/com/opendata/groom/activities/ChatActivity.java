@@ -5,15 +5,14 @@ import io.socket.IOCallback;
 import io.socket.SocketIO;
 import io.socket.SocketIOException;
 
-import java.net.MalformedURLException;
-
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -22,11 +21,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.opendata.groom.GroomApplication;
 import com.opendata.groom.R;
 
 public class ChatActivity extends Activity implements IOCallback {
-	Logger logger = LoggerFactory.getLogger(ChatActivity.class);
+
 	private final Handler handler = new Handler();
 	public ListView msgView;
 	public ArrayAdapter<String> msgList;
@@ -83,14 +81,13 @@ public class ChatActivity extends Activity implements IOCallback {
 
 		try {
 			socket = new SocketIO("http://87.106.98.48:3000");
-		} catch (MalformedURLException mue) {
-			logger.error(mue.getMessage(), mue);
-		}
 
-		socket.connect(this);
-		socket.emit("adduser",
-				((GroomApplication) getApplication()).accountName);
-		// End Receive msg from server//
+			socket.connect(this);
+			socket.emit("adduser", "toto");
+			// End Receive msg from server/
+		} catch (Exception e) {
+			Log.e("oncreate", e.getMessage());
+		}
 	}
 
 	@Override
@@ -115,7 +112,19 @@ public class ChatActivity extends Activity implements IOCallback {
 	public void onMessage(JSONObject paramJSONObject,
 			IOAcknowledge paramIOAcknowledge) {
 		TextView tv = (TextView) findViewById(R.id.thistory);
-		tv.setText(tv.getText() + "\n" + "json:" + paramJSONObject);
+		Log.d("onMessage", "" + paramJSONObject);
+		String theText = "";
+		if (paramJSONObject != null && !paramJSONObject.isNull("args")) {
+			try {
+				JSONArray arr = (JSONArray) paramJSONObject.get("args");
+				JSONObject obj = (JSONObject) arr.get(0);
+				if (obj.has("toto"))
+					theText = obj.getString("toto");
+			} catch (JSONException e) {
+				Log.e("JSONException", e.getMessage());
+			}
+		}
+		tv.setText(tv.getText().toString() + "\n" + "json :" + theText);
 	}
 
 	@Override
