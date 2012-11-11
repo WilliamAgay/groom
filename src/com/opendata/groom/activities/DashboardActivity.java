@@ -35,7 +35,6 @@ public class DashboardActivity extends Activity implements OnClickListener,
 
 	String valueForQuitAfterSpeach = null;
 
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
@@ -50,7 +49,7 @@ public class DashboardActivity extends Activity implements OnClickListener,
 
 		}
 		ImageView speek = (ImageView) findViewById(R.id.ImageViewDashboardActivitySpeek);
-		if(speek!=null)
+		if (speek != null)
 			speek.setVisibility(View.GONE);
 		mTextToSpeech = new TextToSpeech(getApplicationContext(), this);
 
@@ -80,10 +79,12 @@ public class DashboardActivity extends Activity implements OnClickListener,
 	public void onInit(int status) {
 		if (status == TextToSpeech.SUCCESS) {
 			speechSynthReady = true;
-//			 findViewById(R.id.ImageViewDashboardActivitySpeek).setVisibility(View.VISIBLE);
-			if( findViewById(R.id.ImageViewDashboardActivitySpeek)!=null)
-			{
-				 findViewById(R.id.ImageViewDashboardActivitySpeek).setOnClickListener(this);
+			// findViewById(R.id.ImageViewDashboardActivitySpeek).setVisibility(View.VISIBLE);
+			if (findViewById(R.id.ImageViewDashboardActivitySpeek) != null) {
+				findViewById(R.id.ImageViewDashboardActivitySpeek)
+						.setVisibility(View.VISIBLE);
+				findViewById(R.id.ImageViewDashboardActivitySpeek)
+						.setOnClickListener(this);
 
 			}
 			if (valueForQuitAfterSpeach != null) {
@@ -268,9 +269,9 @@ public class DashboardActivity extends Activity implements OnClickListener,
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-//		case R.id.idMenuTts:
-//			listenToMe(getResources().getString(R.string.question_tts));
-//			return true;
+		// case R.id.idMenuTts:
+		// listenToMe(getResources().getString(R.string.question_tts));
+		// return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}

@@ -5,10 +5,5 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry kind="lib" path="/dataprovence/libs/android-support-v4.jar"/>
-	<classpathentry kind="lib" path="/dataprovence/libs/gson-2.2.2.jar"/>
-	<classpathentry kind="lib" path="/dataprovence/libs/logback-classic-1.0.7.jar"/>
-	<classpathentry kind="lib" path="/dataprovence/libs/logback-core-1.0.7.jar"/>
-	<classpathentry kind="lib" path="/dataprovence/libs/slf4j-api-1.7.2.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
