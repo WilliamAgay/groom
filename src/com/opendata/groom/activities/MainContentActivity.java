@@ -51,6 +51,7 @@ public class MainContentActivity extends MapActivity implements
 		setContentView(R.layout.polarismaplayout);
 		mapView = (PolarisMapView) findViewById(R.id.PolarisMapViewLayoutMap);
 		
+		
 //		 lvEv = new ListView(MainContentActivity.this);
 //		 RelativeLayout.LayoutParams lp =new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 //		 
@@ -69,7 +70,7 @@ public class MainContentActivity extends MapActivity implements
 		mapView.setOnMapViewLongClickListener(this);
 		mapView.setOnAnnotationSelectionChangedListener(this);
 //43.296191,5.379792
-		mapView.getController().setCenter(new GeoPoint((int)(43.296191 * 1E6), (int)(5.379792 * 1E6)));
+//		mapView.getController().setCenter(new GeoPoint((int)(43.296191 * 1E6), (int)(5.379792 * 1E6)));
 		mapView.getController().setZoom(16);
 		mapView.preLoad();
 		
@@ -91,8 +92,8 @@ public class MainContentActivity extends MapActivity implements
 
 	@Override
 	public void onPoiReceived(List<Poi> pois) {
-		if (pois != null && pois.size() > 0) {
-			currentPoiList = pois;
+		if (pois != null && pois.size() > 0 && currentPoiList.size() <= 80) {
+			currentPoiList.addAll(pois);
 			addAnnotationList(createAnnotationsOverlay(pois));
 			GroomApplication app = (GroomApplication) getApplication();
 			app.pois.addAll(pois);
@@ -100,7 +101,14 @@ public class MainContentActivity extends MapActivity implements
 	}
 
 	private void addAnnotationList(List<Annotation> aAnnotationsList) {
-		mapView.setAnnotations(aAnnotationsList, R.drawable.pleinair);
+		if(((GroomApplication)getApplicationContext()).prefPleinAirSelected)
+			mapView.setAnnotations(aAnnotationsList, R.drawable.pleinair);
+		if(((GroomApplication)getApplicationContext()).prefCultureSelected)
+			mapView.setAnnotations(aAnnotationsList, R.drawable.culture);
+		if(((GroomApplication)getApplicationContext()).prefRestoSelected)
+			mapView.setAnnotations(aAnnotationsList, R.drawable.gastro);
+		if(((GroomApplication)getApplicationContext()).prefSportSelected)
+			mapView.setAnnotations(aAnnotationsList, R.drawable.sport);
 	}
 	
 	@Override
@@ -263,10 +271,18 @@ public class MainContentActivity extends MapActivity implements
 
 	@Override
 	protected Dialog onCreateDialog(int arg) {
-		mSelectedItems.add(3);
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		// Set the dialog title
 
+		boolean[] checkedVal = {false,false,false,false};
+		if(((GroomApplication)getApplicationContext()).prefPleinAirSelected)
+			checkedVal[1] = true;
+		if(((GroomApplication)getApplicationContext()).prefCultureSelected)
+			checkedVal[0] = true;
+		if(((GroomApplication)getApplicationContext()).prefRestoSelected)
+			checkedVal[3] = true;
+		if(((GroomApplication)getApplicationContext()).prefSportSelected)
+			checkedVal[2] = true;
 
 		builder.setTitle(getString(R.string.title_popup))
 
@@ -274,7 +290,7 @@ public class MainContentActivity extends MapActivity implements
 				// (null for none),
 				// and the listener through which to receive callbacks when
 				// items are selected
-				.setMultiChoiceItems(R.array.labelTheme, null,
+				.setMultiChoiceItems(R.array.labelTheme, checkedVal,
 						new DialogInterface.OnMultiChoiceClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog,

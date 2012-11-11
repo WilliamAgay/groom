@@ -15,7 +15,7 @@
 
     <application
         android:name="com.opendata.groom.GroomApplication"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/logomini"
         android:label="@string/app_name"
         android:logo="@drawable/logomini"
         android:theme="@style/GroomActivityTheme" >

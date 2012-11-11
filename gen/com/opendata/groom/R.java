@@ -189,7 +189,8 @@ public final class R {
         public static final int activity_chat=0x7f0b0001;
         public static final int activity_main=0x7f0b0002;
         public static final int menu_init=0x7f0b0003;
-        public static final int menu_map=0x7f0b0004;
+        public static final int menu_init_2=0x7f0b0004;
+        public static final int menu_map=0x7f0b0005;
     }
     public static final class string {
         public static final int a_venir=0x7f060009;

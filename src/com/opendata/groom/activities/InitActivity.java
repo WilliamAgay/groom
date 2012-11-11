@@ -5,6 +5,9 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -35,7 +38,6 @@ public class InitActivity extends Activity implements View.OnClickListener
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setDisplayShowTitleEnabled(false);
 		
-		
 		((TextView)findViewById(R.id.FrameLayoutInitActivityTile1).findViewById(R.id.TextViewInitActivityChoix1)).setText(R.string.plein_air);
 		((TextView)findViewById(R.id.FrameLayoutInitActivityTile2).findViewById(R.id.TextViewInitActivityChoix1)).setText(R.string.sport);
 		((TextView)findViewById(R.id.FrameLayoutInitActivityTile3).findViewById(R.id.TextViewInitActivityChoix1)).setText(R.string.restauration);
@@ -63,6 +65,8 @@ public class InitActivity extends Activity implements View.OnClickListener
 				((GroomApplication)getApplicationContext()).saveThemeDataInPref(GroomApplication.PREF_PLEINAIR, isChecked);
 
 			}
+			
+			
 		});
 		((CheckBox)findViewById(R.id.FrameLayoutInitActivityTile2).findViewById(R.id.CheckBoxInitActivityChoix1)).setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			
@@ -111,6 +115,7 @@ public class InitActivity extends Activity implements View.OnClickListener
 		
 		
 		case R.id.ImageViewInitActivitySettingsValider :
+			((GroomApplication)getApplicationContext()).fillThemes();
 			Intent  intent = new Intent(InitActivity.this,MainContentActivity.class);
 			startActivity(intent);
 			finish();
@@ -123,7 +128,26 @@ public class InitActivity extends Activity implements View.OnClickListener
 	}
 	
 	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu_init_2, menu);
+		return true;
+	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			// app icon in action bar clicked; go home
+			Intent intent = new Intent(this, DashboardActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
 	
 
 

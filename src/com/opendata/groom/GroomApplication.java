@@ -7,14 +7,15 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import com.google.gson.Gson;
-
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import bma.groomservice.data.Poi;
+import bma.groomservice.data.dataprovence.DataprovenceManager;
+
+import com.google.gson.Gson;
 
 
 public class GroomApplication extends Application {
@@ -149,6 +150,20 @@ public class GroomApplication extends Application {
 			editor.putString(PREF_FAVORITES, null);
 		}
 		editor.commit();
+	}
+
+
+
+
+
+	public void fillThemes() {
+		readThemeDataInPref();
+		themes = new ArrayList<String>();
+		if ( prefCultureSelected) themes.add(DataprovenceManager.THEME_CULTURE);
+		if ( prefPleinAirSelected) themes.add(DataprovenceManager.THEME_PLEINAIR);
+		if (prefSportSelected ) themes.add(DataprovenceManager.THEME_SPORT);
+		if ( prefRestoSelected ) themes.add(DataprovenceManager.THEME_RESTAURATION);
+		
 	}
 
 }

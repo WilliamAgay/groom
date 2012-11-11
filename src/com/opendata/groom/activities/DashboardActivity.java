@@ -65,6 +65,7 @@ public class DashboardActivity extends Activity implements OnClickListener,OnIni
 
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setDisplayShowTitleEnabled(false);
 
 	}
 
