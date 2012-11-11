@@ -9,12 +9,12 @@
         android:title="Trier"/>
     <item
         android:id="@+id/idMenuListe"
-        android:icon="@android:drawable/ic_menu_directions"
+        android:icon="@drawable/picto_liste"
         android:showAsAction="ifRoom"
         android:title="Liste"/>
     <item
         android:id="@+id/idMenuTheme"
-        android:icon="@android:drawable/ic_menu_add"
+        android:icon="@drawable/picto_themes"
         android:showAsAction="ifRoom"
         android:title="Thème"/>
 

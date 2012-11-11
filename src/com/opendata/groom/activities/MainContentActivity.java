@@ -86,7 +86,7 @@ public class MainContentActivity extends MapActivity implements
 //		public static final String THEME_RESTAURATION = "RESTAURATION";
 //		public static final String THEME_SPORT = "SPORT";
 //		public static final String THEME_CULTURE = "CULTURE";
-		new DataprovenceManager(this, false)
+		new DataprovenceManager(this, false) 
 				.findAll( ((GroomApplication)getApplicationContext()).themes) ;
 	}
 

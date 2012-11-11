@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,7 +23,7 @@ import com.opendata.groom.R;
 public class InitActivity extends Activity implements View.OnClickListener {
 
 	// Handler mHandler = new Handler();
-
+public int lighter = 0x44000000;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,6 +33,22 @@ public class InitActivity extends Activity implements View.OnClickListener {
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setDisplayShowTitleEnabled(false);
+		
+		Typeface androgyne = Typeface.createFromAsset(getAssets(),
+				"Androgyne_TB.otf");
+		
+		((TextView) findViewById(R.id.FrameLayoutInitActivityTile1)
+				.findViewById(R.id.TextViewInitActivityChoix1))
+				.setTypeface(androgyne);
+		((TextView) findViewById(R.id.FrameLayoutInitActivityTile2)
+				.findViewById(R.id.TextViewInitActivityChoix1))
+				.setTypeface(androgyne);
+		((TextView) findViewById(R.id.FrameLayoutInitActivityTile3)
+				.findViewById(R.id.TextViewInitActivityChoix1))
+				.setTypeface(androgyne);
+		((TextView) findViewById(R.id.FrameLayoutInitActivityTile4)
+				.findViewById(R.id.TextViewInitActivityChoix1))
+				.setTypeface(androgyne);
 
 		((TextView) findViewById(R.id.FrameLayoutInitActivityTile1)
 				.findViewById(R.id.TextViewInitActivityChoix1))
@@ -50,7 +67,7 @@ public class InitActivity extends Activity implements View.OnClickListener {
 		// findViewById(R.id.FrameLayoutInitActivityTile1).setBackgroundResource(R.drawable.ico_plein_air);
 		if (((GroomApplication) getApplicationContext()).prefPleinAirSelected)
 			findViewById(R.id.FrameLayoutInitActivityTile1).setBackgroundColor(
-					0x77000000);
+					lighter);
 		else
 			findViewById(R.id.FrameLayoutInitActivityTile1).setBackgroundColor(
 					Color.TRANSPARENT);
@@ -61,7 +78,7 @@ public class InitActivity extends Activity implements View.OnClickListener {
 		// findViewById(R.id.FrameLayoutInitActivityTile2).setBackgroundResource(R.drawable.ico_sport);
 		if (((GroomApplication) getApplicationContext()).prefSportSelected)
 			findViewById(R.id.FrameLayoutInitActivityTile2).setBackgroundColor(
-					0x77000000);
+					lighter);
 		else
 			findViewById(R.id.FrameLayoutInitActivityTile2).setBackgroundColor(
 					Color.TRANSPARENT);
@@ -71,7 +88,7 @@ public class InitActivity extends Activity implements View.OnClickListener {
 
 		if (((GroomApplication) getApplicationContext()).prefRestoSelected)
 			findViewById(R.id.FrameLayoutInitActivityTile3).setBackgroundColor(
-					0x77000000);
+					lighter);
 		else
 			findViewById(R.id.FrameLayoutInitActivityTile3).setBackgroundColor(
 					Color.TRANSPARENT);
@@ -82,7 +99,7 @@ public class InitActivity extends Activity implements View.OnClickListener {
 
 		if (((GroomApplication) getApplicationContext()).prefCultureSelected)
 			findViewById(R.id.FrameLayoutInitActivityTile4).setBackgroundColor(
-					0x77000000);
+					lighter);
 		else
 			findViewById(R.id.FrameLayoutInitActivityTile4).setBackgroundColor(
 					Color.TRANSPARENT);
@@ -118,7 +135,7 @@ public class InitActivity extends Activity implements View.OnClickListener {
 										isChecked);
 						if (((GroomApplication) getApplicationContext()).prefPleinAirSelected)
 							findViewById(R.id.FrameLayoutInitActivityTile1)
-									.setBackgroundColor(0x77000000);
+									.setBackgroundColor(0x44000000);
 						else
 							findViewById(R.id.FrameLayoutInitActivityTile1)
 									.setBackgroundColor(Color.TRANSPARENT);
@@ -138,7 +155,7 @@ public class InitActivity extends Activity implements View.OnClickListener {
 										GroomApplication.PREF_SPORT, isChecked);
 						if (((GroomApplication) getApplicationContext()).prefSportSelected)
 							findViewById(R.id.FrameLayoutInitActivityTile2)
-									.setBackgroundColor(0x77000000);
+									.setBackgroundColor(lighter);
 						else
 							findViewById(R.id.FrameLayoutInitActivityTile2)
 									.setBackgroundColor(Color.TRANSPARENT);
@@ -158,7 +175,7 @@ public class InitActivity extends Activity implements View.OnClickListener {
 										GroomApplication.PREF_RESTO, isChecked);
 						if (((GroomApplication) getApplicationContext()).prefRestoSelected)
 							findViewById(R.id.FrameLayoutInitActivityTile3)
-									.setBackgroundColor(0x77000000);
+									.setBackgroundColor(lighter);
 						else
 							findViewById(R.id.FrameLayoutInitActivityTile3)
 									.setBackgroundColor(Color.TRANSPARENT);
@@ -179,7 +196,7 @@ public class InitActivity extends Activity implements View.OnClickListener {
 										isChecked);
 						if (((GroomApplication) getApplicationContext()).prefCultureSelected)
 							findViewById(R.id.FrameLayoutInitActivityTile4)
-									.setBackgroundColor(0x77000000);
+									.setBackgroundColor(lighter);
 						else
 							findViewById(R.id.FrameLayoutInitActivityTile4)
 									.setBackgroundColor(Color.TRANSPARENT);

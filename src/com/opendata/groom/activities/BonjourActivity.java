@@ -97,7 +97,7 @@ public class BonjourActivity extends Activity {
 							AlertDialog.Builder builder = new AlertDialog.Builder(
 									BonjourActivity.this);
 							builder.setTitle("Attention!");
-							builder.setMessage("Veuillez compléter les champs SVP!");
+							builder.setMessage(getString(R.string.complet_champs));
 							builder.setIcon(R.drawable.ic_launcher);
 							builder.setPositiveButton("OK",
 									new DialogInterface.OnClickListener() {

@@ -58,7 +58,7 @@ public class PoiDetailsActivity extends Activity {
 		}
 
 		Poi poi = tnt.getParcelableExtra(EXTRA_POI);
-		logger.debug("Poi={}", poi);
+		logger.debug("Poi={}", poi); 
 
 		int icon = getImageRcFromTheme(poi.theme);
 		if (icon >= 0) {
