@@ -19,11 +19,11 @@ import android.view.MenuItem;
 import bma.groomservice.data.Poi;
 import bma.groomservice.data.PoiListener;
 import bma.groomservice.data.dataprovence.DataprovenceManager;
+import bma.groomservice.dataprovence.R;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.opendata.groom.GroomApplication;
-import com.opendata.groom.R;
 import com.opendata.groom.polaris.Annotation;
 import com.opendata.groom.polaris.MapCalloutView;
 import com.opendata.groom.polaris.MapViewUtils;
@@ -141,7 +141,7 @@ public class MainContentActivity extends MapActivity implements
 		List<Annotation> poiAnnotationList = new ArrayList<Annotation>();
 		if (aPoiSet != null) {
 			for (Poi poi : aPoiSet) {
-<<<<<<< HEAD
+
 				// Drawable marker = null;
 				if (DataprovenceManager.THEME_CULTURE
 						.equalsIgnoreCase(poi.theme)) {
@@ -181,13 +181,7 @@ public class MainContentActivity extends MapActivity implements
 				// (int) (poi.longitude * 1e6)),
 				// poi.raisonsociale,
 				// poi.adresseweb != null ? poi.adresseweb : ""));
-=======
-					poiAnnotationList.add(new Annotation(new GeoPoint(
-							(int) (poi.latitude * 1e6),
-							(int) (poi.longitude * 1e6)), poi.raisonsociale,
-							poi.adresseWeb != null ? poi.adresseWeb : ""));
-				
->>>>>>> 69c502a0f08f8c0f6dccdbffb28121e58fa0d3ee
+
 			}
 		}
 		return poiAnnotationList;
